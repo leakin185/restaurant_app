@@ -1,3 +1,5 @@
+package rrpss;
+
 import java.util.Arrays;
 
 public class PromotionalPackages {
