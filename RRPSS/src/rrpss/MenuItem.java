@@ -1,29 +1,39 @@
 package rrpss;
 
-public class MenuItem {
-	private String name; 
-	private String description; 
-	private Double price; 
-	private int itemId;
+public abstract class MenuItem{
 	
-	// constructor for a menu item
-	public MenuItem(int itemId, double price) {
-		this.itemId = itemId; 
+	private String menuName;
+	private String desc;
+	private double price;
+	
+	public MenuItem(String menuName, String desc, double price){
+		this.menuName = menuName;
+		this.desc = desc;
 		this.price = price;
 	}
 	
-	public void updateMenuItem(String description, int itemId, Double price) {
-		if (this.itemId == itemId) {
-		this.description = description;
-		this.price = price; 
-		}
+	public void setMenuName(String menuName){ 
+		this.menuName = menuName; 
 	}
 	
-	public void removeMenuItem(int itemId) {
-		if (this.itemId == itemId) {
-			this.description = null;
-			this.price = 0.0;
-			this.name = null;
-		}
+	public void setDesc(String desc){ 
+		this.desc = desc; 
 	}
+	
+	public void setPrice(double price){ 
+		this.price = price; 
+	}
+	
+	public String getMenuName(){ 
+		return this.menuName; 
+	}
+	
+	public String getDesc(){ 
+		return this.desc; 
+	}
+	
+	public double getPrice(){ 
+		return this.price; 
+	}
+
 }
