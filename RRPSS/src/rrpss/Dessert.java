@@ -1,3 +1,5 @@
+package rrpss;
+
 public class Dessert {
     private double dessertPrice;
     private int dessertId;

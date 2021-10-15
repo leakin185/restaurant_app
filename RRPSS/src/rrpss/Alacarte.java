@@ -1,10 +1,12 @@
+package rrpss;
+
 import java.util.Arrays;
 
 public class Alacarte {
     private int numAlacarteItems;
 
     // declare array of  objects
-    private Drinks[] drinks = new Drinks[10];
+    private Drinks[] drinks = new Drinks[10]; 
     private Appetisers[] appetiser = new Appetisers[10];
     private MainCourse[] main = new MainCourse[10];
     private Dessert[] dessert = new Dessert[10];
