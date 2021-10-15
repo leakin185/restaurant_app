@@ -1,7 +1,7 @@
 package rrpss;
 
 public class Table {
-	private static int id = 0;
+	private static int id = 1;
 	private int tableNo;
 	private int tableCapacity;
 	private boolean isReserved = false;
