@@ -5,11 +5,13 @@ public abstract class MenuItem{
 	private String menuName;
 	private String desc;
 	private double price;
+	private int itemId; 
 	
-	public MenuItem(String menuName, String desc, double price){
+	public MenuItem(String menuName, String desc, double price, int itemId){
 		this.menuName = menuName;
 		this.desc = desc;
 		this.price = price;
+		this.itemId = itemId;
 	}
 	
 	public void setMenuName(String menuName){ 
@@ -24,6 +26,10 @@ public abstract class MenuItem{
 		this.price = price; 
 	}
 	
+	public void setItemId(int id) {
+		this.itemId = id;
+	}
+	
 	public String getMenuName(){ 
 		return this.menuName; 
 	}
@@ -34,6 +40,10 @@ public abstract class MenuItem{
 	
 	public double getPrice(){ 
 		return this.price; 
+	}
+	
+	public int getItemId(){
+		return this.itemId;
 	}
 
 }

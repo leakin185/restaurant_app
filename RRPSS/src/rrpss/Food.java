@@ -1,15 +1,15 @@
 package rrpss;
 
-public class Food extends MenuItem {
+enum CourseType {MAIN_COURSE, DESSERT, DRINK, APPETISER};
+enum Temp {HOT, COLD};
 
-	public enum CourseType {MAIN_COURSE, DESSERT, DRINK, APPETISER};
-	public enum Temp {HOT, COLD};
+public class Food extends MenuItem {
 	
 	private CourseType type;
 	private Temp temp;
 
-	public Food(String menuName, String desc, double price, CourseType type, Temp temp) {
-		super(menuName, desc, price);
+	public Food(String menuName, String desc, double price, int itemId, CourseType type, Temp temp) {
+		super(menuName, desc, price, itemId);
 		this.type = type;
 		if (type != CourseType.DRINK) {
 			this.temp = Temp.HOT;
