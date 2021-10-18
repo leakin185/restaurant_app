@@ -37,6 +37,16 @@ public class RRPSS {
 		}
 
 	}
+	
+	//create array list for staffs
+	public void createStaff() {
+		
+	}
+	
+	//remove staff
+	public void removeStaff() {
+			
+	}
 
 	public void displayOptions() {
 
