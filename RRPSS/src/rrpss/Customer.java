@@ -3,20 +3,24 @@ package rrpss;
 public class Customer {
 
     private int customerID;
-    private boolean isMember;
+    private String customerName;
+    private Membership membership;
     private String phoneNum;
     private String emailAddress;
 
-    public Customer(int customerID, boolean isMember, String phoneNum, String emailAddress) {
+    public Customer(int customerID,String customerName,Membership membership, String phoneNum, String emailAddress) {
         this.customerID = customerID;
-        this.isMember = isMember;
+        this.customerName = customerName;
+        this.membership = membership;
         this.phoneNum = phoneNum;
         this.emailAddress = emailAddress;
     }
 
-    public Customer(int customerID, boolean isMember) {
+    public Customer(int customerID,String customerName, String phoneNum, String emailAddress) {
         this.customerID = customerID;
-        this.isMember = isMember;
+        this.customerName = customerName;
+        this.phoneNum = phoneNum;
+        this.emailAddress = emailAddress;
     }
 
     public int getCustomerID() {
@@ -27,12 +31,20 @@ public class Customer {
         this.customerID = customerID;
     }
 
-    public boolean isMember() {
-        return isMember;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setMember(boolean member) {
-        isMember = member;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public Membership getMembership() {
+        return membership;
+    }
+
+    public void setMembership(Membership membership) {
+        this.membership = membership;
     }
 
     public String getPhoneNum() {

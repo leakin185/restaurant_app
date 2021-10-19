@@ -2,24 +2,13 @@ package rrpss;
 
 public class Membership {
 
-    private int MembershipID;
     private double discountRate;
     private String membershipType;
-    private boolean isValid;
 
-    public Membership(int membershipID, double discountRate, String membershipType, boolean isValid) {
-        MembershipID = membershipID;
+    public Membership(double discountRate, String membershipType) {
+
         this.discountRate = discountRate;
         this.membershipType = membershipType;
-        this.isValid = isValid;
-    }
-
-    public int getMembershipID() {
-        return MembershipID;
-    }
-
-    public void setMembershipID(int membershipID) {
-        MembershipID = membershipID;
     }
 
     public double getDiscountRate() {
@@ -38,11 +27,4 @@ public class Membership {
         this.membershipType = membershipType;
     }
 
-    public boolean isValid() {
-        return isValid;
-    }
-
-    public void setValid(boolean valid) {
-        isValid = valid;
-    }
 }
