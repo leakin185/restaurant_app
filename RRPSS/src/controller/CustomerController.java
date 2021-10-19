@@ -10,28 +10,28 @@ import java.util.*;
 public class CustomerController {
     private static Scanner scanner = new Scanner(System.in);
     private static ArrayList<Customer> customers = RestaurantDB.customers;
-    private int idCounter;
+    private static int idCounter;
 
     CustomerController(){
         idCounter = 0;
     }
 
-    public int createCustomerWithMembership(int customerID, String customerName, double discountRate, String membershipType, String phoneNum, String emailAddress){
-        int id = this.idCounter++;
+    public static Customer createCustomerWithMembership(String customerName, double discountRate, String membershipType, String phoneNum, String emailAddress){
+        int customerID = idCounter++;
         Membership membership = createCustomerMembership(discountRate,membershipType);
-        Customer customer = new Customer(id,customerName,membership,phoneNum,emailAddress);
+        Customer customer = new Customer(customerID,customerName,membership,phoneNum,emailAddress);
         customers.add(customer);
-        return id;
+        return customer;
     }
 
-    public int createCustomerWithoutMembership(String customerName, String phoneNum, String emailAddress){
-        int customerID = this.idCounter++;
+    public static Customer createCustomerWithoutMembership(String customerName, String phoneNum, String emailAddress){
+        int customerID = idCounter++;
         Customer customer = new Customer(customerID,customerName,phoneNum,emailAddress);
         customers.add(customer);
-        return customerID;
+        return customer;
     }
 
-    public Customer viewCustomer(int customerID){
+    public static Customer viewCustomer(int customerID){
          for (Customer customer: customers){
              if (customer.getCustomerID() == customerID){
                  return customer;
@@ -40,7 +40,7 @@ public class CustomerController {
          return null;
     }
 
-    public Membership createCustomerMembership(double discountRate, String membershipType){
+    public static Membership createCustomerMembership(double discountRate, String membershipType){
         Membership membership = new Membership(discountRate,membershipType);
         return membership;
     }
