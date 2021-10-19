@@ -63,8 +63,4 @@ public class Customer {
         this.emailAddress = emailAddress;
     }
 
-    public void deleteCustomer(int customerID){
-
-    }
-
 }

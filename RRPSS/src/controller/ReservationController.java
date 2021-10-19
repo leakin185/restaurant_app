@@ -3,9 +3,8 @@ import database.RestaurantDB;
 import rrpss.Reservation;
 import rrpss.Customer;
 import rrpss.Table;
-
-import java.util.*;
 import java.util.Calendar;
+import java.util.*;
 
 public class ReservationController {
 
@@ -43,6 +42,43 @@ public class ReservationController {
             }
         }
         return null; //cannot find reservation
+    }
+
+    public int removeReservation(int reservationID){
+        for (Reservation reservation : reservations){
+            if (reservation.getReservationID() == reservationID){
+                reservations.remove(reservation); //remove from active reservation list
+                return reservationID;
+            }
+        }
+        return -1; //fail to find reservation with input reservationID
+    }
+
+    public int completeReservation(int reservationID){
+        for (Reservation reservation : reservations){
+            if (reservation.getReservationID() == reservationID){
+                completedReservation.add(reservation); //add to completed reservation list
+                reservations.remove(reservation);
+                return reservationID;
+            }
+        }
+        return -1; //fail to find reservation with input reservationID
+    }
+
+    public int checkReservationExpiry(Reservation reservation){
+        Calendar currentTime = Calendar.getInstance();
+        if(reservation.getDateTime().before(currentTime)){
+            return -1;
+        }
+        return 1;
+    }
+
+    public void removeExpiredReservations(ArrayList<Reservation> reservations){
+        for (Reservation reservation : reservations){
+            if(checkReservationExpiry(reservation) == -1){
+                completeReservation(reservation.getReservationID());
+            }
+        }
     }
 
 }
