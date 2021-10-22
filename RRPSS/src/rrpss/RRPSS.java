@@ -1,15 +1,20 @@
 package rrpss;
 
+import database.RestaurantDB;
+
 import java.util.*;
 
 public class RRPSS {
 
-	private ArrayList<Table> tables;
+	private static ArrayList<Table> tables = RestaurantDB.tables;
+
 
 	RRPSS() {
 		createTables();
 //		displayTables();
 		System.out.println("Restaurant Reservation and Point of Sale System");
+		
+		displayOptions();
 	}
 
 	public void createTables() {
@@ -49,6 +54,13 @@ public class RRPSS {
 	}
 
 	public void displayOptions() {
+		System.out.println("Select an option to begin: ");
+		System.out.println("1. Show Menu interface");
+		System.out.println("2. Show Promotion interface");
+		System.out.println("3. Show Order interface");
+		System.out.println("4. Show Order interface");
+		System.out.println("5. Show Reservation interface");
+		System.out.println("6. Show Revenue Report interface");
 
 	}
 
