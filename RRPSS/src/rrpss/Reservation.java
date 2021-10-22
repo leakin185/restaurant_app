@@ -25,7 +25,7 @@ public class Reservation {
         this.reservationID = reservationID;
     }
 
-    public Table getTableNo() {
+    public Table getTable() {
         return table;
     }
 
