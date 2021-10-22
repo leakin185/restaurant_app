@@ -6,7 +6,6 @@ public class Membership {
     private String membershipType;
 
     public Membership(double discountRate, String membershipType) {
-
         this.discountRate = discountRate;
         this.membershipType = membershipType;
     }
