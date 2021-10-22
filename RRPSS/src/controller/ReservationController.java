@@ -21,6 +21,7 @@ public class ReservationController {
         Calendar currentTime = new GregorianCalendar();
         int reservationID = idCounter++;
         //need to wait for table controller to complete to initialise table controller
+//        table = getAvailableTable (dateTime,paxSize);
 
         if(dateTime.compareTo(currentTime) <= 0){
             return -1; //handle error as reservation cannot have date in the past
