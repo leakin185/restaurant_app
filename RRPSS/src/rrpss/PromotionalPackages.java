@@ -1,9 +1,7 @@
 package rrpss;
 
-import java.util.*;
-
 import rrpss.Food;
-
+import java.util.*;
 public class PromotionalPackages extends MenuItem {
 
     private ArrayList<Food> promotionSet;
