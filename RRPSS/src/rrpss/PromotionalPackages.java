@@ -4,12 +4,12 @@ import java.util.*;
 
 import rrpss.Food;
 
-public class PromotionalPackages extends Food {
+public class PromotionalPackages extends MenuItem {
 
     private ArrayList<Food> promotionSet;
 
-    public PromotionalPackages(String menuName, String desc, double price, int itemId, CourseType type, Temp temp) {
-        super(menuName, desc, price, itemId, type, temp);
+    public PromotionalPackages(String menuName, String desc, double price, int itemId) {
+        super(menuName, desc, price, itemId);
         this.promotionSet = new ArrayList<Food>();
     }
 
