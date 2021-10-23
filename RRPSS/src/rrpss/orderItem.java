@@ -1,14 +1,16 @@
 package rrpss;
 
 public class orderItem {
-	private int orderItemID;
+	private static int orderItemID = 1;
 	private MenuItem item;
 	private int quantity;
+	private boolean isPromotion; 
 	
-	public orderItem(MenuItem item, int quantity) {
-		this.orderItemID = (int) (Math.random() *1000);
+	public orderItem(MenuItem item, int quantity, boolean isPromotion) {
+		this.orderItemID = orderItemID++;
 		this.item = item;
 		this.quantity = quantity;
+		this.isPromotion = isPromotion;
 	}
 	
 	public MenuItem getItem() {
@@ -21,5 +23,9 @@ public class orderItem {
 	
 	public int getItemID() {
 		return orderItemID;
+	}
+	
+	public boolean getIsPromotion() {
+		return isPromotion;
 	}
 }

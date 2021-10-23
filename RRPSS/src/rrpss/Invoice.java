@@ -4,7 +4,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 
 public class Invoice {
-	private int invoiceNo;
+	private static int invoiceNo = 1;
 	private String timeStamp;
 	private int tableNo;
 	private boolean discount;
@@ -14,7 +14,7 @@ public class Invoice {
 	private int pax;
 	
 	public Invoice(int tableNo, int pax, boolean discount, Order order) {
-		invoiceNo = (int) (Math.random() *1000000);
+		invoiceNo = invoiceNo++;
 		Date now = new Date();
 		SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE dd/MM/yy k:mm:s");
 		timeStamp = dateFormatter.format(now);

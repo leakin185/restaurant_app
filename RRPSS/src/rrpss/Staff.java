@@ -15,14 +15,14 @@ enum JobTitle
 public class Staff {
 	
 	//attributes
-	private int staffID;
+	private static int staffID = 1;
 	private Gender gender;
 	private String name;
 	private JobTitle jobTitle; 
 	
 	//constructor
 	public Staff(Gender gender, String name, JobTitle jobTitle) {
-		this.staffID = (int) (Math.random() *1000);
+		this.staffID = staffID++;
 		this.gender = gender;
 		this.name = name;
 		this.jobTitle = jobTitle;

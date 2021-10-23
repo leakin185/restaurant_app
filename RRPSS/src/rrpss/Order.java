@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class Order {
-	private int orderID;
+	private static int orderID = 1;
 	private String dateCreated;
 	private int handlingStaff;
 	private boolean discount;
@@ -18,7 +18,7 @@ public class Order {
 	
 	//constructor
 	public Order(int staffID, int tableID) {
-		this.orderID = (int) (Math.random() *100000);
+		this.orderID = orderID++;
 		//get current time
 		Date now = new Date();
 		SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE dd/MM/yy k:mm:s");
@@ -31,26 +31,40 @@ public class Order {
 		this.tableID = tableID;
 	}
 	
-	public Order addOrderItem(Order order, MenuItem item, int quantity) {
-		order.orderList.add(new orderItem(item, quantity));
-		order.totalPrice = order.totalPrice + item.getPrice()*quantity;
-		return order;
-		
+	//add alacarte item
+	public Order addOrderItem(Order order, Alacarte item, int quantity) {
+		Order temp = order; 
+		temp.orderList.add(new orderItem(item, quantity, false));
+		temp.totalPrice = temp.totalPrice + item.getPrice()*quantity;
+		return temp;
 	}
 	
+	//add promotional package item
+		public Order addOrderItem(Order order, PromotionalPackages item, int quantity) {
+			Order temp = order; 
+			for(Food pItem : item.getPromotionSet()) {
+				temp.orderList.add(new orderItem(pItem, quantity, true));
+				temp.totalPrice = temp.totalPrice + pItem.getPrice()*quantity;
+			}
+			
+			
+			return temp;
+		}
+	
 	public Order removeOrderItem(Order order, int ID){
+		Order temp = order;
 		int index = 0;
 		double price = 0;
-		for(orderItem oItem : order.orderList) {
+		for(orderItem oItem : temp.orderList) {
 			if(oItem.getItem().getItemId() == ID) {
 				price = oItem.getItem().getPrice();
-				order.orderList.remove(index);
-				order.totalPrice = order.totalPrice - price * oItem.getQuantity();
-				return order;
+				temp.orderList.remove(index);
+				temp.totalPrice = temp.totalPrice - price * oItem.getQuantity();
+				return temp;
 			}
 			index++;
 		}
-		return order;
+		return temp;
 	}
 	
 	public int getOrderID() {
@@ -75,8 +89,12 @@ public class Order {
 	
 	public void printOrder() {
 		for(orderItem i : this.orderList) {
-			System.out.println(i.getQuantity()+ "\t" +
-					i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity());
+			if(i.getIsPromotion())
+				System.out.println(i.getQuantity()+ "\t" +
+					i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte");
+			else
+				System.out.println(i.getQuantity()+ "\t" +
+						i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Promotion");
 		}
 	}
 }
