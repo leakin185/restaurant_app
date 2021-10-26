@@ -6,62 +6,102 @@ import java.util.*;
 
 public class RRPSS {
 
-	private static ArrayList<Table> tables = RestaurantDB.tables;
+    private static ArrayList<Table> tables = RestaurantDB.tables;
 
 
-	RRPSS() {
-		createTables();
+    RRPSS() {
+        createTables();
 //		displayTables();
-		System.out.println("Restaurant Reservation and Point of Sale System");
-		
-		displayOptions();
-	}
+        System.out.println("Restaurant Reservation and Point of Sale System");
 
-	public void createTables() {
+        int input = 0;
+        while (true) {
 
-		this.tables = new ArrayList<Table>();
 
-		for (int i = 0; i < 50; i++) {
+            displayOptions();
+            Scanner sc = new Scanner(System.in);
+            if (sc.hasNextInt()) {
+                input = sc.nextInt();
 
-			Random r = new Random();
 
-			int random = r.nextInt(5)+1;
-			random = (random * 2);
+                switch (input) {
+                    case 1:
+                        // call appropriate ui method
+                        break;
+                    case 2:
+                        // call appropriate ui method
+                        break;
+                    case 3:
+                        // call appropriate ui method
+                        break;
+                    case 4:
+                        // call appropriate ui method
+                        break;
+                    case 5:
+                        // call appropriate ui method
+                        break;
+                    case 6:
+                        // call appropriate ui method
+                        break;
+                    default:
+                        System.out.println("Invalid input!");
+                        break;
 
-			this.tables.add(new Table(random));
-		}
-	}
+                }
+            } else {
+                System.out.println("Invalid input!");
+            }
+        }
 
-	public void displayTables() {
-		System.out.println("List of Tables");
 
-		for (int i = 0; i < tables.size(); i++) {
-				
-			System.out.println(String.format("Table #%d, Capacity: %d", tables.get(i).getTableNo(),tables.get(i).getTableCapacity()));
+    }
 
-		}
+    public void createTables() {
 
-	}
-	
-	//create array list for staffs
-	public void createStaff() {
-		
-	}
-	
-	//remove staff
-	public void removeStaff() {
-			
-	}
+        this.tables = new ArrayList<Table>();
 
-	public void displayOptions() {
-		System.out.println("Select an option to begin: ");
-		System.out.println("1. Show Menu interface");
-		System.out.println("2. Show Promotion interface");
-		System.out.println("3. Show Order interface");
-		System.out.println("4. Show Order interface");
-		System.out.println("5. Show Reservation interface");
-		System.out.println("6. Show Revenue Report interface");
+        for (int i = 0; i < 50; i++) {
 
-	}
+            Random r = new Random();
+
+            int random = r.nextInt(5) + 1;
+            random = (random * 2);
+
+            this.tables.add(new Table(random));
+        }
+    }
+
+    public void displayTables() {
+        System.out.println("List of Tables");
+
+        for (int i = 0; i < tables.size(); i++) {
+
+            System.out.println(String.format("Table #%d, Capacity: %d", tables.get(i).getTableNo(), tables.get(i).getTableCapacity()));
+
+        }
+
+    }
+
+    //create array list for staffs
+    public void createStaff() {
+
+    }
+
+    //remove staff
+    public void removeStaff() {
+
+    }
+
+    public void displayOptions() {
+        System.out.println("Select an option to begin: ");
+        System.out.println("1. Show Menu interface");
+        System.out.println("2. Show Promotion interface");
+        System.out.println("3. Show Order interface");
+        System.out.println("4. Show Order interface");
+        System.out.println("5. Show Reservation interface");
+        System.out.println("6. Show Revenue Report interface");
+
+    }
+
 
 }
