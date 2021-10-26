@@ -40,23 +40,49 @@ public class Order {
 	}
 	
 	//add promotional package item
-		public Order addOrderItem(Order order, PromotionalPackages item, int quantity) {
+		public Order addOrderItem(Order order, PromotionalPackages item) {
 			Order temp = order; 
 			for(Food pItem : item.getPromotionSet()) {
-				temp.orderList.add(new orderItem(pItem, quantity, true));
-				temp.totalPrice = temp.totalPrice + pItem.getPrice()*quantity;
+				temp.orderList.add(new orderItem(pItem, 1, true));
+				temp.totalPrice = temp.totalPrice + pItem.getPrice();
 			}
 			
 			
 			return temp;
 		}
-	
+	//remove alacarte item
 	public Order removeOrderItem(Order order, int ID){
 		Order temp = order;
 		int index = 0;
 		double price = 0;
 		for(orderItem oItem : temp.orderList) {
 			if(oItem.getItem().getItemId() == ID) {
+				price = oItem.getItem().getPrice();
+				temp.orderList.remove(index);
+				temp.totalPrice = temp.totalPrice - price * oItem.getQuantity();
+				return temp;
+			}
+			index++;
+		}
+		return temp;
+	}
+	
+	//remove promotion package
+	public Order removeOrderItem(Order order, PromotionalPackages pack){
+		Order temp = order;
+		ArrayList<Integer> packList = new ArrayList<Integer>();
+		int index = 0;
+		double price = 0;
+		
+		//create a array to store all the itemId of the items in this promotional package
+		for(Food mItem : pack.getPromotionSet()) {
+			packList.add(mItem.getItemId());
+		}
+		
+		//iterate through the orderItems in the order and find those orderitmes that contains the menuitems in the packList and remove it
+		for(orderItem oItem : temp.orderList) {
+			if(oItem.getIsPromotion()) {
+				if(packList.contains(oItem.getItem().getItemId()))
 				price = oItem.getItem().getPrice();
 				temp.orderList.remove(index);
 				temp.totalPrice = temp.totalPrice - price * oItem.getQuantity();
