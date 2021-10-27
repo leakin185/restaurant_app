@@ -3,6 +3,7 @@ package rrpss;
 import database.RestaurantDB;
 
 import java.util.*;
+import controller.StaffController;
 
 public class RRPSS {
 
@@ -86,8 +87,23 @@ public class RRPSS {
 
     //create array list for staffs
     public void createStaffs(){
-    	this.Staffs = new ArrayList<Staff>();
+    	StaffController SC = new StaffController();
+    	this.Staffs = SC.initStaffs();
     }
+    
+    //ui for staffs option
+    public void staffsOption() {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("Press 1 to display staff information: ");
+    	System.out.println("Press other keys to quit: ");
+    	int so = sc.nextInt();
+    	if(so == 1) {
+    		
+    	}
+    	else return;
+    	
+    }
+    
 
     public void displayOptions() {
         System.out.println("Select an option to begin: ");
