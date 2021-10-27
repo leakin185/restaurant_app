@@ -1,19 +1,17 @@
 package rrpss;
 
 import java.lang.Math;
-
-enum Gender
-{
-	male, female;
-}
-
-enum JobTitle
-{
-	manager, waiter, kitchenStaff;
-}
+import controller.StaffController;
 
 public class Staff {
-	
+	public enum Gender
+	{
+		male, female;
+	}
+	public enum JobTitle
+	{
+		manager, waiter, kitchenStaff;
+	}
 	//attributes
 	private static int staffID = 1;
 	private Gender gender;
@@ -28,6 +26,7 @@ public class Staff {
 		this.jobTitle = jobTitle;
 	}
 	
+
 	//remove staff, returns the index of the staff in the arraylist, delete from caller class
 	public int removeStaff(Staff[] staffs, int staffID) {
 		for(int i = 0; i<staffs.length; i++) {
