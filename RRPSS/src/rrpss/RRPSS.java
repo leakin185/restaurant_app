@@ -38,7 +38,7 @@ public class RRPSS {
                         // call appropriate ui method
                         break;
                     case 4:
-                        // call appropriate ui method
+                        staffsOption();
                         break;
                     case 5:
                         // call appropriate ui method
@@ -98,7 +98,9 @@ public class RRPSS {
     	System.out.println("Press other keys to quit: ");
     	int so = sc.nextInt();
     	if(so == 1) {
-    		
+    		for(Staff s : Staffs) {
+    			 System.out.println(s.getID()+" "+s.getName()+" "+s.getGender()+" "+s.getJobTitle());
+    		}
     	}
     	else return;
     	
