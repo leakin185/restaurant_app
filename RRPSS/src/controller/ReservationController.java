@@ -11,6 +11,7 @@ public class ReservationController {
     private static Scanner scanner = new Scanner(System.in);
     private static ArrayList<Reservation> reservations = RestaurantDB.reservations;
     private static ArrayList<Reservation> completedReservation = RestaurantDB.completedReservations;
+
     private static int idCounter;
 
     ReservationController(){
@@ -20,14 +21,13 @@ public class ReservationController {
     public static int createReservation(Table table, Calendar dateTime, int paxSize, Customer customer){
         Calendar currentTime = new GregorianCalendar();
         int reservationID = idCounter++;
-        //need to wait for table controller to complete to initialise table controller
-//        table = getAvailableTable (dateTime,paxSize);
+
 
         if(dateTime.compareTo(currentTime) <= 0){
             return -1; //handle error as reservation cannot have date in the past
         }
 
-        Reservation reservation = new Reservation(reservationID,null,dateTime,paxSize,customer);
+        Reservation reservation = new Reservation(reservationID,table,dateTime,paxSize,customer);
 
         reservations.add(reservation);
 

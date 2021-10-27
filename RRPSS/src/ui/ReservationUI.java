@@ -1,6 +1,9 @@
 package ui;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
+import controller.TableController;
 import database.RestaurantDB;
 import rrpss.*;
 import java.util.Calendar;
@@ -42,17 +45,26 @@ public class ReservationUI {
     }
 
     public static void createReservationUI() {
-        Table table; //TODO : need to get Table Class before being able to implement Table Parsing
+        ArrayList<Table> tables = RestaurantDB.tables;
+        Table table;
         int paxSize;
         Calendar dateTime;
         Customer customer;
         customer = ui.CustomerUI.showMainMenu(); //Customer UI will handle this function
         System.out.println("Enter Pax Size \n");
         paxSize = scanner.nextInt();
-        System.out.println("Enter Date Time\n"); //TODO : need to create a function to handle datetime
-//        dateTime = scanner.next();
-
-//        ReservationController.createReservation(table, dateTime,paxSize, customer);
+        System.out.println("Enter Date Time\n");
+        dateTime = inputValidDateTime();
+        TableController.showAvailableTable(dateTime,paxSize);
+        System.out.println("Enter Table No. to be reserved: ");
+        int choice = scanner.nextInt();;
+        if(tables.get(choice).getTableAvailability() == false){
+            System.out.println("No Table is available");
+        }
+        else{
+            table = tables.get(choice);
+            ReservationController.createReservation(table, dateTime,paxSize, customer);
+        }
     }
 
     public static void showReservation() {
@@ -80,5 +92,31 @@ public class ReservationUI {
             ReservationController.removeReservation(reservations.get(i).getReservationID());
             System.out.println("Reservation successfully removed");
         }
+    }
+
+    public static Calendar inputValidDateTime(){
+        Scanner scanner = new Scanner(System.in);
+        String date = "";
+        Date parsedDate = null;
+        SimpleDateFormat dateFormat = null;
+        boolean validDate = false;
+        Calendar arrivalTime = Calendar.getInstance();
+
+        do{
+            System.out.print("Enter reservation datetime (dd/MM/yyyy HH:mm): ");
+            date  = scanner.nextLine();
+            dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+            try {
+                parsedDate = dateFormat.parse(date);
+            } catch (ParseException e) {
+                System.out.println("Please re-enter datetime in the correct format (dd/MM/yyyy HH:mm): ");
+                continue;
+            }
+
+            arrivalTime.setTime(parsedDate);
+
+        } while(!validDate);
+
+        return arrivalTime;
     }
 }
