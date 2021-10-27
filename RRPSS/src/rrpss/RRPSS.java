@@ -7,18 +7,20 @@ import java.util.*;
 public class RRPSS {
 
     private static ArrayList<Table> tables = RestaurantDB.tables;
+    private ArrayList<Staff> Staffs;
 
 
     RRPSS() {
+    	createStaffs(); //initialize arraylist for satffs
         createTables();
 //		displayTables();
         System.out.println("Restaurant Reservation and Point of Sale System");
 
         int input = 0;
         while (true) {
-
-
+        	
             displayOptions();
+            
             Scanner sc = new Scanner(System.in);
             if (sc.hasNextInt()) {
                 input = sc.nextInt();
@@ -83,13 +85,8 @@ public class RRPSS {
     }
 
     //create array list for staffs
-    public void createStaff() {
-
-    }
-
-    //remove staff
-    public void removeStaff() {
-
+    public void createStaffs(){
+    	this.Staffs = new ArrayList<Staff>();
     }
 
     public void displayOptions() {
@@ -97,7 +94,7 @@ public class RRPSS {
         System.out.println("1. Show Menu interface");
         System.out.println("2. Show Promotion interface");
         System.out.println("3. Show Order interface");
-        System.out.println("4. Show Order interface");
+        System.out.println("4. Show Staff Options");
         System.out.println("5. Show Reservation interface");
         System.out.println("6. Show Revenue Report interface");
 
