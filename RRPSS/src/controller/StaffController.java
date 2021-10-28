@@ -1,6 +1,7 @@
 package controller;
 import rrpss.Staff;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class StaffController {
@@ -25,4 +26,19 @@ public class StaffController {
 		return temp;
 	
 	}
+	
+	public void displayStaffs(ArrayList<Staff> Staffs) {
+		Scanner sc = new Scanner(System.in);
+    	System.out.println("Press 1 to display staff information: ");
+    	System.out.println("Press other keys to quit: ");
+    	int so = sc.nextInt();
+    	if(so == 1) {
+    		for(Staff s : Staffs) {
+    			 System.out.println(s.getID()+" "+s.getName()+" "+s.getGender()+" "+s.getJobTitle());
+    		}
+    	}
+    	else return;
+	
+	}
+	
 }

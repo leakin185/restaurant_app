@@ -38,7 +38,7 @@ public class RRPSS {
                         // call appropriate ui method
                         break;
                     case 4:
-                        staffsOption();
+                        staffsOption(Staffs);
                         break;
                     case 5:
                         // call appropriate ui method
@@ -92,17 +92,9 @@ public class RRPSS {
     }
     
     //ui for staffs option
-    public void staffsOption() {
-    	Scanner sc = new Scanner(System.in);
-    	System.out.println("Press 1 to display staff information: ");
-    	System.out.println("Press other keys to quit: ");
-    	int so = sc.nextInt();
-    	if(so == 1) {
-    		for(Staff s : Staffs) {
-    			 System.out.println(s.getID()+" "+s.getName()+" "+s.getGender()+" "+s.getJobTitle());
-    		}
-    	}
-    	else return;
+    public void staffsOption(ArrayList<Staff> Staffs) {
+    	 StaffController SC= new StaffController();
+    	 SC.displayStaffs(Staffs);
     	
     }
     
