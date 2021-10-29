@@ -85,7 +85,7 @@ public class RRPSS {
 
     }
 
-    //create array list for staffs
+    //Initialise Staffs
     public void createStaffs(){
     	StaffController SC = new StaffController();
     	this.Staffs = SC.initStaffs();
@@ -98,12 +98,14 @@ public class RRPSS {
     	
     }
     
+    //ui for order options
+    
 
     public void displayOptions() {
         System.out.println("Select an option to begin: ");
         System.out.println("1. Show Menu interface");
         System.out.println("2. Show Promotion interface");
-        System.out.println("3. Show Order interface");
+        System.out.println("3. Show Table interface");
         System.out.println("4. Show Staff Options");
         System.out.println("5. Show Reservation interface");
         System.out.println("6. Show Revenue Report interface");
