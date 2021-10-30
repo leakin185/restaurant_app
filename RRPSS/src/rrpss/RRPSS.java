@@ -108,7 +108,7 @@ public class RRPSS {
     	Scanner sc = new Scanner(System.in);
     	StaffController SC = new StaffController();
     	TableOrderInvoiceController TOIC = new TableOrderInvoiceController();
-    	
+    	//show available tables for walk in customer
     	System.out.println("Enter table number: ");
     	tableID = sc.nextInt();
     	while(true) {

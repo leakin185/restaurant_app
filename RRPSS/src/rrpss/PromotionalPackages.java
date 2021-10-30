@@ -44,7 +44,7 @@ public class PromotionalPackages extends MenuItem {
             }
         }
         catch (IndexOutOfBoundsException e) {
-            System.out.println("Selection does not exist.");
+            System.out.println("Failed to add to promotion set. Invalid item.");
         }
     }
 
@@ -67,7 +67,7 @@ public class PromotionalPackages extends MenuItem {
             System.out.println(removeSelection + " removed from Promotion Package.");
         }
         catch (IndexOutOfBoundsException e) {
-            System.out.println("Selection is invalid.");
+            System.out.println("Failed to remove from promotion set. Item is invalid.");
         }
     }
 }
