@@ -341,6 +341,10 @@ public class FoodMenuUI {
     	
 	}
 	
+	/**
+	 * Prompt user for a food temperature type
+	 * @param promptMsg Message to ask user before prompting a selection
+	 */
 	public static Temp selectFoodTempUI(String promptMsg){
 		
 		Temp foodTemp;
