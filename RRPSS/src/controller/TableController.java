@@ -28,6 +28,21 @@ public class TableController {
 
     }
 
+    // returns null if no table with tableNo found
+    public static Table getTableFromTableNo(int tableNo) {
+
+        for (int i = 0; i < tables.size(); i++) {
+            if (tables.get(i).getTableNo() == tableNo) {
+                return tables.get(i);
+            }
+
+        }
+
+        return null;
+
+    }
+
+
 
     public static void showAvailableTable(Calendar dateTime, int noOfPax) {
 
@@ -42,7 +57,7 @@ public class TableController {
 
 
                 for (int j = 0; j < reservations.size(); j++) {
-                    if ( reservations.get(j).getTable().getTableNo() == tables.get(i).getTableNo() &&  reservations.get(j).getDateTime() == dateTime) {
+                    if (reservations.get(j).getTable().getTableNo() == tables.get(i).getTableNo() && reservations.get(j).getDateTime() == dateTime) {
                         isValid = false;
                         break;
                     }
