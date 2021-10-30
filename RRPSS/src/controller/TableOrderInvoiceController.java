@@ -23,11 +23,13 @@ public class TableOrderInvoiceController {
 			System.out.println("How many pax: ");
 			pax = sc.nextInt();
 			Order order = new Order(staffID,tableID, pax);
-			//print the menu
-			for(MenuItem item : RestaurantDB.menu) {
+			//print the menu (YF)
+			for(Food item : RestaurantDB.menu) {
 				FoodMenuController.printFood(item);
 			}
-			table.setOrder(null);
+			//Order = returned
+			table.setOrder(order);
+			return true;
 		}
 		else {
 			//if order exist, add item
