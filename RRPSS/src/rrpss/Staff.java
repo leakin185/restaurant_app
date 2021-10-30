@@ -13,14 +13,15 @@ public class Staff {
 		manager, waiter, kitchenStaff;
 	}
 	//attributes
-	private static int staffID = 1;
+	private static int index = 1;
+	private int staffID = 1;
 	private Gender gender;
 	private String name;
 	private JobTitle jobTitle; 
 	
 	//constructor
 	public Staff(Gender gender, String name, JobTitle jobTitle) {
-		this.staffID = staffID++;
+		this.staffID = index++;
 		this.gender = gender;
 		this.name = name;
 		this.jobTitle = jobTitle;
