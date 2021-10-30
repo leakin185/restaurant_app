@@ -11,10 +11,12 @@ public class TableOrderInvoiceController {
 		//TableController TC = new TableController();
 		Table table = TableController.getTableFromTableNo(tableID);
 		
-		if(table.)
-		Order order = new Order(staffID,tableID);
+		if(table.getOrder() == null) {
+			Order order = new Order(staffID,tableID);
+			
+			table.setOrder(null);
+		}
 		
-		table.setOrder(null);
 		
 		return false;
 	}
