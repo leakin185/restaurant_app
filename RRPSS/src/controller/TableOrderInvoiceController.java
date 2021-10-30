@@ -15,12 +15,9 @@ import rrpss.Food;
 
 public class TableOrderInvoiceController {
 	public boolean setOrderToTable(int staffID, int tableID){
-		//TableController TC = new TableController();
 		Table table = TableController.getTableFromTableNo(tableID);
 		//if order for this table is empty
 		if(table.getOrder() == null) {
-			
-			//ask for pax
 			int pax=0;
 			Scanner sc = new Scanner(System.in);
 			System.out.println("How many pax: ");
@@ -32,16 +29,19 @@ public class TableOrderInvoiceController {
 			}
 			table.setOrder(null);
 		}
+		else {
+			//if order exist, add item
+		}
 		
 		
 		return false;
 	}
 	
-	public void setInvoiceToTable(boolean discount, int tableID){
+	public Invoice setInvoiceToTable(boolean discount, int tableID){
 		Table table = TableController.getTableFromTableNo(tableID);
-		//to-do, figure out how to get pax
 		Invoice invoice = new Invoice(table.getTableNo(), table.getOrder().getPax(), discount, table.getOrder());
 		table.setInvoice(invoice);
+		return invoice;
 	}
 	
 }

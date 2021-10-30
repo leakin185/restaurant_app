@@ -41,6 +41,10 @@ public class Invoice {
 		return finalPrice;
 	}
 	
+	public String getTimeStamp() {
+		return timeStamp;
+	}
+	
 	public void print() {
 		System.out.println("-------------------------------------------------");
 		System.out.println("                  cz2002 bar                     ");

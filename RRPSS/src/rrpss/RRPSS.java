@@ -3,6 +3,7 @@ package rrpss;
 import database.RestaurantDB;
 
 import java.util.*;
+import java.time.LocalDateTime;
 import controller.StaffController;
 import controller.TableController;
 import controller.TableOrderInvoiceController;
@@ -10,7 +11,7 @@ import controller.TableOrderInvoiceController;
 public class RRPSS {
 
     private static ArrayList<Table> tables = RestaurantDB.tables;
-    private ArrayList<Staff> Staffs;
+    private ArrayList<Staff> Staffs = RestaurantDB.staffs;
 
 
     RRPSS() {
@@ -37,10 +38,10 @@ public class RRPSS {
                         // call appropriate ui method
                         break;
                     case 3:
-                        // call appropriate ui method
+                    	tableOption();
                         break;
                     case 4:
-                        staffsOption(Staffs);
+                        staffsOption();
                         break;
                     case 5:
                         // call appropriate ui method
@@ -90,22 +91,21 @@ public class RRPSS {
     //Initialise Staffs
     public void createStaffs(){
     	StaffController SC = new StaffController();
-    	this.Staffs = SC.initStaffs();
+    	RestaurantDB.staffs = SC.initStaffs();
     }
     
     //ui for staffs option
-    public void staffsOption(ArrayList<Staff> Staffs) {
+    public void staffsOption() {
     	 StaffController SC= new StaffController();
-    	 SC.displayStaffs(Staffs);
+    	 SC.displayStaffs();
     	
     }
     
     //ui for table options
-    public void tableOption(ArrayList<Staff> Staffs) {
+    public void tableOption() {
     	int tableID, choice, staffID;
     	Scanner sc = new Scanner(System.in);
     	StaffController SC = new StaffController();
-    	TableController TC = new TableController();
     	TableOrderInvoiceController TOIC = new TableOrderInvoiceController();
     	
     	System.out.println("Enter table number: ");
@@ -113,7 +113,7 @@ public class RRPSS {
     	while(true) {
     		System.out.println("Enter staff ID: ");
         	staffID = sc.nextInt();
-        	if(SC.checkStaff(Staffs, staffID)) break;
+        	if(SC.checkStaff(staffID)) break;
         	System.out.println("invalid staff ID!");
     	};
     	
@@ -134,10 +134,14 @@ public class RRPSS {
     			//add logic to get membership 
     			c = sc.next();
     			if(c == "Y") discount = true;
-    			TOIC.setInvoiceToTable(discount, tableID);
+    			Invoice invoice = TOIC.setInvoiceToTable(discount, tableID);
     			TableController.getTableFromTableNo(tableID).getinvoice().print();
     			//set table to unavailable?
     			//add transaction
+    			//convert string to date
+    			LocalDateTime dt = LocalDateTime.parse(invoice.getTimeStamp());
+    			Transaction transaction = new Transaction(dt, "Transaction", invoice.getFinalPrice());
+    			RestaurantDB.transactions.add(transaction);
     			break;
     			
     		case 0: 

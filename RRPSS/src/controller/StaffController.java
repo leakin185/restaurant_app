@@ -28,13 +28,13 @@ public class StaffController {
 	
 	}
 	
-	public void displayStaffs(ArrayList<Staff> Staffs) {
+	public void displayStaffs() {
 		Scanner sc = new Scanner(System.in);
     	System.out.println("Press 1 to display staff information: ");
     	System.out.println("Press other keys to quit: ");
     	int so = sc.nextInt();
     	if(so == 1) {
-    		for(Staff s : Staffs) {
+    		for(Staff s : RestaurantDB.staffs) {
     			 System.out.println(s.getID()+" "+s.getName()+" "+s.getGender()+" "+s.getJobTitle());
     		}
     	}
@@ -42,8 +42,8 @@ public class StaffController {
 	
 	}
 	
-	public boolean checkStaff(ArrayList<Staff> Staffs, int ID) {
-		for(Staff staff : Staffs) {
+	public boolean checkStaff(int ID) {
+		for(Staff staff : RestaurantDB.staffs) {
 			if(staff.getID() == ID) return true;
 		}
 		return false;
