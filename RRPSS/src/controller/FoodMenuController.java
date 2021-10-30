@@ -102,4 +102,40 @@ public class FoodMenuController {
 			System.out.println("(" + i + ") " + food.getMenuName());
             i++;
 	}
+    
+    public static ArrayList<MenuItem> getRestaurantFoodMenu(){ return menu; }
+    
+    /**
+	 * Print details of food
+	 * @param food Food to print
+	 */
+	public static void printFood(Food food) {
+		System.out.println();
+		System.out.println("Food Name: " + food.getMenuName());
+		System.out.println("Food Description: " + food.getDesc());
+		System.out.println("Food Price: " + food.getPrice());
+		System.out.println("Food course type: " + food.getType());
+	}
+	
+	public static void updateFoodCourseType(MenuItem menuItem, CourseType foodCourseType){
+		
+		Food food = (Food) menuItem;
+		String menuName = food.getMenuName();
+		CourseType prevCourseType = food.getType();
+		
+		food.setType(foodCourseType);
+		System.out.println("\nCourse Type of " + menuName + " has been updated from " + prevCourseType + " to " + foodCourseType);
+	}
+	
+	public static void updateFoodTemp(MenuItem menuItem, Temp foodTemp){
+		
+		Food food = (Food) menuItem;
+		String menuName = food.getMenuName();
+		Temp prevTemp = food.getTemp();
+		
+		food.setTemp(foodTemp);
+		System.out.println("\nTemp of " + menuName + " has been updated from " + prevTemp + " to " + foodTemp);
+	}
+
+	
 }
