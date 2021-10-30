@@ -35,7 +35,7 @@ public class StaffController {
     	int so = sc.nextInt();
     	if(so == 1) {
     		for(Staff s : RestaurantDB.staffs) {
-    			 System.out.println(s.getID()+" "+s.getName()+" "+s.getGender()+" "+s.getJobTitle());
+    			 System.out.println("\t" + s.getID()+" "+s.getName()+" "+s.getGender()+" "+s.getJobTitle());
     		}
     	}
     	else return;

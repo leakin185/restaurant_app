@@ -11,9 +11,35 @@ import rrpss.Order;
 import rrpss.Invoice;
 import rrpss.orderItem;
 import rrpss.MenuItem;
+import rrpss.Order;
+
 import rrpss.Food;
 
 public class TableOrderInvoiceController {
+	
+	
+	public void printCurrentOrderForTable(int tableID) {
+		
+		
+		Table table = TableController.getTableFromTableNo(tableID);
+
+		
+		Order order = table.getOrder();
+		
+		order.printOrder();
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public boolean setOrderToTable(int staffID, int tableID){
 		Table table = TableController.getTableFromTableNo(tableID);
 		//if order for this table is empty
