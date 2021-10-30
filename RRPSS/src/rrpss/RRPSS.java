@@ -135,7 +135,9 @@ public class RRPSS {
     			c = sc.next();
     			if(c == "Y") discount = true;
     			TOIC.setInvoiceToTable(discount, tableID);
-    			//method to print receipt
+    			TableController.getTableFromTableNo(tableID).getinvoice().print();
+    			//set table to unavailable?
+    			//add transaction
     			break;
     			
     		case 0: 

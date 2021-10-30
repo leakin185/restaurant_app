@@ -37,10 +37,11 @@ public class TableOrderInvoiceController {
 		return false;
 	}
 	
-	public boolean setInvoiceToTable(boolean discount, int tableID){
+	public void setInvoiceToTable(boolean discount, int tableID){
 		Table table = TableController.getTableFromTableNo(tableID);
 		//to-do, figure out how to get pax
 		Invoice invoice = new Invoice(table.getTableNo(), table.getOrder().getPax(), discount, table.getOrder());
+		table.setInvoice(invoice);
 	}
 	
 }
