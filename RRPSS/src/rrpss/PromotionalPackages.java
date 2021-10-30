@@ -70,7 +70,4 @@ public class PromotionalPackages extends MenuItem {
             System.out.println("Selection is invalid.");
         }
     }
-    
-
-
 }
