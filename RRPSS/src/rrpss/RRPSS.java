@@ -61,7 +61,7 @@ public class RRPSS {
 
     public void createTables() {
 
-        this.tables = new ArrayList<Table>();
+  
 
         for (int i = 0; i < 50; i++) {
 
