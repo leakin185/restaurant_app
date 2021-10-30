@@ -1,11 +1,13 @@
 package rrpss;
 
-import rrpss.Food;
+//import rrpss.Food;
+//import rrpss.MenuItem;
+
 import java.util.*;
 public class PromotionalPackages extends MenuItem {
 
     private ArrayList<Food> promotionSet;
-
+    
     public PromotionalPackages(String menuName, String desc, double price, int itemId) {
         super(menuName, desc, price, itemId);
         this.promotionSet = new ArrayList<Food>();
@@ -31,9 +33,9 @@ public class PromotionalPackages extends MenuItem {
         }
         
         int selection = sc.nextInt();
-        try {
+        try { 
             if (menu.get(selection) instanceof Food) {
-                Food foodSelection = menu.get(selection);
+                Food foodSelection = (Food) menu.get(selection);
                 this.promotionSet.add(foodSelection);
                 System.out.println(foodSelection.getMenuName() + "added to Promotional Package.");
             }
@@ -68,7 +70,6 @@ public class PromotionalPackages extends MenuItem {
             System.out.println("Selection is invalid.");
         }
     }
-
     
 
 
