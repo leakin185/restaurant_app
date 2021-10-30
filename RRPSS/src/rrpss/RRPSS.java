@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import controller.StaffController;
 import controller.TableController;
 import controller.TableOrderInvoiceController;
+import ui.ReservationUI;
 
 public class RRPSS {
 
@@ -44,7 +45,7 @@ public class RRPSS {
                         staffsOption();
                         break;
                     case 5:
-                        // call appropriate ui method
+                        ReservationUI.showMainMenu();
                         break;
                     case 6:
                         // call appropriate ui method
