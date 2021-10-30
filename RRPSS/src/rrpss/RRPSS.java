@@ -98,8 +98,40 @@ public class RRPSS {
     	
     }
     
-    //ui for order/invoice options
-    
+    //ui for table options
+    public void tableOption(ArrayList<Staff> Staffs) {
+    	int tableID, choice;
+    	Scanner sc = new Scanner(System.in);
+    	
+    	System.out.println("Enter table number: ");
+    	tableID = sc.nextInt();
+    	System.out.println("1. place order for table " + tableID + ": ");
+    	System.out.println("2. print receipt for table " + tableID + ": ");
+    	System.out.println("Enter 0 to return");
+    	choice = sc.nextInt();
+    	while(choice != 0) {
+    		switch(choice) {
+    		case 1: 
+    			break;
+    			
+    		case 2:
+    			break;
+    			
+    		case 0: 
+    			break;
+    			
+    		default:
+    			break;
+    		}
+    		System.out.println("1. place order for table " + tableID + ": ");
+        	System.out.println("2. print receipt for table " + tableID + ": ");
+        	System.out.println("Enter 0 to return");
+        	choice = sc.nextInt();
+    	}
+    	return;
+    	
+   	
+   }
 
     public void displayOptions() {
         System.out.println("Select an option to begin: ");
