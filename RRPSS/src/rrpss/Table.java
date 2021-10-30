@@ -53,5 +53,12 @@ public class Table {
     public int getTableCapacity() {
         return tableCapacity;
     }
-
+    
+    public Order getOrder() {
+    	return order;
+    }
+    
+    public Invoice getinvoice() {
+    	return invoice;
+    }
 }

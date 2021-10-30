@@ -4,6 +4,8 @@ import database.RestaurantDB;
 
 import java.util.*;
 import controller.StaffController;
+import controller.TableController;
+import controller.TableOrderInvoiceController;
 
 public class RRPSS {
 
@@ -100,11 +102,21 @@ public class RRPSS {
     
     //ui for table options
     public void tableOption(ArrayList<Staff> Staffs) {
-    	int tableID, choice;
+    	int tableID, choice, staffID;
     	Scanner sc = new Scanner(System.in);
+    	StaffController SC = new StaffController();
+    	TableController TC = new TableController();
+    	TableOrderInvoiceController TOIC = new TableOrderInvoiceController();
     	
     	System.out.println("Enter table number: ");
     	tableID = sc.nextInt();
+    	while(true) {
+    		System.out.println("Enter staff ID: ");
+        	staffID = sc.nextInt();
+        	if(SC.checkStaff(Staffs, staffID)) break;
+        	System.out.println("invalid staff ID!");
+    	};
+    	
     	System.out.println("1. place order for table " + tableID + ": ");
     	System.out.println("2. print receipt for table " + tableID + ": ");
     	System.out.println("Enter 0 to return");
@@ -112,6 +124,7 @@ public class RRPSS {
     	while(choice != 0) {
     		switch(choice) {
     		case 1: 
+    			TOIC.setOrderToTable(staffID,tableID);
     			break;
     			
     		case 2:

@@ -2,6 +2,7 @@ package controller;
 import rrpss.Staff;
 import java.util.ArrayList;
 import java.util.Scanner;
+import database.RestaurantDB;
 
 
 public class StaffController {
@@ -39,6 +40,13 @@ public class StaffController {
     	}
     	else return;
 	
+	}
+	
+	public boolean checkStaff(ArrayList<Staff> Staffs, int ID) {
+		for(Staff staff : Staffs) {
+			if(staff.getID() == ID) return true;
+		}
+		return false;
 	}
 	
 }
