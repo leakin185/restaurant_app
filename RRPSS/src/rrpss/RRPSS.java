@@ -98,15 +98,15 @@ public class RRPSS {
     	
     }
     
-    //ui for order options
+    //ui for order/invoice options
     
 
     public void displayOptions() {
         System.out.println("Select an option to begin: ");
         System.out.println("1. Show Menu interface");
         System.out.println("2. Show Promotion interface");
-        System.out.println("3. Show Table interface");
-        System.out.println("4. Show Staff Options");
+        System.out.println("3. Show Table options");
+        System.out.println("4. Show Staff options");
         System.out.println("5. Show Reservation interface");
         System.out.println("6. Show Revenue Report interface");
 
