@@ -55,6 +55,7 @@ public class TableOrderInvoiceController {
 			}
 			//Order = returned
 			table.setOrder(order);
+			System.out.println("Order set!");
 			return true;
 		}
 		else {
