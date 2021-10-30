@@ -109,12 +109,11 @@ public class FoodMenuController {
 	 * Print details of food
 	 * @param food Food to print
 	 */
-	public static void printFood(Food food) {
+	public static void printFood(MenuItem food) {
 		System.out.println();
 		System.out.println("Food Name: " + food.getMenuName());
 		System.out.println("Food Description: " + food.getDesc());
 		System.out.println("Food Price: " + food.getPrice());
-		System.out.println("Food course type: " + food.getType());
 	}
 	
 	public static void updateFoodCourseType(MenuItem menuItem, CourseType foodCourseType){
