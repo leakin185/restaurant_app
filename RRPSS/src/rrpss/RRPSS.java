@@ -128,7 +128,13 @@ public class RRPSS {
     			break;
     			
     		case 2:
-    			TOIC.setInvoiceToTable(tableID);
+    			boolean discount = false;
+    			String c;
+    			System.out.println("Is customer a member? Y/N");
+    			//add logic to get membership 
+    			c = sc.next();
+    			if(c == "Y") discount = true;
+    			TOIC.setInvoiceToTable(discount, tableID);
     			//method to print receipt
     			break;
     			

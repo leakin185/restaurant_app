@@ -15,9 +15,10 @@ public class Order {
 	private ArrayList<orderItem> orderList; 
 	private double totalPrice;
 	private int tableID;
+	private int pax;
 	
 	//constructor
-	public Order(int staffID, int tableID) {
+	public Order(int staffID, int tableID, int pax) {
 		this.orderID = orderID++;
 		//get current time
 		Date now = new Date();
@@ -111,6 +112,9 @@ public class Order {
 	
 	public double getTotalPrice() {
 		return totalPrice;
+	}
+	public int getPax() {
+		return pax;
 	}
 	
 	public void printOrder() {

@@ -2,6 +2,9 @@ package controller;
 
 import database.RestaurantDB;
 import controller.TableController;
+
+import java.util.Scanner;
+
 import controller.FoodMenuController;
 import rrpss.Table;
 import rrpss.Order;
@@ -16,7 +19,13 @@ public class TableOrderInvoiceController {
 		Table table = TableController.getTableFromTableNo(tableID);
 		//if order for this table is empty
 		if(table.getOrder() == null) {
-			Order order = new Order(staffID,tableID);
+			
+			//ask for pax
+			int pax=0;
+			Scanner sc = new Scanner(System.in);
+			System.out.println("How many pax: ");
+			pax = sc.nextInt();
+			Order order = new Order(staffID,tableID, pax);
 			//print the menu
 			for(MenuItem item : RestaurantDB.menu) {
 				FoodMenuController.printFood(item);
@@ -28,9 +37,10 @@ public class TableOrderInvoiceController {
 		return false;
 	}
 	
-	public boolean setInvoiceToTable(int tableID){
+	public boolean setInvoiceToTable(boolean discount, int tableID){
 		Table table = TableController.getTableFromTableNo(tableID);
-		Re
+		//to-do, figure out how to get pax
+		Invoice invoice = new Invoice(table.getTableNo(), table.getOrder().getPax(), discount, table.getOrder());
 	}
 	
 }
