@@ -20,7 +20,7 @@ public class Table {
     }
 
     public void setOrder(Order order) {
-
+        setUnavailable();
         this.order = order;
 
     }
