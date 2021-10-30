@@ -3,6 +3,8 @@ package controller;
 import rrpss.*;
 import database.*;
 import java.util.*;
+import rrpss.Food.CourseType;
+import rrpss.Food.Temp;
 
 public class FoodMenuController {
     private static ArrayList<MenuItem> menu = RestaurantDB.menu;

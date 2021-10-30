@@ -1,12 +1,12 @@
 package rrpss;
 
-enum CourseType {MAIN_COURSE, DESSERT, DRINK, APPETISER};
-enum Temp {HOT, COLD};
 
 public class Food extends MenuItem {
 	
 	private CourseType type;
 	private Temp temp;
+	public enum CourseType {MAIN_COURSE, DESSERT, DRINK, APPETISER};
+	public enum Temp {HOT, COLD};
 
 	public Food(String menuName, String desc, double price, int itemId, CourseType type, Temp temp) {
 		super(menuName, desc, price, itemId);
