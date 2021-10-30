@@ -128,6 +128,8 @@ public class RRPSS {
     			break;
     			
     		case 2:
+    			TOIC.setInvoiceToTable(tableID);
+    			//method to print receipt
     			break;
     			
     		case 0: 

@@ -5,8 +5,10 @@ import controller.TableController;
 import controller.FoodMenuController;
 import rrpss.Table;
 import rrpss.Order;
+import rrpss.Invoice;
 import rrpss.orderItem;
 import rrpss.MenuItem;
+import rrpss.Food;
 
 public class TableOrderInvoiceController {
 	public boolean setOrderToTable(int staffID, int tableID){
@@ -17,7 +19,7 @@ public class TableOrderInvoiceController {
 			Order order = new Order(staffID,tableID);
 			//print the menu
 			for(MenuItem item : RestaurantDB.menu) {
-				
+				FoodMenuController.printFood(item);
 			}
 			table.setOrder(null);
 		}
@@ -25,4 +27,10 @@ public class TableOrderInvoiceController {
 		
 		return false;
 	}
+	
+	public boolean setInvoiceToTable(int tableID){
+		Table table = TableController.getTableFromTableNo(tableID);
+		Re
+	}
+	
 }
