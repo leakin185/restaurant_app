@@ -39,7 +39,53 @@ public class FoodMenuController {
 
     }
 
+    public static void removeMenuItem(int selection) {
+        try {
+            String removeSelection = menu.get(selection).getMenuName();
+            menu.remove(selection);
+            System.out.println(removeSelection + " removed from Menu.");
+        }
+        catch (IndexOutOfBoundsException e) {
+            System.out.println("Remove Menu Item failed. Invalid item.");
+        }
+    }
 
+    public static void updateMenuItemName(MenuItem MenuItem, String name) {
+        try {
+            String oldName = MenuItem.getMenuName();
+            MenuItem.setMenuName(name);
+            System.out.println("'"+oldName+"'" + " has been updated to " + "'"+name+"'");
+        } 
+        catch (IndexOutOfBoundsException e) {
+            System.out.println("Update Menu Item Name Failed. Invalid Item.");
+        }
+    }
+
+    public static void updateMenuItemDesc(MenuItem MenuItem, String desc) {
+        try {
+            String oldDesc = MenuItem.getMenuName();
+            MenuItem.setDesc(desc);
+            System.out.println("'"+oldDesc+"'" + " has been updated to " + "'"+desc+"'");
+        } 
+        catch (IndexOutOfBoundsException e) {
+            System.out.println("Update Menu Item Description failed. Invalid Item.");
+        }
+    }
+
+    public static void updateMenuItemPrice(MenuItem menuItem, double price) {
+        double oldPrice;
+        String name;
+
+        try {
+            oldPrice = menuItem.getPrice();
+            name = menuItem.getMenuName();
+            menuItem.setPrice(price);
+            System.out.println("Price of " + name + " updated from $" + oldPrice + " to $" + price);
+        }
+        catch (IndexOutOfBoundsException e) {
+            System.out.println("Price update failed. Invalid item.");
+        }
+    }
 
     public static void printPromotionPackage(PromotionalPackages promotionalPackages) {
 		System.out.println();
