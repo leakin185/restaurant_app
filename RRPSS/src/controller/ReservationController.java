@@ -1,7 +1,6 @@
 package controller;
 import database.RestaurantDB;
 import rrpss.Reservation;
-import rrpss.Customer;
 import rrpss.Table;
 import java.util.Calendar;
 import java.util.*;
@@ -11,6 +10,7 @@ public class ReservationController {
     private static Scanner scanner = new Scanner(System.in);
     private static ArrayList<Reservation> reservations = RestaurantDB.reservations;
     private static ArrayList<Reservation> completedReservation = RestaurantDB.completedReservations;
+    private static ArrayList<Table> tables = RestaurantDB.tables;
 
     private static int idCounter;
 
@@ -18,16 +18,10 @@ public class ReservationController {
         this.idCounter = 0;
     }
 
-    public static int createReservation(Table table, Calendar dateTime, int paxSize, Customer customer){
-        Calendar currentTime = new GregorianCalendar();
+    public static int createReservation(Table table, Calendar dateTime, int paxSize, int customerContact, String customerName){
         int reservationID = idCounter++;
 
-
-        if(dateTime.compareTo(currentTime) <= 0){
-            return -1; //handle error as reservation cannot have date in the past
-        }
-
-        Reservation reservation = new Reservation(reservationID,table,dateTime,paxSize,customer);
+        Reservation reservation = new Reservation(reservationID,table,dateTime,paxSize,customerContact,customerName);
 
         reservations.add(reservation);
 
@@ -80,6 +74,27 @@ public class ReservationController {
                 completeReservation(reservation.getReservationID());
             }
         }
+    }
+
+    public static Table getAvailableTable(Calendar dateTime, int noOfPax) {
+
+        for (int i = 0; i < tables.size(); i++) {
+
+            boolean isValid = true;
+
+            if (tables.get(i).getTableCapacity() == noOfPax) {
+                for (int j = 0; j < reservations.size(); j++) {
+                    if (reservations.get(j).getTable().getTableNo() == tables.get(i).getTableNo() && reservations.get(j).getDateTime() == dateTime) {
+                        isValid = false;
+                        break;
+                    }
+                }
+                if (isValid) {
+                     return tables.get(i);
+                }
+            }
+        }
+        return null;
     }
 
 }

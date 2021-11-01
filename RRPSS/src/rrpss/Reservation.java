@@ -1,20 +1,24 @@
 package rrpss;
 import java.util.Calendar;
 
+
 public class Reservation {
 
     private int reservationID;
     private Table table;
     private Calendar dateTime;
     private int paxSize;
-    private Customer customer;
+    private int customerContact;
+    private String customerName;
 
-    public Reservation(int reservationID,Table table, Calendar dateTime, int paxSize, Customer customer) {
+
+    public Reservation(int reservationID,Table table, Calendar dateTime, int paxSize, int customerContact, String customerName) {
         this.reservationID = reservationID;
         this.table = table;
         this.dateTime = dateTime;
         this.paxSize = paxSize;
-        this.customer = customer;
+        this.customerContact = customerContact;
+        this.customerName = customerName;
     }
 
     public int getReservationID() {
@@ -49,11 +53,23 @@ public class Reservation {
         this.paxSize = paxSize;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public void setTable(Table table) {
+        this.table = table;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public int getCustomerContact() {
+        return customerContact;
+    }
+
+    public void setCustomerContact(int customerContact) {
+        this.customerContact = customerContact;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 }
