@@ -53,6 +53,34 @@ public class TableOrderInvoiceController {
 			for(Food item : RestaurantDB.menu) {
 				FoodMenuController.printFood(item);
 			}
+			
+			//loop to add order
+			int c;
+			System.out.println("1. add order item\n0. stop");
+			c = sc.nextInt();
+			while(c == 1) {
+				while(true) {
+					System.out.println("Enter order item ID: \n0 to go back: ");
+					int id = sc.nextInt();
+					if(id == 0)
+						break;
+					for(MenuItem item : RestaurantDB.menu) {
+						if(item.getItemId() == id)
+							break;
+						else
+							System.out.println("Invalid ID");
+					}
+					//got itemId for menuitem
+				}
+				
+				//retrieve object from db
+				
+				
+				
+				System.out.println("1. add order item\n0. stop");
+				c = sc.nextInt();
+			}
+			
 			//Order = returned
 			table.setOrder(order);
 			System.out.println("Order set!");
