@@ -62,18 +62,28 @@ public class TableOrderInvoiceController {
 				while(true) {
 					System.out.println("Enter order item ID: \n0 to go back: ");
 					int id = sc.nextInt();
+					MenuItem selected_item = null;
 					if(id == 0)
 						break;
+					//check if ID valid and retrieve item
 					for(MenuItem item : RestaurantDB.menu) {
-						if(item.getItemId() == id)
+						if(item.getItemId() == id) {
+							selected_item = item;
 							break;
-						else
-							System.out.println("Invalid ID");
+						}
 					}
-					//got itemId for menuitem
+					if(selected_item == null)
+						System.out.println("Invalid ID");
+					else {
+						//add item into order
+						int quantity = 0;
+						System.out.println("Enter quantity");
+						quantity = sc.nextInt();
+						
+					}
 				}
 				
-				//retrieve object from db
+				//retrieved object from db
 				
 				
 				
