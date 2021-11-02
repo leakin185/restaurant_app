@@ -7,6 +7,7 @@ import rrpss.Table;
 import rrpss.Transaction;
 import rrpss.Staff;
 import rrpss.MenuItem;
+import rrpss.Food;
 
 public class RestaurantDB {
     public static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
