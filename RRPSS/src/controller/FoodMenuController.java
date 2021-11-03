@@ -10,9 +10,6 @@ public class FoodMenuController {
     private static ArrayList<MenuItem> menu = RestaurantDB.menu;
 	private static Scanner sc = new Scanner(System.in);
 
-    public static ArrayList<MenuItem> getRestaurantDBMenu(){ 
-        return menu; // only the ala cart menu
-    }
 
     public static void createFood(String foodName, String foodDesc, double foodPrice, int foodId, CourseType foodCourseType, Temp foodTemp) {
         Food newFood;
