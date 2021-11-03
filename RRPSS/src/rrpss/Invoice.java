@@ -12,12 +12,12 @@ public class Invoice {
 	private double price;
 	private double finalPrice;
 	private int pax;
-	
+	private Date dateTime;
 	public Invoice(int tableNo, int pax, boolean discount, Order order) {
 		invoiceNo = invoiceNo++;
-		Date now = new Date();
+		dateTime = new Date();
 		SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE dd/MM/yy k:mm:s");
-		timeStamp = dateFormatter.format(now);
+		timeStamp = dateFormatter.format(dateTime);
 		this.tableNo = tableNo;
 		this.discount = discount;
 		this.order = order;
@@ -27,6 +27,10 @@ public class Invoice {
 		else
 			finalPrice = this.order.getTotalPrice()*1.17;
 		this.pax = pax;
+	}
+	
+	public Date getDatetime() {
+		return this.dateTime;
 	}
 	
 	public int getInvoiceNo() {
@@ -43,6 +47,9 @@ public class Invoice {
 	
 	public String getTimeStamp() {
 		return timeStamp;
+	}
+	public Order getOrder() {
+		return order;
 	}
 	
 	public void print() {
