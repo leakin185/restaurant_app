@@ -113,6 +113,7 @@ public class RRPSS {
     	StaffController SC = new StaffController();
     	TableOrderInvoiceController TOIC = new TableOrderInvoiceController();
     	//show available tables for walk in customer
+    	//to-do validate entered table id
     	System.out.println("Enter table number: ");
     	tableID = sc.nextInt();
     	while(true) {
