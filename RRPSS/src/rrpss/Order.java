@@ -13,6 +13,7 @@ public class Order {
 	private int handlingStaff;
 	private boolean discount;
 	private ArrayList<orderItem> orderList; 
+	private ArrayList<PromotionalPackages> promotionalPackages;
 	private double totalPrice;
 	private int tableID;
 	private int pax;
@@ -28,6 +29,8 @@ public class Order {
 		this.handlingStaff = staffID;
 		this.discount = false;
 		this.orderList = new ArrayList<orderItem>();
+		this.promotionalPackages = new ArrayList<PromotionalPackages>();
+
 		this.totalPrice = 0;
 		this.tableID = tableID;
 	}
@@ -40,8 +43,14 @@ public class Order {
 		return temp;
 	}
 	
+
+	
 	//add promotional package item
 		public Order addOrderItem(Order order, PromotionalPackages item) {
+			
+		
+			
+			promotionalPackages.add(item);
 			Order temp = order; 
 			for(Food pItem : item.getPromotionSet()) {
 				temp.orderList.add(new orderItem(pItem, 1, true));
@@ -115,6 +124,15 @@ public class Order {
 	}
 	public int getPax() {
 		return pax;
+	}
+	
+	public ArrayList<orderItem> getOrderItems(){
+		return this.orderList;
+	}
+
+	
+	public ArrayList<PromotionalPackages>  getPromotionalPackages(){
+		return this.promotionalPackages;
 	}
 	
 	public void printOrder() {
