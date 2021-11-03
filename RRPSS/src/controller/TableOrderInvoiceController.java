@@ -50,9 +50,9 @@ public class TableOrderInvoiceController {
 			pax = sc.nextInt();
 			Order order = new Order(staffID,tableID, pax);
 			//print the menu (YF)
-			for(Food item : RestaurantDB.menu) {
-				FoodMenuController.printFood(item);
-			}
+			//for(Food item : RestaurantDB.menu) {
+			//	FoodMenuController.printFood(item);
+			//}
 			
 			//loop to add order
 			int c;
