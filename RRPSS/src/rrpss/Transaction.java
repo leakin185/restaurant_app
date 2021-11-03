@@ -1,21 +1,27 @@
 package rrpss;
 
-import java.time.LocalDateTime;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Transaction {
 
-	LocalDateTime date;
-	String type;
-	double amount;
+	Date date;
+	String type; // alacarte or promotional
+	double pricePerQty; // price per item
 
-	Transaction(LocalDateTime date, String type, double amount) {
+	int quantity; // quantity of item ordered
+	String itemName; // item name
+	
+	
+
+	public Transaction(Date date, String type, double price, int quantity, String itemName) {
 		this.date = date;
 		this.type = type;
-		this.amount = amount;
-
+		this.pricePerQty = price;
+		this.itemName = itemName;
 	}
 
-	public LocalDateTime getDate() {
+	public Date getDate() {
 
 		return this.date;
 	}
@@ -24,13 +30,18 @@ public class Transaction {
 
 		return this.type;
 	}
+	
+	public String getName() {
+
+		return this.itemName;
+	}
 
 	public double getAmount() {
 
-		return this.amount;
+		return this.pricePerQty;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(Date date) {
 
 		this.date = date;
 	}
@@ -39,10 +50,16 @@ public class Transaction {
 
 		this.type = type;
 	}
+	
+
+	public void setQuantity(int qty) {
+
+		this.quantity = qty;
+	}
 
 	public void setAmount(double amount) {
 
-		this.amount = amount;
+		this.pricePerQty = amount;
 	}
 
 }
