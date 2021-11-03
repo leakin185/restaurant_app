@@ -141,13 +141,11 @@ public class RRPSS {
     			c = sc.next();
     			if(c == "Y") discount = true;
     			Invoice invoice = TOIC.setInvoiceToTable(discount, tableID);
+    			if(invoice == null ) break;
     			TableController.getTableFromTableNo(tableID).getinvoice().print();
-    			//set table to unavailable?
-    			//add transaction
-    			//convert string to date
-    			LocalDateTime dt = LocalDateTime.parse(invoice.getTimeStamp());
-    			Transaction transaction = new Transaction(dt, "Transaction", invoice.getFinalPrice());
-    			RestaurantDB.transactions.add(transaction);
+    			TableOrderInvoiceController.insertTransactionForTableOrder(invoice);
+
+    			
     			break;
     			
     		case 0: 
