@@ -16,7 +16,6 @@ public class RestaurantDB {
     public static ArrayList<Table> tables = new ArrayList<Table>();
     public static ArrayList<Staff> staffs = new ArrayList<Staff>();
     public static ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
-    public static ArrayList<MenuItem> proMenu = new ArrayList<MenuItem>();
 
 
 }
