@@ -11,7 +11,7 @@ public class FoodMenuController {
 	private static Scanner sc = new Scanner(System.in);
 
     public static ArrayList<MenuItem> getRestaurantDBMenu(){ 
-        return menu; 
+        return menu; // only the ala cart menu
     }
 
     public static void createFood(String foodName, String foodDesc, double foodPrice, int foodId, CourseType foodCourseType, Temp foodTemp) {
@@ -37,7 +37,7 @@ public class FoodMenuController {
                 done = true;
             }
         }
-        menu.add((MenuItem) newPromo);
+        menu.add((PromotionalPackages) newPromo);
 
     }
 

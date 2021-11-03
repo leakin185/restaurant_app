@@ -1,6 +1,8 @@
 package rrpss;
 
 import database.RestaurantDB;
+import rrpss.Food.CourseType;
+import rrpss.Food.Temp;
 
 import java.util.*;
 import java.time.LocalDateTime;
@@ -13,11 +15,13 @@ public class RRPSS {
 
     private static ArrayList<Table> tables = RestaurantDB.tables;
     private ArrayList<Staff> Staffs = RestaurantDB.staffs;
+    private static ArrayList<MenuItem> menu = RestaurantDB.menu;
 
 
     RRPSS() {
     	createStaffs(); //initialize arraylist for satffs
         createTables();
+        initFoodMenu();
 //		displayTables();
         System.out.println("Restaurant Reservation and Point of Sale System");
 
@@ -171,6 +175,52 @@ public class RRPSS {
         System.out.println("6. Show Revenue Report interface");
 
     }
+    
+    public static void initFoodMenu(){
+		
+		ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+		
+		Food food1 = new Food("Burger", "Juicy American burger", 3.50, 1, CourseType.MAIN_COURSE, Temp.HOT);
+		Food food2 = new Food("Nuggets", "Nuggets - halal", 1.00, 2, CourseType.MAIN_COURSE, Temp.HOT);
+		Food food3 = new Food("Oreo McFlurry", "Ice cream dessert filled with crushed oreos", 3.85, 3, CourseType.DESSERT, Temp.COLD);
+		Food food4 = new Food("Apple Ice Cream", "Apple flavoured ice cream dessert", 8.00, 4, CourseType.DESSERT, Temp.COLD);
+		Food food5 = new Food("Ice Lemon Tea", "Homemade Ice Lemon Tea", 1.50, 5, CourseType.DRINK, Temp.COLD);
+		Food food6 = new Food("Plain Water", "On the house", 0.00, 6, CourseType.DRINK, Temp.COLD);
+		Food food7 = new Food("Healthy Fruit Juice", "Mixed fruit juice", 2.00, 7, CourseType.DRINK, Temp.COLD);
+		
+		PromotionalPackages promo1 = new PromotionalPackages("McNugget Meal", "6pc nuggets in 1", 3.00, 1);
+		promo1.addToPromotionSet(food2);
+		promo1.addToPromotionSet(food2);
+		promo1.addToPromotionSet(food2);
+		promo1.addToPromotionSet(food2);
+		promo1.addToPromotionSet(food2);
+		promo1.addToPromotionSet(food2);
+
+		PromotionalPackages promo2 = new PromotionalPackages("Burger set meal", "Burger set at cheaper price", 5.00,2);
+		promo2.addToPromotionSet(food1);
+		promo2.addToPromotionSet(food2);
+		promo2.addToPromotionSet(food7);
+
+		PromotionalPackages promo3 = new PromotionalPackages("Healthy set meal", "Very healthy meal", 2.00,3);
+		promo3.addToPromotionSet(food7);
+		promo3.addToPromotionSet(food6);
+		promo3.addToPromotionSet(food4);
+
+		menuItems.add((MenuItem) food1);
+		menuItems.add((MenuItem) food2);
+		menuItems.add((MenuItem) food3);
+		menuItems.add((MenuItem) food4);
+		menuItems.add((MenuItem) food5);
+		menuItems.add((MenuItem) food6);
+		menuItems.add((MenuItem) food7);
+		menuItems.add((MenuItem) promo1);
+		menuItems.add((MenuItem) promo2);
+		menuItems.add((MenuItem) promo3);
+		
+		RRPSS.menu = menuItems;
+		
+	}
+
 
 
 }
