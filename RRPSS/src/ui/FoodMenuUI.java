@@ -75,7 +75,12 @@ public class FoodMenuUI {
 		System.out.println("\nList of Menu Items:");
 		for (MenuItem menuItem : foodMenu)
 			System.out.println("(" + index++ + ") " + menuItem.getMenuName());
+		System.out.println("(0) Go Back");
 		choice = ScannerExt.nextInt("\n    Enter the number of your choice: ", 0, index - 1);
+
+		if (choice == 0) {
+			return;
+		}
 
 		MenuItem viewMenuItem = foodMenu.get(choice);
 		if (viewMenuItem instanceof Food)
