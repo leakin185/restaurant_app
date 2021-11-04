@@ -220,7 +220,7 @@ public class RRPSS {
 		menuItems.add((MenuItem) promo2);
 		menuItems.add((MenuItem) promo3);
 		
-		RRPSS.menu = menuItems;
+		RestaurantDB.menu = menuItems;
 		
 	}
 

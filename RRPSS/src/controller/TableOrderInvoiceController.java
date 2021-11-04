@@ -45,7 +45,7 @@ public class TableOrderInvoiceController {
 			// for(Food item : RestaurantDB.menu) {
 			// FoodMenuController.printFood(item);
 			// }
-
+			System.out.println("menu count"+RestaurantDB.menu.size());
 			// loop to add order
 			int c;
 			System.out.println("1. add order item\n0. stop");
