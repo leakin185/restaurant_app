@@ -141,6 +141,7 @@ public class RRPSS {
     			c = sc.next();
     			if(c == "Y") discount = true;
     			Invoice invoice = TOIC.setInvoiceToTable(discount, tableID);
+    			
     			if(invoice == null ) break;
     			TableController.getTableFromTableNo(tableID).getinvoice().print();
     			TableOrderInvoiceController.insertTransactionForTableOrder(invoice);
@@ -191,7 +192,7 @@ public class RRPSS {
 		Food food6 = new Food("Plain Water", "On the house", 0.00, 6, CourseType.DRINK, Temp.COLD);
 		Food food7 = new Food("Healthy Fruit Juice", "Mixed fruit juice", 2.00, 7, CourseType.DRINK, Temp.COLD);
 		
-		PromotionalPackages promo1 = new PromotionalPackages("McNugget Meal", "6pc nuggets in 1", 3.00, 1);
+		PromotionalPackages promo1 = new PromotionalPackages("McNugget Meal", "6pc nuggets in 1", 3.00, 8);
 		promo1.addToPromotionSet(food2);
 		promo1.addToPromotionSet(food2);
 		promo1.addToPromotionSet(food2);
@@ -199,12 +200,12 @@ public class RRPSS {
 		promo1.addToPromotionSet(food2);
 		promo1.addToPromotionSet(food2);
 
-		PromotionalPackages promo2 = new PromotionalPackages("Burger set meal", "Burger set at cheaper price", 5.00,2);
+		PromotionalPackages promo2 = new PromotionalPackages("Burger set meal", "Burger set at cheaper price", 5.00,9);
 		promo2.addToPromotionSet(food1);
 		promo2.addToPromotionSet(food2);
 		promo2.addToPromotionSet(food7);
 
-		PromotionalPackages promo3 = new PromotionalPackages("Healthy set meal", "Very healthy meal", 2.00,3);
+		PromotionalPackages promo3 = new PromotionalPackages("Healthy set meal", "Very healthy meal", 2.00,10);
 		promo3.addToPromotionSet(food7);
 		promo3.addToPromotionSet(food6);
 		promo3.addToPromotionSet(food4);

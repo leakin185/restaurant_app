@@ -45,7 +45,7 @@ public class TableOrderInvoiceController {
 			// for(Food item : RestaurantDB.menu) {
 			// FoodMenuController.printFood(item);
 			// }
-			System.out.println("menu count"+RestaurantDB.menu.size());
+			System.out.println("menu items count: "+RestaurantDB.menu.size());
 			// loop to add order
 			int c;
 			System.out.println("1. add order item\n0. stop");
@@ -62,6 +62,9 @@ public class TableOrderInvoiceController {
 						if (item.getItemId() == id) {
 							selected_item = item;
 							System.out.println("item name: "+selected_item.getDesc());
+							//check alacarte or pakcage
+							if(item instanceof Food) System.out.println("Alacarte");
+							if(item instanceof PromotionalPackages) System.out.println("Promotional Package");
 							break;
 						}
 					}
@@ -72,7 +75,8 @@ public class TableOrderInvoiceController {
 						int quantity = 0;
 						System.out.println("Enter quantity");
 						quantity = sc.nextInt();
-
+						
+						//orderItem orderitem = new orderItem();
 					}
 				}
 
