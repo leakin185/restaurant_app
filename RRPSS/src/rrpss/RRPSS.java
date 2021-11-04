@@ -10,6 +10,7 @@ import controller.StaffController;
 import controller.TableController;
 import controller.TableOrderInvoiceController;
 import ui.FoodMenuUI;
+import ui.ReportUI;
 import ui.ReservationUI;
 
 public class RRPSS {
@@ -55,7 +56,7 @@ public class RRPSS {
                         ReservationUI.showMainMenu();
                         break;
                     case 6:
-                        // call appropriate ui method
+                       ReportUI.showReportOptions();
                         break;
                     default:
                         System.out.println("Invalid input!");
