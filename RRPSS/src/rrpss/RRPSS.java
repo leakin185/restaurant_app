@@ -155,7 +155,9 @@ public class RRPSS {
     				System.out.println("No order yet!");
     				break;
     			}
+    			System.out.println(" ");
     			TOIC.printCurrentOrderForTable(tableID);
+    			System.out.println(" ");
     			
     		case 0: 
     			break;

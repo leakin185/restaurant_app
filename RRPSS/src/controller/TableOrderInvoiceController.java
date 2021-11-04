@@ -71,6 +71,7 @@ public class TableOrderInvoiceController {
 							//check alacarte or pakcage
 							if(item instanceof Food) System.out.println("Type: Alacarte");
 							if(item instanceof PromotionalPackages) System.out.println("Type: Promotional Package");
+							System.out.println(" ");
 							break;
 						}
 					}
@@ -97,6 +98,7 @@ public class TableOrderInvoiceController {
 			}
 			System.out.println(" ");
 			System.out.println("Order set!");
+			System.out.println(" ");
 			return true;
 		} else {
 			// if order exist, add item

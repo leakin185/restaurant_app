@@ -72,6 +72,7 @@ public class Invoice {
 		System.out.println("-------------------------------------------------");
 		System.out.println("-------------------------------------------------");
 		System.out.println("     Thank you and we hope to see you again!     ");
+		System.out.println(" ");
 		
 		
 	}
