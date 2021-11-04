@@ -147,6 +147,9 @@ public class RRPSS {
 
     			
     			break;
+    		
+    		case 3: 
+    			TOIC.printCurrentOrderForTable(tableID);
     			
     		case 0: 
     			break;
@@ -156,6 +159,7 @@ public class RRPSS {
     		}
     		System.out.println("1. place order for table " + tableID + ": ");
         	System.out.println("2. print receipt for table " + tableID + ": ");
+        	System.out.println("3. print order for table " + tableID + ": ");
         	System.out.println("Enter 0 to return");
         	choice = sc.nextInt();
     	}
