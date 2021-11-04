@@ -39,11 +39,11 @@ public class TableOrderInvoiceController {
 			System.out.println("No order yet! ");
 			System.out.println(" ");
 			int pax = 0;
+			Order order = null;
 			Scanner sc = new Scanner(System.in);
 			System.out.println("How many pax: ");
 			System.out.println(" ");
 			pax = sc.nextInt();
-			Order order = new Order(staffID, tableID, pax);
 			// print the menu (YF)
 			// for(Food item : RestaurantDB.menu) {
 			// FoodMenuController.printFood(item);
@@ -82,6 +82,7 @@ public class TableOrderInvoiceController {
 					else {
 						// add item into order
 						int quantity = 0;
+						order = new Order(staffID, tableID, pax);
 						System.out.println("Enter quantity");
 						quantity = sc.nextInt();
 						if(selected_item instanceof Food) 
@@ -97,8 +98,10 @@ public class TableOrderInvoiceController {
 				c = sc.nextInt();
 			}
 			System.out.println(" ");
-			System.out.println("Order set!");
-			System.out.println(" ");
+			if(order != null) {
+				System.out.println("Order set!");
+				System.out.println(" ");
+			}
 			return true;
 		} else {
 			// if order exist, add item

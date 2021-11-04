@@ -163,6 +163,8 @@ public class RRPSS {
     			break;
     			
     		default:
+    			System.out.println("Invlaid choice!");
+    			System.out.println(" ");
     			break;
     		}
     		System.out.println("1. place order for table " + tableID + ": ");
