@@ -46,16 +46,17 @@ public class Order {
 
 	
 	//add promotional package item
-		public Order addOrderItem(Order order, PromotionalPackages item) {
-			
-		
-			
-			promotionalPackages.add(item);
+	public Order addOrderItem(Order order, PromotionalPackages item, int quantity) {
+			for (int i=0; i<quantity; i++) {
+				promotionalPackages.add(item);
+			}
 			Order temp = order; 
-			for(Food pItem : item.getPromotionSet()) {
+			temp.orderList.add(new orderItem(item, quantity, true));
+			temp.totalPrice = temp.totalPrice + item.getPrice()*quantity;
+			/*for(Food pItem : item.getPromotionSet()) {
 				temp.orderList.add(new orderItem(pItem, 1, true));
 				temp.totalPrice = temp.totalPrice + pItem.getPrice();
-			}
+			}*/
 			
 			
 			return temp;
@@ -139,10 +140,10 @@ public class Order {
 		for(orderItem i : this.orderList) {
 			if(i.getIsPromotion())
 				System.out.println(i.getQuantity()+ "\t" +
-					i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte");
+					i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Promotion");
 			else
 				System.out.println(i.getQuantity()+ "\t" +
-						i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Promotion");
+						i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte");
 		}
 	}
 }

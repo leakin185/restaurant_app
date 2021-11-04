@@ -75,21 +75,19 @@ public class TableOrderInvoiceController {
 						int quantity = 0;
 						System.out.println("Enter quantity");
 						quantity = sc.nextInt();
-						boolean isPromotion = false;
-						if(selected_item instanceof Food) isPromotion = true;
-						if(selected_item instanceof PromotionalPackages) isPromotion = false;
-						orderItem orderitem = new orderItem(selected_item, quantity, isPromotion);
+						if(selected_item instanceof Food) 
+							order = order.addOrderItem(order, selected_item, quantity);
+						if(selected_item instanceof PromotionalPackages)
+							order = order.addOrderItem(order, (PromotionalPackages)selected_item, quantity);
+						table.setOrder(order);
+						
 					}
 				}
-
-				// retrieved object from db
 
 				System.out.println("1. add order item\n0. stop");
 				c = sc.nextInt();
 			}
-
-			// Order = returned
-			table.setOrder(order);
+			
 			System.out.println("Order set!");
 			return true;
 		} else {
