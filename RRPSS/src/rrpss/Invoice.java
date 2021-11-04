@@ -58,7 +58,7 @@ public class Invoice {
 		System.out.println("            50 Nanyang Ave, 639798               ");
 		System.out.println("                                                 ");
 		System.out.println("Server: " + this.order.getHandlingStaff() + "\t\t" + "Date & Time: " + this.timeStamp);
-		System.out.println("Table: " + this.tableNo + "      Client: " + "pax");
+		System.out.println("Table: " + this.tableNo + "      pax: " +this.order.getPax());
 		System.out.println("-------------------------------------------------");
 		this.order.printOrder();
 		System.out.println("-------------------------------------------------");
