@@ -76,5 +76,26 @@ public class TableController {
 
     }
 
+    public static Table getAvailableTable(Calendar dateTime, int noOfPax) {
+
+        for (int i = 0; i < tables.size(); i++) {
+
+            boolean isValid = true;
+
+            if (tables.get(i).getTableCapacity() == noOfPax) {
+                for (int j = 0; j < reservations.size(); j++) {
+                    if (reservations.get(j).getTable().getTableNo() == tables.get(i).getTableNo() && reservations.get(j).getDateTime() == dateTime) {
+                        isValid = false;
+                        break;
+                    }
+                }
+                if (isValid) {
+                    return tables.get(i);
+                }
+            }
+        }
+        return null;
+    }
+
 
 }

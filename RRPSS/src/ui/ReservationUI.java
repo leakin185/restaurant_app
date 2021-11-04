@@ -95,11 +95,11 @@ public class ReservationUI {
         }
         while(!contactIntCheck || !eightDigitCheck);
 
-        if(ReservationController.getAvailableTable(dateTime,paxSize) == null){
+        if(TableController.getAvailableTable(dateTime,paxSize) == null){
             System.out.println("No Table is available");
         }
         else{
-            table = ReservationController.getAvailableTable(dateTime,paxSize);
+            table = TableController.getAvailableTable(dateTime,paxSize);
             ReservationController.createReservation(table, dateTime,paxSize, customerContact,customerName);
             System.out.println("Reservation is successfully made!");
             System.out.println("Customer Name " + customerName);
