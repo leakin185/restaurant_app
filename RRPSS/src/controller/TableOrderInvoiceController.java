@@ -61,6 +61,7 @@ public class TableOrderInvoiceController {
 					for (MenuItem item : RestaurantDB.menu) {
 						if (item.getItemId() == id) {
 							selected_item = item;
+							System.out.println("item name: "+selected_item.getDesc());
 							break;
 						}
 					}
