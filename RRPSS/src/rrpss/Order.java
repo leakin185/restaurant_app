@@ -33,6 +33,7 @@ public class Order {
 
 		this.totalPrice = 0;
 		this.tableID = tableID;
+		this.pax = pax;
 	}
 	
 	//add alacarte item

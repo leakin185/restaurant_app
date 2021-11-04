@@ -36,9 +36,12 @@ public class TableOrderInvoiceController {
 		Table table = TableController.getTableFromTableNo(tableID);
 		// if order for this table is empty
 		if (table.getOrder() == null) {
+			System.out.println("No order yet! ");
+			System.out.println(" ");
 			int pax = 0;
 			Scanner sc = new Scanner(System.in);
 			System.out.println("How many pax: ");
+			System.out.println(" ");
 			pax = sc.nextInt();
 			Order order = new Order(staffID, tableID, pax);
 			// print the menu (YF)
@@ -46,12 +49,14 @@ public class TableOrderInvoiceController {
 			// FoodMenuController.printFood(item);
 			// }
 			System.out.println("menu items count: "+RestaurantDB.menu.size());
+			System.out.println(" ");
 			// loop to add order
 			int c;
 			System.out.println("1. add order item\n0. stop");
 			c = sc.nextInt();
 			while (c == 1) {
 				while (true) {
+					System.out.println(" ");
 					System.out.println("Enter order item ID: \n0 to go back: ");
 					int id = sc.nextInt();
 					MenuItem selected_item = null;
@@ -61,6 +66,7 @@ public class TableOrderInvoiceController {
 					for (MenuItem item : RestaurantDB.menu) {
 						if (item.getItemId() == id) {
 							selected_item = item;
+							System.out.println(" ");
 							System.out.println("item name: "+selected_item.getDesc());
 							//check alacarte or pakcage
 							if(item instanceof Food) System.out.println("Type: Alacarte");
@@ -68,8 +74,10 @@ public class TableOrderInvoiceController {
 							break;
 						}
 					}
-					if (selected_item == null)
+					if (selected_item == null) {
 						System.out.println("Invalid ID");
+						System.out.println(" ");
+					}
 					else {
 						// add item into order
 						int quantity = 0;
@@ -83,15 +91,19 @@ public class TableOrderInvoiceController {
 						
 					}
 				}
-
+				System.out.println(" ");
 				System.out.println("1. add order item\n0. stop");
 				c = sc.nextInt();
 			}
-			
+			System.out.println(" ");
 			System.out.println("Order set!");
 			return true;
 		} else {
 			// if order exist, add item
+			System.out.println("Chose menu item to add");
+			System.out.println(" ");
+			
+			
 		}
 
 		return false;
