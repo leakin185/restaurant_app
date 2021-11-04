@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import controller.StaffController;
 import controller.TableController;
 import controller.TableOrderInvoiceController;
+import ui.FoodMenuUI;
 import ui.ReservationUI;
 
 public class RRPSS {
@@ -38,9 +39,11 @@ public class RRPSS {
                 switch (input) {
                     case 1:
                         // call appropriate ui method
+                        FoodMenuUI.menuShowFoodMenuOptions();
                         break;
                     case 2:
                         // call appropriate ui method
+                        FoodMenuUI.menuShowFoodMenuOptions();
                         break;
                     case 3:
                     	tableOption();
