@@ -36,7 +36,7 @@ public class Order {
 	}
 	
 	//add alacarte item
-	public Order addOrderItem(Order order, Alacarte item, int quantity) {
+	public Order addOrderItem(Order order, MenuItem item, int quantity) {
 		Order temp = order; 
 		temp.orderList.add(new orderItem(item, quantity, false));
 		temp.totalPrice = temp.totalPrice + item.getPrice()*quantity;

@@ -63,8 +63,8 @@ public class TableOrderInvoiceController {
 							selected_item = item;
 							System.out.println("item name: "+selected_item.getDesc());
 							//check alacarte or pakcage
-							if(item instanceof Food) System.out.println("Alacarte");
-							if(item instanceof PromotionalPackages) System.out.println("Promotional Package");
+							if(item instanceof Food) System.out.println("Type: Alacarte");
+							if(item instanceof PromotionalPackages) System.out.println("Type: Promotional Package");
 							break;
 						}
 					}
@@ -75,8 +75,10 @@ public class TableOrderInvoiceController {
 						int quantity = 0;
 						System.out.println("Enter quantity");
 						quantity = sc.nextInt();
-						
-						//orderItem orderitem = new orderItem();
+						boolean isPromotion = false;
+						if(selected_item instanceof Food) isPromotion = true;
+						if(selected_item instanceof PromotionalPackages) isPromotion = false;
+						orderItem orderitem = new orderItem(selected_item, quantity, isPromotion);
 					}
 				}
 
