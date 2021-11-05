@@ -71,7 +71,7 @@ public class FoodMenuUI {
 		int choice;
 		ArrayList<MenuItem> foodMenu = FoodMenuController.getRestaurantFoodMenu();
 
-		int index = 0;
+		int index = 1;
 		System.out.println("\nList of Menu Items:");
 		for (MenuItem menuItem : foodMenu)
 			if (menuItem instanceof Food) {
@@ -90,7 +90,7 @@ public class FoodMenuUI {
 			return;
 		}
 
-		MenuItem viewMenuItem = foodMenu.get(choice);
+		MenuItem viewMenuItem = foodMenu.get(choice-1);
 		if (viewMenuItem instanceof Food)
 			FoodMenuController.printFood((Food) viewMenuItem);
 		else if (viewMenuItem instanceof PromotionalPackages)
