@@ -149,7 +149,7 @@ public class TableOrderInvoiceController {
 		return false;
 	}
 
-	public Invoice setInvoiceToTable(boolean discount, int tableID) {
+	public Invoice setInvoiceToTable(double discount, int tableID) {
 		Table table = TableController.getTableFromTableNo(tableID);
 
 		if (table.getOrder() == null) {
