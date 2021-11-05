@@ -116,6 +116,9 @@ public class ReservationUI {
         ArrayList<Reservation> reservations = RestaurantDB.reservations;
         ReservationController.removeExpiredReservations(reservations);
         int i = 1;
+        if(reservations.size() == 0 ){
+            System.out.println("No reservations have been made yet!");
+        }
         for (Reservation reservation : reservations) {
             System.out.println(i + ") Reservation ID:  " + reservation.getReservationID());
             System.out.println("Customer Name " + reservation.getCustomerName());
