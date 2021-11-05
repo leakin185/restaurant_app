@@ -62,13 +62,13 @@ public class Invoice {
 		System.out.println("-------------------------------------------------");
 		this.order.printOrder();
 		System.out.println("-------------------------------------------------");
-		System.out.println("Sub-Total: " + this.price                         );
-		System.out.println("Gst: " + this.price*0.07                          );
-		System.out.println("Service Charger: " + this.price*0.1               );
+		System.out.println("Sub-Total: " + String.format("%.2f", this.price)                      );
+		System.out.println("Gst: " + String.format("%.2f", this.price*0.07)                          );
+		System.out.println("Service Charger: " + String.format("%.2f", this.price*0.1)               );
 		if(discount != 1)
-			System.out.println("Sub-Total after discount: " + this.finalPrice );
+			System.out.println("Total after discount: " + String.format("%.2f", this.finalPrice) );
 		System.out.println("-------------------------------------------------");
-		System.out.println("Total: " + this.finalPrice                        );
+		System.out.println("Total: " + String.format("%.2f", this.finalPrice)                       );
 		System.out.println("-------------------------------------------------");
 		System.out.println("-------------------------------------------------");
 		System.out.println("     Thank you and we hope to see you again!     ");
