@@ -2,11 +2,13 @@ package ui;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import controller.TableController;
+
 import database.RestaurantDB;
 import rrpss.*;
 import java.util.Calendar;
 import controller.ReservationController;
+
+import controller.TableController;
 //need to import table controller
 
 public class ReservationUI {
