@@ -76,10 +76,10 @@ public class RRPSS {
     private void initMemberList() {
 		// TODO Auto-generated method stub
     	ArrayList<Member> members = new ArrayList<Member>();
-    	members.add(new Member("Alice", "11111111", "silver", 0.9));
-    	members.add(new Member("Bob", "22222222", "gold", 0.8));
-    	members.add(new Member("Chad", "33333333", "Platinum", 0.7));
-    	members.add(new Member("Dick", "44444444", "Platinum", 0.7));
+    	members.add(new Member(1, "Alice", 11111111, "silver", 0.9));
+    	members.add(new Member(2, "Bob", 22222222, "gold", 0.8));
+    	members.add(new Member(3, "Chad", 33333333, "Platinum", 0.7));
+    	members.add(new Member(4, "Dick", 44444444, "Platinum", 0.7));
     	
     	RestaurantDB.members = members;
 		
@@ -154,28 +154,28 @@ public class RRPSS {
     			
     		case 2:
     			double discount = 1;
-    			String c;
-    			//add enum to get membership type
-    			System.out.println("Is customer a member? Y/N");
-    			//add logic to get membership 
-    			c = sc.next();
-    			if(c == "Y") {
-    				String name = null;
-    				String phone = null;
+    			int c;
+    			System.out.println("Is customer a member?\n1: yes\n0: no\n");
+    			c = sc.nextInt();
+    			if(c == 1) {
+    				int ID = -1;
+    				int phone = -1;
+    				Scanner m = new Scanner(System.in);
     				int found = 0;
-    				System.out.println("Enter member name: ");
-    				name = sc.nextLine();
+    				System.out.println("Enter member ID: ");
+    				ID = m.nextInt();
     				System.out.println("Enter member phone: ");
-    				phone = sc.nextLine();
+    				phone = m.nextInt();
     				for(Member member : RestaurantDB.members) {
-    					if(member.getMemberName() == name && member.getMemberPhone() == phone) {
+    					System.out.println(member.getMemberID()+member.getMemberName()+member.getMemberPhone());
+    					if(member.getMemberID() == ID && member.getMemberPhone() == phone) {
     						System.out.println("Member found: member type: "+member.getMemberType() + "member discount: " + (100-(member.getMemberDiscount()*100))+"% off");
     						found =1;
     						discount = member.getMemberDiscount();
     						break;
     					}
     				}
-    				if (found == 0) System.out.println("cannot find this member, proceeding without discount.");
+    				if (found == 0) System.out.println("Cannot find this member, proceeding without discount.");
     				
     			}
     			Invoice invoice = TOIC.setInvoiceToTable(discount, tableID);
