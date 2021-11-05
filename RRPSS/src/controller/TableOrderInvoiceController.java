@@ -137,6 +137,7 @@ public class TableOrderInvoiceController {
 
 		ArrayList<orderItem> orderItems = order.getOrderItems();
 
+
 		for (int i = 0; i < orderItems.size(); i++) {
 			RestaurantDB.transactions
 					.add(new Transaction(invoice.getDatetime(), "Alacarte", orderItems.get(i).getItem().getPrice(),
