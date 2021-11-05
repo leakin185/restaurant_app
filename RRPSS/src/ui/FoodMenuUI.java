@@ -75,14 +75,12 @@ public class FoodMenuUI {
 		System.out.println("\nList of Menu Items:");
 		for (MenuItem menuItem : foodMenu)
 			if (menuItem instanceof Food) {
-				System.out.println("(" + index++ + ") " + menuItem.getMenuName());
+				System.out.println("(" + index++ + ") " + menuItem.getMenuName() + " - Alacarte");
 			}
-		System.out.println("--------------------------------------------------");
-		for (MenuItem menuItem : foodMenu)
-			if (menuItem instanceof PromotionalPackages) {
-				System.out.println("(" + index++ + ") " + menuItem.getMenuName());
+			else if (menuItem instanceof PromotionalPackages){
+				System.out.println("(" + index++ + ") " + menuItem.getMenuName() + " - Promotional Package");
 			}
-			
+		
 		System.out.println("(-1) Go Back");
 		choice = ScannerExt.nextInt("\n    Enter the number of your choice: ", 0, index - 1);
 
