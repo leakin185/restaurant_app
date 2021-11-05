@@ -44,20 +44,16 @@ public class TableOrderInvoiceController {
 			System.out.println("How many pax: ");
 			System.out.println(" ");
 			pax = sc.nextInt();
-			// print the menu (YF)
-			// for(Food item : RestaurantDB.menu) {
-			// FoodMenuController.printFood(item);
-			// }
 			System.out.println("menu items count: "+RestaurantDB.menu.size());
 			System.out.println(" ");
 			// loop to add order
 			int c;
-			System.out.println("1. add order item\n0. stop");
+			System.out.println("1. add menu item\n0. stop");
 			c = sc.nextInt();
 			while (c == 1) {
 				while (true) {
 					System.out.println(" ");
-					System.out.println("Enter order item ID: \n0 to go back: ");
+					System.out.println("Enter menu item ID: \n0 to go back: ");
 					int id = sc.nextInt();
 					MenuItem selected_item = null;
 					if (id == 0)
