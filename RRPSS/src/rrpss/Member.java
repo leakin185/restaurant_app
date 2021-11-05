@@ -1,12 +1,14 @@
 package rrpss;
 
 public class Member {
+	private int ID;
 	private String name;
-	private String phone;
+	private int phone;
 	private String memberType;
 	private double discount;
 	
-	public Member(String name, String phone, String memberType, double discount) {
+	public Member(int ID, String name, int phone, String memberType, double discount) {
+		this.ID = ID;
 		this.name = name;
 		this.phone = phone;
 		this.memberType = memberType;
@@ -14,11 +16,15 @@ public class Member {
 		
 	}
 	
+	public int getMemberID(){
+		return ID;
+	}
+	
 	public String getMemberName(){
 		return name;
 	}
 	
-	public String getMemberPhone(){
+	public int getMemberPhone(){
 		return phone;
 	}
 	
