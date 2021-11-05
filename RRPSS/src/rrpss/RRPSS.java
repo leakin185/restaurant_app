@@ -141,6 +141,7 @@ public class RRPSS {
     		case 2:
     			boolean discount = false;
     			String c;
+    			//add enum to get membership type
     			System.out.println("Is customer a member? Y/N");
     			//add logic to get membership 
     			c = sc.next();
