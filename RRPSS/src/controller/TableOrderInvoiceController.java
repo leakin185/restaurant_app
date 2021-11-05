@@ -39,7 +39,7 @@ public class TableOrderInvoiceController {
 			System.out.println("No order yet! ");
 			System.out.println(" ");
 			int pax = 0;
-			Order order = null;
+			Order order = new Order(staffID, tableID, pax);
 			Scanner sc = new Scanner(System.in);
 			System.out.println("How many pax: ");
 			System.out.println(" ");
@@ -78,7 +78,6 @@ public class TableOrderInvoiceController {
 					else {
 						// add item into order
 						int quantity = 0;
-						order = new Order(staffID, tableID, pax);
 						System.out.println("Enter quantity");
 						quantity = sc.nextInt();
 						if(selected_item instanceof Food) 
