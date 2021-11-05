@@ -73,13 +73,13 @@ public class FoodMenuUI {
 
 		int index = 0;
 		System.out.println("\nList of Menu Items:");
-		boolean line = false;
 		for (MenuItem menuItem : foodMenu)
-			if (menuItem instanceof PromotionalPackages && line == false) {
-				System.out.println("---------------------------------------------");
-				line = true;
+			if (menuItem instanceof Food) {
+				System.out.println("(" + index++ + ") " + menuItem.getMenuName());
 			}
-			else {
+		System.out.println("--------------------------------------------------");
+		for (MenuItem menuItem : foodMenu)
+			if (menuItem instanceof PromotionalPackages) {
 				System.out.println("(" + index++ + ") " + menuItem.getMenuName());
 			}
 			
