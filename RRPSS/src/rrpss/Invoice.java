@@ -7,13 +7,13 @@ public class Invoice {
 	private static int invoiceNo = 1;
 	private String timeStamp;
 	private int tableNo;
-	private boolean discount;
+	private double discount;
 	private Order order;
 	private double price;
 	private double finalPrice;
 	private int pax;
 	private Date dateTime;
-	public Invoice(int tableNo, int pax, boolean discount, Order order) {
+	public Invoice(int tableNo, int pax,double discount, Order order) {
 		invoiceNo = invoiceNo++;
 		dateTime = new Date();
 		SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE dd/MM/yy k:mm:s");
@@ -22,8 +22,8 @@ public class Invoice {
 		this.discount = discount;
 		this.order = order;
 		this.price = this.order.getTotalPrice();
-		if(discount == true)
-			finalPrice = this.order.getTotalPrice()*1.17*0.8;
+		if(discount != 1)
+			finalPrice = this.order.getTotalPrice()*1.17*this.discount;
 		else
 			finalPrice = this.order.getTotalPrice()*1.17;
 		this.pax = pax;
@@ -65,7 +65,7 @@ public class Invoice {
 		System.out.println("Sub-Total: " + this.price                         );
 		System.out.println("Gst: " + this.price*0.07                          );
 		System.out.println("Service Charger: " + this.price*0.1               );
-		if(discount)
+		if(discount != 1)
 			System.out.println("Sub-Total after discount: " + this.finalPrice );
 		System.out.println("-------------------------------------------------");
 		System.out.println("Total: " + this.finalPrice                        );
