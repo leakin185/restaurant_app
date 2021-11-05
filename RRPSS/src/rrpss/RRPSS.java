@@ -46,19 +46,16 @@ public class RRPSS {
                         break;
                     case 2:
                         // call appropriate ui method
-                        FoodMenuUI.menuShowFoodMenuOptions();
-                        break;
-                    case 3:
                     	tableOption();
                         break;
+                    case 3:
+                    	staffsOption();
+                        break;
                     case 4:
-                        staffsOption();
+                    	ReservationUI.showMainMenu();
                         break;
                     case 5:
-                        ReservationUI.showMainMenu();
-                        break;
-                    case 6:
-                       ReportUI.showReportOptions();
+                    	ReportUI.showReportOptions();
                         break;
                     default:
                         System.out.println("Invalid input!");
@@ -217,12 +214,11 @@ public class RRPSS {
 
     public void displayOptions() {
         System.out.println("Select an option to begin: ");
-        System.out.println("1. Show Menu interface");
-        System.out.println("2. Show Promotion interface");
-        System.out.println("3. Show Table options");
-        System.out.println("4. Show Staff options");
-        System.out.println("5. Show Reservation interface");
-        System.out.println("6. Show Revenue Report interface");
+        System.out.println("1. Show Menu/Promotion interface");
+        System.out.println("2. Show Table options");
+        System.out.println("3. Show Staff options");
+        System.out.println("4. Show Reservation interface");
+        System.out.println("5. Show Revenue Report interface");
 
     }
     
