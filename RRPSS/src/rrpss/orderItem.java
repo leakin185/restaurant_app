@@ -28,4 +28,8 @@ public class orderItem {
 	public boolean getIsPromotion() {
 		return isPromotion;
 	}
+	
+	public void setQuantity(int newQuant) {
+		this.quantity = newQuant;
+	}
 }
