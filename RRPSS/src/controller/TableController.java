@@ -9,10 +9,8 @@ import java.util.Calendar;
 
 public class TableController {
 
-
     private static ArrayList<Reservation> reservations = RestaurantDB.reservations;
     private static ArrayList<Table> tables = RestaurantDB.tables;
-
 
     public static void showReservationsForTableNo(Table table) {
 
@@ -20,8 +18,8 @@ public class TableController {
 
         for (int i = 0; i < reservations.size(); i++) {
             if (reservations.get(i).getReservationID() == table.getTableNo()) {
-                System.out.println(String.format("Reservation ID #%d, Pax Size: %d", reservations.get(i).getReservationID(),
-                        reservations.get(i).getPaxSize()));
+                System.out.println(String.format("Reservation ID #%d, Pax Size: %d",
+                        reservations.get(i).getReservationID(), reservations.get(i).getPaxSize()));
             }
 
         }
@@ -42,8 +40,6 @@ public class TableController {
 
     }
 
-
-
     public static void showAvailableTable(Calendar dateTime, int noOfPax) {
 
         System.out.println("Available tables of size " + noOfPax + " on " + dateTime);
@@ -52,12 +48,16 @@ public class TableController {
 
             boolean isValid = true; // table is available for datetime
 
-
             if (tables.get(i).getTableCapacity() == noOfPax) {
 
-
                 for (int j = 0; j < reservations.size(); j++) {
-                    if (reservations.get(j).getTable().getTableNo() == tables.get(i).getTableNo() && reservations.get(j).getDateTime() == dateTime) {
+
+                    Calendar tempCal = (Calendar) dateTime.clone();
+                    tempCal.add(Calendar.MINUTE, -60);
+
+                    if (reservations.get(j).getTable().getTableNo() == tables.get(i).getTableNo() &&
+                            tempCal.getTime().before(reservations.get(j).getDateTime().getTime())
+                    ) {
                         isValid = false;
                         break;
                     }
@@ -69,7 +69,6 @@ public class TableController {
 
                 }
 
-
             }
 
         }
@@ -77,25 +76,37 @@ public class TableController {
     }
 
     public static Table getAvailableTable(Calendar dateTime, int noOfPax) {
+        int numToSearch = (noOfPax % 2 == 0) ? noOfPax : (noOfPax + 1);
 
         for (int i = 0; i < tables.size(); i++) {
 
             boolean isValid = true;
 
-            if (tables.get(i).getTableCapacity() == noOfPax) {
+            if (tables.get(i).getTableCapacity() == numToSearch) {
+
                 for (int j = 0; j < reservations.size(); j++) {
-                    if (reservations.get(j).getTable().getTableNo() == tables.get(i).getTableNo() && reservations.get(j).getDateTime() == dateTime) {
+
+                    Calendar tempCal = (Calendar) dateTime.clone();
+                    tempCal.add(Calendar.MINUTE, -60);
+
+
+                    if (reservations.get(j).getTable().getTableNo() == tables.get(i).getTableNo() &&
+                            tempCal.getTime().before(reservations.get(j).getDateTime().getTime())
+                    ) {
+
+
                         isValid = false;
                         break;
                     }
                 }
+
                 if (isValid) {
                     return tables.get(i);
                 }
             }
+
         }
         return null;
     }
-
 
 }
