@@ -73,12 +73,20 @@ public class FoodMenuUI {
 
 		int index = 0;
 		System.out.println("\nList of Menu Items:");
+		boolean line = false;
 		for (MenuItem menuItem : foodMenu)
-			System.out.println("(" + index++ + ") " + menuItem.getMenuName());
-		System.out.println("(0) Go Back");
+			if (menuItem instanceof PromotionalPackages && line == false) {
+				System.out.println("---------------------------------------------");
+				line = true;
+			}
+			else {
+				System.out.println("(" + index++ + ") " + menuItem.getMenuName());
+			}
+			
+		System.out.println("(-1) Go Back");
 		choice = ScannerExt.nextInt("\n    Enter the number of your choice: ", 0, index - 1);
 
-		if (choice == 0) {
+		if (choice == -1) {
 			return;
 		}
 
