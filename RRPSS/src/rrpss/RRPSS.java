@@ -77,9 +77,9 @@ public class RRPSS {
 		// TODO Auto-generated method stub
     	ArrayList<Member> members = new ArrayList<Member>();
     	members.add(new Member("Alice", "11111111", "silver", 0.9));
-    	members.add(new Member("Bob", "11111111", "gold", 0.8));
-    	members.add(new Member("Chad", "11111111", "Platinum", 0.7));
-    	members.add(new Member("Dick", "11111111", "Platinum", 0.7));
+    	members.add(new Member("Bob", "22222222", "gold", 0.8));
+    	members.add(new Member("Chad", "33333333", "Platinum", 0.7));
+    	members.add(new Member("Dick", "44444444", "Platinum", 0.7));
     	
     	RestaurantDB.members = members;
 		
