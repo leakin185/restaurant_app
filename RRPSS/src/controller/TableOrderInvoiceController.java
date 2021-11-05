@@ -67,7 +67,7 @@ public class TableOrderInvoiceController {
 						if (item.getItemId() == id) {
 							selected_item = item;
 							System.out.println(" ");
-							System.out.println("item name: "+selected_item.getDesc());
+							System.out.println("item name: "+selected_item.getMenuName());
 							//check alacarte or pakcage
 							if(item instanceof Food) System.out.println("Type: Alacarte");
 							if(item instanceof PromotionalPackages) System.out.println("Type: Promotional Package");
