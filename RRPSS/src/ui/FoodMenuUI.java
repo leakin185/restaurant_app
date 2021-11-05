@@ -327,17 +327,13 @@ public class FoodMenuUI {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter Updated Menu Description : ");
-		
+
 		if (sc.hasNextLine()) {
 			String menuDesc = sc.nextLine();
 
 			FoodMenuController.updateMenuItemDesc(menuItem, menuDesc);
 
-
 		}
-
-		
-		
 
 	}
 
