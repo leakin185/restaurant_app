@@ -138,13 +138,14 @@ public class Order {
 	}
 	
 	public void printOrder() {
+		System.out.println("index  qty:  \titem  \tprice:  \tAla/Promo");
 		for(orderItem i : this.orderList) {
 			if(i.getIsPromotion())
-				System.out.println(i.getQuantity()+ " x\t" +
-					i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Promotion");
+				System.out.println(i.getItemID()+"     "+i.getQuantity()+ " x\t" +
+					i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Promotion"+"\t");
 			else
-				System.out.println(i.getQuantity()+ " x\t" +
-						i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte");
+				System.out.println(i.getItemID()+":     "+i.getQuantity()+ " x\t" +
+						i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte"+"\t");
 		}
 	}
 }
