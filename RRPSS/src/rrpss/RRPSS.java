@@ -152,6 +152,10 @@ public class RRPSS {
     		case 2:
     			double discount = 1;
     			int c;
+    			if(TableController.getTableFromTableNo(tableID).getOrder() == null) {
+    				System.out.println("No order yet!\n");
+    				break;
+    			}
     			System.out.println("Is customer a member?\n1: yes\n0: no\n");
     			c = sc.nextInt();
     			if(c == 1) {
@@ -186,7 +190,7 @@ public class RRPSS {
     		
     		case 3: 
     			if(TableController.getTableFromTableNo(tableID).getOrder()==null) {
-    				System.out.println("No order yet!");
+    				System.out.println("No order yet!\n");
     				break;
     			}
     			System.out.println(" ");
@@ -201,7 +205,7 @@ public class RRPSS {
     			System.out.println(" ");
     			break;
     		}
-    		System.out.println("1. place order for table " + tableID + ": ");
+    		System.out.println("1. place order/edit for table " + tableID + ": ");
         	System.out.println("2. print receipt for table " + tableID + ": ");
         	System.out.println("3. print order for table " + tableID + ": ");
         	System.out.println("Enter 0 to return");
