@@ -153,20 +153,35 @@ public class TableOrderInvoiceController {
 			case 2:
 				int menuID=-1;
 				int found = 0;
-				MenuItem selected_item = null;
+				int index = 0;
+				orderItem selected_item = null;
 				System.out.println("Enter menu item ID that you wish to edit\n\n");
 				menuID = sc.nextInt();
 				for(orderItem item : table.getOrder().getOrderItems()) {
 					if(item.getItem().getItemId() == menuID) {
 						found =1;
-						selected_item = item.getItem();
+						selected_item = item;
+						System.out.println("Found order item: "+selected_item.getItem().getMenuName()+" qauntity: "+selected_item.getQuantity());
 						break;
 					}
+					index++;
 				}
 				if(found == 1) {
+					//2 branches, 1: edit quantity 2: delete
+					int newQ = selected_item.getQuantity();
+					System.out.println("Enter new quantity (>0) to change order item quantity\n0: Delete order item\n");
+					newQ = sc.nextInt();
+					if(newQ >=1) {
+						selected_item.setQuantity(newQ);
+						System.out.println("new quantity set to "+newQ+"\n");
+					}
+					else {
+						table.getOrder().getOrderItems().remove(index);
+						System.out.println("Order item removed!\n\n");
+					}
 					
 				}
-				else System.out.println("No such menu item in this order.");
+				else System.out.println("No such menu item in this order.\n\n");
 				break;
 				
 			case 0:
