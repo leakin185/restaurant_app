@@ -6,6 +6,7 @@ import rrpss.Food.Temp;
 
 import java.util.*;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import controller.StaffController;
 import controller.TableController;
 import controller.TableOrderInvoiceController;
@@ -123,21 +124,51 @@ public class RRPSS {
     
     //ui for table options
     public void tableOption() {
-    	int tableID, choice, staffID;
+    	int tableID, choice, staffID, walkIn, walkInPax;
+    	Calendar now;
     	Scanner sc = new Scanner(System.in);
     	StaffController SC = new StaffController();
     	TableOrderInvoiceController TOIC = new TableOrderInvoiceController();
     	//show available tables for walk in customer
-    	//to-do validate entered table id
-    	System.out.println("Enter table number: ");
-    	tableID = sc.nextInt();
-    	while(true) {
-    		System.out.println("Enter staff ID: ");
-        	staffID = sc.nextInt();
-        	if(SC.checkStaff(staffID)) break;
-        	System.out.println("invalid staff ID!\n");
-        	return;
-    	};
+    	//to-do validate entered table i
+    	
+    	System.out.println("New walk-in customer?\n1: yes\n0: no\n");
+    	walkIn = sc.nextInt();
+    	if(walkIn==1) {
+    		now = Calendar.getInstance();
+    		Table table;
+    		System.out.println("Enter pax");
+    		walkInPax = sc.nextInt();
+    		System.out.println("Finding avaliable table...\n");
+    		table = TableController.getAvailableTable(now, walkInPax);
+    		if(table==null) {
+    			System.out.println("Sorry no available table right now\n");
+    			return;
+    		}
+    		else {
+    			tableID = table.getTableNo();
+    			System.out.println("Found available table: \n"+tableID);
+    			while(true) {
+            		System.out.println("Enter staff ID: ");
+                	staffID = sc.nextInt();
+                	if(SC.checkStaff(staffID)) break;
+                	System.out.println("invalid staff ID!\n");
+                	return;
+            	};
+    		}
+    	}
+    	else {
+    		System.out.println("Enter table number: ");
+        	tableID = sc.nextInt();
+        	while(true) {
+        		System.out.println("Enter staff ID: ");
+            	staffID = sc.nextInt();
+            	if(SC.checkStaff(staffID)) break;
+            	System.out.println("invalid staff ID!\n");
+            	return;
+        	};
+    	}
+    	
     	
     	System.out.println("1. place order/add/edit order for table " + tableID + ": ");
     	System.out.println("2. print receipt for table " + tableID + ": ");
