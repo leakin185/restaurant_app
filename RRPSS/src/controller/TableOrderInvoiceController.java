@@ -152,14 +152,14 @@ public class TableOrderInvoiceController {
 					break;
 				
 				case 2:
-					int menuID=-1;
+					int orderItemIndex=-1;
 					int found = 0;
 					int index = 0;
 					orderItem selected_item = null;
-					System.out.println("Enter menu item ID that you wish to edit\n\n");
-					menuID = sc.nextInt();
+					System.out.println("Enter order item ID index that you wish to edit\n");
+					orderItemIndex = sc.nextInt();
 					for(orderItem item : table.getOrder().getOrderItems()) {
-						if(item.getItem().getItemId() == menuID) {
+						if(item.getItemID() == orderItemIndex) {
 							found =1;
 							selected_item = item;
 							System.out.println("Found order item: "+selected_item.getItem().getMenuName()+" qauntity: "+selected_item.getQuantity());
@@ -175,10 +175,14 @@ public class TableOrderInvoiceController {
 						if(newQ >=1) {
 							selected_item.setQuantity(newQ);
 							System.out.println("new quantity set to "+newQ+"\n");
+							order.printOrder(1);
+							System.out.println("\n");
 						}
 						else {
 							table.getOrder().getOrderItems().remove(index);
 							System.out.println("Order item removed!\n\n");
+							order.printOrder(1);
+							System.out.println("\n");
 						}
 						
 					}
