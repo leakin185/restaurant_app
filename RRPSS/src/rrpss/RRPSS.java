@@ -169,7 +169,6 @@ public class RRPSS {
     				System.out.println("Enter member phone: ");
     				phone = m.nextInt();
     				for(Member member : RestaurantDB.members) {
-    					System.out.println(member.getMemberID()+member.getMemberName()+member.getMemberPhone());
     					if(member.getMemberID() == ID && member.getMemberPhone() == phone) {
     						System.out.println("Member found: member type: "+member.getMemberType() + "member discount: " + (100-(member.getMemberDiscount()*100))+"% off");
     						found =1;
