@@ -18,12 +18,14 @@ public class RRPSS {
     private static ArrayList<Table> tables = RestaurantDB.tables;
     private ArrayList<Staff> Staffs = RestaurantDB.staffs;
     private static ArrayList<MenuItem> menu = RestaurantDB.menu;
+    private ArrayList<Member> members = RestaurantDB.members; 
 
 
     RRPSS() {
     	createStaffs(); //initialize arraylist for satffs
         createTables();
         initFoodMenu();
+        initMemberList();
 //		displayTables();
         System.out.println("Restaurant Reservation and Point of Sale System");
 
@@ -71,7 +73,19 @@ public class RRPSS {
 
     }
 
-    public void createTables() {
+    private void initMemberList() {
+		// TODO Auto-generated method stub
+    	ArrayList<Member> members = new ArrayList<Member>();
+    	members.add(new Member(1, "Alice", 11111111, "silver", 0.9));
+    	members.add(new Member(2, "Bob", 22222222, "gold", 0.8));
+    	members.add(new Member(3, "Chad", 33333333, "Platinum", 0.7));
+    	members.add(new Member(4, "Dick", 44444444, "Platinum", 0.7));
+    	
+    	RestaurantDB.members = members;
+		
+	}
+
+	public void createTables() {
 
   
 
@@ -127,7 +141,7 @@ public class RRPSS {
         	System.out.println("invalid staff ID!");
     	};
     	
-    	System.out.println("1. place order/add order for table " + tableID + ": ");
+    	System.out.println("1. place order/add/edit order for table " + tableID + ": ");
     	System.out.println("2. print receipt for table " + tableID + ": ");
     	System.out.println("3. print order for table " + tableID + ": ");
     	System.out.println("Enter 0 to return");
@@ -139,12 +153,31 @@ public class RRPSS {
     			break;
     			
     		case 2:
-    			boolean discount = false;
-    			String c;
-    			System.out.println("Is customer a member? Y/N");
-    			//add logic to get membership 
-    			c = sc.next();
-    			if(c == "Y") discount = true;
+    			double discount = 1;
+    			int c;
+    			System.out.println("Is customer a member?\n1: yes\n0: no\n");
+    			c = sc.nextInt();
+    			if(c == 1) {
+    				int ID = -1;
+    				int phone = -1;
+    				Scanner m = new Scanner(System.in);
+    				int found = 0;
+    				System.out.println("Enter member ID: ");
+    				ID = m.nextInt();
+    				System.out.println("Enter member phone: ");
+    				phone = m.nextInt();
+    				for(Member member : RestaurantDB.members) {
+    					System.out.println(member.getMemberID()+member.getMemberName()+member.getMemberPhone());
+    					if(member.getMemberID() == ID && member.getMemberPhone() == phone) {
+    						System.out.println("Member found: member type: "+member.getMemberType() + "member discount: " + (100-(member.getMemberDiscount()*100))+"% off");
+    						found =1;
+    						discount = member.getMemberDiscount();
+    						break;
+    					}
+    				}
+    				if (found == 0) System.out.println("Cannot find this member, proceeding without discount.");
+    				
+    			}
     			Invoice invoice = TOIC.setInvoiceToTable(discount, tableID);
     			
     			if(invoice == null ) break;

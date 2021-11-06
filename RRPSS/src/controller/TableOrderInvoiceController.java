@@ -39,25 +39,21 @@ public class TableOrderInvoiceController {
 			System.out.println("No order yet! ");
 			System.out.println(" ");
 			int pax = 0;
-			Order order = null;
+			Order order = new Order(staffID, tableID, pax);
 			Scanner sc = new Scanner(System.in);
 			System.out.println("How many pax: ");
 			System.out.println(" ");
 			pax = sc.nextInt();
-			// print the menu (YF)
-			// for(Food item : RestaurantDB.menu) {
-			// FoodMenuController.printFood(item);
-			// }
 			System.out.println("menu items count: "+RestaurantDB.menu.size());
 			System.out.println(" ");
 			// loop to add order
 			int c;
-			System.out.println("1. add order item\n0. stop");
+			System.out.println("1. add menu item\n0. stop");
 			c = sc.nextInt();
 			while (c == 1) {
 				while (true) {
 					System.out.println(" ");
-					System.out.println("Enter order item ID: \n0 to go back: ");
+					System.out.println("Enter menu item ID: \n0 to go back: ");
 					int id = sc.nextInt();
 					MenuItem selected_item = null;
 					if (id == 0)
@@ -67,7 +63,7 @@ public class TableOrderInvoiceController {
 						if (item.getItemId() == id) {
 							selected_item = item;
 							System.out.println(" ");
-							System.out.println("item name: "+selected_item.getDesc());
+							System.out.println("item name: "+selected_item.getMenuName());
 							//check alacarte or pakcage
 							if(item instanceof Food) System.out.println("Type: Alacarte");
 							if(item instanceof PromotionalPackages) System.out.println("Type: Promotional Package");
@@ -82,7 +78,6 @@ public class TableOrderInvoiceController {
 					else {
 						// add item into order
 						int quantity = 0;
-						order = new Order(staffID, tableID, pax);
 						System.out.println("Enter quantity");
 						quantity = sc.nextInt();
 						if(selected_item instanceof Food) 
@@ -103,18 +98,91 @@ public class TableOrderInvoiceController {
 				System.out.println(" ");
 			}
 			return true;
-		} else {
-			// if order exist, add item
-			System.out.println("Chose menu item to add");
-			System.out.println(" ");
+		} 
+		// if order exist, add item
+		else {
+			Scanner sc = new Scanner(System.in);
+			int c = 1;
+			System.out.println("1: Add item to order\n2: edit order item\n0: go back\n\n");
+			c = sc.nextInt();
+			//2 branch: 1 add item, 2 edit item
+			Order order = TableController.getTableFromTableNo(tableID).getOrder();
+			switch(c) {
+			case 1:
+				System.out.println("Chose menu item to add");
+				System.out.println(" ");
+				while (true) {
+					System.out.println(" ");
+					System.out.println("Enter menu item ID: \n0 to go back: ");
+					int id = sc.nextInt();
+					MenuItem selected_item = null;
+					if (id == 0)
+						break;
+					// check if ID valid and retrieve item
+					for (MenuItem item : RestaurantDB.menu) {
+						if (item.getItemId() == id) {
+							selected_item = item;
+							System.out.println(" ");
+							System.out.println("item name: "+selected_item.getMenuName());
+							//check alacarte or pakcage
+							if(item instanceof Food) System.out.println("Type: Alacarte");
+							if(item instanceof PromotionalPackages) System.out.println("Type: Promotional Package");
+							System.out.println(" ");
+							break;
+						}
+					}
+					if (selected_item == null) {
+						System.out.println("Invalid ID");
+						System.out.println(" ");
+					}
+					else {
+						// add item into order
+						int quantity = 0;
+						System.out.println("Enter quantity");
+						quantity = sc.nextInt();
+						if(selected_item instanceof Food) 
+							order = order.addOrderItem(order, selected_item, quantity);
+						if(selected_item instanceof PromotionalPackages)
+							order = order.addOrderItem(order, (PromotionalPackages)selected_item, quantity);
+						table.setOrder(order);
+						
+					}
+				}
+				break;
 			
-			
+			case 2:
+				int menuID=-1;
+				int found = 0;
+				MenuItem selected_item = null;
+				System.out.println("Enter menu item ID that you wish to edit\n\n");
+				menuID = sc.nextInt();
+				for(orderItem item : table.getOrder().getOrderItems()) {
+					if(item.getItem().getItemId() == menuID) {
+						found =1;
+						selected_item = item.getItem();
+						break;
+					}
+				}
+				if(found == 1) {
+					
+				}
+				else System.out.println("No such menu item in this order.");
+				break;
+				
+			case 0:
+				return false;
+				
+			default:
+				break;
+			}
+			System.out.println("1: Add item to order\n2: edit order item\n0: go back\n\n");
+			c = sc.nextInt();
 		}
 
 		return false;
 	}
 
-	public Invoice setInvoiceToTable(boolean discount, int tableID) {
+	public Invoice setInvoiceToTable(double discount, int tableID) {
 		Table table = TableController.getTableFromTableNo(tableID);
 
 		if (table.getOrder() == null) {
@@ -136,6 +204,7 @@ public class TableOrderInvoiceController {
 		ArrayList<PromotionalPackages> promotionalPackages = order.getPromotionalPackages();
 
 		ArrayList<orderItem> orderItems = order.getOrderItems();
+
 
 		for (int i = 0; i < orderItems.size(); i++) {
 			RestaurantDB.transactions

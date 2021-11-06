@@ -11,48 +11,61 @@ import rrpss.Transaction;
 
 public class ReportUI {
 
-	private static ArrayList<Transaction> transactions = RestaurantDB.transactions;
+    private static ArrayList<Transaction> transactions = RestaurantDB.transactions;
 
-	public static void showReportOptions() {
-		String startDate = "";
-		String endDate = "";
-		Scanner sc = new Scanner(System.in); // Create a Scanner object
-		Date startDateObj = null;
-		Date endDateObj = null;
-		System.out.println("Enter the start date (DD/MM/YYYY): ");
+    public static void showReportOptions() {
+        String startDate = "";
+        String endDate = "";
+        Scanner sc = new Scanner(System.in); // Create a Scanner object
+        Date startDateObj = null;
+        Date endDateObj = null;
+        System.out.println("Enter the start date (DD/MM/YYYY): ");
 
-		if (sc.hasNextLine()) {
+        if (sc.hasNextLine()) {
 
-			startDate = sc.nextLine();
-		}
+            startDate = sc.nextLine();
+        }
 
-		System.out.println("Enter the end date: (DD/MM/YYYY)");
+        System.out.println("Enter the end date: (DD/MM/YYYY)");
 
-		if (sc.hasNextLine()) {
-			endDate = sc.nextLine();
-		}
+        if (sc.hasNextLine()) {
+            endDate = sc.nextLine();
+        }
 
-		try {
-			startDateObj = new SimpleDateFormat("dd/MM/yyyy").parse(startDate);
-			endDateObj = new SimpleDateFormat("dd/MM/yyyy").parse(endDate);
+        try {
+            startDateObj = new SimpleDateFormat("dd/MM/yyyy").parse(startDate);
+            endDateObj = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").parse(endDate + " 23:59:59");
 
-		}
+        } catch (Exception e) {
+            System.out.println("Unable to retrieve transactions. Please enter a valid date format e.g 31/12/2021");
+        }
 
-		catch (Exception e) {
-			System.out.println("Unable to retrieve transactions. Please enter a valid date format e.g 31/12/2021");
-		}
 
-		for (int i = 0; i < transactions.size(); i++) {
+        double alacartProfit = 0.0;
+        double promotionalPackageProfit  = 0.0;
 
-			if (transactions.get(i).getDate().equals(startDateObj) || transactions.get(i).getDate().equals(endDateObj)
-					|| (transactions.get(i).getDate().before(endDateObj)
-							&& transactions.get(i).getDate().after(startDateObj))) {
 
-				System.out.println(transactions.get(i).getDate() + "$" + transactions.get(i).getAmount());
+        for (int i = 0; i < transactions.size(); i++) {
 
-			}
 
-		}
+            if (transactions.get(i).getDate().equals(startDateObj) || transactions.get(i).getDate().equals(endDateObj)
+                    || (transactions.get(i).getDate().before(endDateObj)
+                    && transactions.get(i).getDate().after(startDateObj))) {
 
-	}
+                System.out.println(transactions.get(i).getDate() + "\t" + transactions.get(i).getType() + "\t" + transactions.get(i).getName() + "\t$" + transactions.get(i).getAmount());
+                if(transactions.get(i).getType() == "Alacarte")
+                    alacartProfit+=transactions.get(i).getAmount();
+                else
+                    promotionalPackageProfit+=transactions.get(i).getAmount();
+
+            }
+
+        }
+
+
+        System.out.println("\nRevenue earned for Alarcarte: " + alacartProfit);
+        System.out.println("Revenue earned for Promotional Items: " + promotionalPackageProfit);
+        System.out.println("Total Revenue earned during this period: " + alacartProfit+promotionalPackageProfit);
+
+    }
 }

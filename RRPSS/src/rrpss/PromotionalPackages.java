@@ -23,19 +23,19 @@ public class PromotionalPackages extends MenuItem {
 
     public void addToPromotionSet(ArrayList<MenuItem> menu) {
         Scanner sc = new Scanner(System.in);
-        int i = 1;
+        int i = 0;
         System.out.println("Select food to be added to the Promotion Package: ");
         for (MenuItem menuItem : menu) {
             if (menuItem instanceof Food) {
-                System.out.println(i + ": " + menuItem.getMenuName());
+                System.out.println(i+1 + ": " + menuItem.getMenuName());
                 i++;
             }
         }
         
         int selection = sc.nextInt();
         try { 
-            if (menu.get(selection) instanceof Food) {
-                Food foodSelection = (Food) menu.get(selection);
+            if (menu.get(selection-1) instanceof Food) {
+                Food foodSelection = (Food) menu.get(selection-1);
                 this.promotionSet.add(foodSelection);
                 System.out.println(foodSelection.getMenuName() + "added to Promotional Package.");
             }

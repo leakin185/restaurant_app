@@ -2,11 +2,13 @@ package ui;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import controller.TableController;
+
 import database.RestaurantDB;
 import rrpss.*;
 import java.util.Calendar;
 import controller.ReservationController;
+
+import controller.TableController;
 //need to import table controller
 
 public class ReservationUI {
@@ -95,11 +97,11 @@ public class ReservationUI {
         }
         while(!contactIntCheck || !eightDigitCheck);
 
-        if(ReservationController.getAvailableTable(dateTime,paxSize) == null){
+        if(TableController.getAvailableTable(dateTime,paxSize) == null){
             System.out.println("No Table is available");
         }
         else{
-            table = ReservationController.getAvailableTable(dateTime,paxSize);
+            table = TableController.getAvailableTable(dateTime,paxSize);
             ReservationController.createReservation(table, dateTime,paxSize, customerContact,customerName);
             System.out.println("Reservation is successfully made!");
             System.out.println("Customer Name " + customerName);
@@ -114,6 +116,9 @@ public class ReservationUI {
         ArrayList<Reservation> reservations = RestaurantDB.reservations;
         ReservationController.removeExpiredReservations(reservations);
         int i = 1;
+        if(reservations.size() == 0 ){
+            System.out.println("No reservations have been made yet!");
+        }
         for (Reservation reservation : reservations) {
             System.out.println(i + ") Reservation ID:  " + reservation.getReservationID());
             System.out.println("Customer Name " + reservation.getCustomerName());
