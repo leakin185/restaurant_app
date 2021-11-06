@@ -36,8 +36,6 @@ public class TableOrderInvoiceController {
 		Table table = TableController.getTableFromTableNo(tableID);
 		// if order for this table is empty
 		if (table.getOrder() == null) {
-			System.out.println("No order yet! ");
-			System.out.println(" ");
 			int pax = 0;
 			Order order = new Order(staffID, tableID, pax);
 			Scanner sc = new Scanner(System.in);
@@ -146,6 +144,8 @@ public class TableOrderInvoiceController {
 							if(selected_item instanceof PromotionalPackages)
 								order = order.addOrderItem(order, (PromotionalPackages)selected_item, quantity);
 							table.setOrder(order);
+							System.out.println("Item added!");
+							order.printOrder();
 							
 						}
 					}
@@ -157,6 +157,7 @@ public class TableOrderInvoiceController {
 					int index = 0;
 					orderItem selected_item = null;
 					System.out.println("Enter order item ID index that you wish to edit\n");
+					order.printOrder(1);
 					orderItemIndex = sc.nextInt();
 					for(orderItem item : table.getOrder().getOrderItems()) {
 						if(item.getItemID() == orderItemIndex) {
