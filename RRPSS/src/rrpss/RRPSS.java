@@ -135,7 +135,8 @@ public class RRPSS {
     		System.out.println("Enter staff ID: ");
         	staffID = sc.nextInt();
         	if(SC.checkStaff(staffID)) break;
-        	System.out.println("invalid staff ID!");
+        	System.out.println("invalid staff ID!\n");
+        	return;
     	};
     	
     	System.out.println("1. place order/add/edit order for table " + tableID + ": ");
