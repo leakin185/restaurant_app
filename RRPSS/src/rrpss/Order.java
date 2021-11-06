@@ -140,10 +140,10 @@ public class Order {
 	public void printOrder() {
 		for(orderItem i : this.orderList) {
 			if(i.getIsPromotion())
-				System.out.println(i.getQuantity()+ "\t" +
+				System.out.println(i.getQuantity()+ " x\t" +
 					i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Promotion");
 			else
-				System.out.println(i.getQuantity()+ "\t" +
+				System.out.println(i.getQuantity()+ " x\t" +
 						i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte");
 		}
 	}
