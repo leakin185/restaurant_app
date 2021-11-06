@@ -72,6 +72,7 @@ public class FoodMenuUI {
 		ArrayList<MenuItem> foodMenu = FoodMenuController.getRestaurantFoodMenu();
 
 		int index = 1;
+		/*
 		System.out.println("\nList of Menu Items:");
 		for (MenuItem menuItem : foodMenu)
 			if (menuItem instanceof Food) {
@@ -79,6 +80,26 @@ public class FoodMenuUI {
 			}
 			else if (menuItem instanceof PromotionalPackages){
 				System.out.println("(" + index++ + ") " + menuItem.getMenuName() + " - Promotional Package");
+			}
+		*/
+		System.out.println("\nList of Menu Items:");
+		System.out.println("\nALACARTE MENU");
+		for (MenuItem menuItem : foodMenu)
+			if (menuItem instanceof Food) {
+				System.out.println("(" + index++ + ") " + menuItem.getMenuName());
+			}
+			else {
+				index++;
+			}
+		System.out.println("-------------------------------------");
+		System.out.println("\nPROMOTION MENU");
+		index = 1;
+		for (MenuItem menuItem : foodMenu)
+			if (menuItem instanceof PromotionalPackages) {
+				System.out.println("(" + index++ + ") " + menuItem.getMenuName());
+			}
+			else {
+				index++;
 			}
 		
 		System.out.println("(-1) Go Back");
