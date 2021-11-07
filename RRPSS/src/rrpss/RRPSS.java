@@ -148,6 +148,7 @@ public class RRPSS {
     		else {
     			tableID = table.getTableNo();
     			System.out.println("Found available table: \n"+tableID);
+    			table.setUnavailable();
     			while(true) {
             		System.out.println("Enter staff ID: ");
                 	staffID = sc.nextInt();
@@ -215,6 +216,12 @@ public class RRPSS {
     			if(invoice == null ) break;
     			TableController.getTableFromTableNo(tableID).getinvoice().print();
     			TableOrderInvoiceController.insertTransactionForTableOrder(invoice);
+    			//reset table
+    			TableController.getTableFromTableNo(tableID).setAvailable();
+    			TableController.getTableFromTableNo(tableID).setInvoiceToNull();
+    			TableController.getTableFromTableNo(tableID).setOrderToNull();
+    			
+    			
 
     			
     			break;
