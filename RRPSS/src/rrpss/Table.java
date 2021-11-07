@@ -24,10 +24,18 @@ public class Table {
         this.order = order;
 
     }
+    public void setOrderToNull() {
+        this.order = null;
+
+    }
 
     public void setInvoice(Invoice invoice) {
 
         this.invoice = invoice;
+
+    }
+    public void setInvoiceToNull() {
+        this.invoice = null;
 
     }
 
