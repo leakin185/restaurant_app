@@ -121,7 +121,7 @@ public class TableOrderInvoiceController {
 					System.out.println(" ");
 					while (true) {
 						System.out.println(" ");
-						System.out.println("Enter menu item ID: \nOther keys to go back: ");
+						System.out.println("Enter menu item ID: \nOther numeric keys to go back: ");
 						int id = sc.nextInt();
 						MenuItem selected_item = null;
 						if (id != 1)
