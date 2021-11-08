@@ -115,7 +115,7 @@ public class Order {
 	 * Removes an orderItem from this order's arraylist of orderItems
 	 * @param order
 	 * @param ID
-	 * @return
+	 * @return the updated order
 	 */
 	public Order removeOrderItem(Order order, int ID){
 		Order temp = order;
@@ -134,6 +134,12 @@ public class Order {
 	}
 	
 	//remove promotion package
+	/**
+	 * Removes an promotionalPackage from this order's arraylist of promotionalPackage
+	 * @param order
+	 * @param pack
+	 * @return
+	 */
 	public Order removeOrderItem(Order order, PromotionalPackages pack){
 		Order temp = order;
 		ArrayList<Integer> packList = new ArrayList<Integer>();
@@ -158,39 +164,66 @@ public class Order {
 		}
 		return temp;
 	}
-	
+	/**
+	 * Returns the ID of the order
+	 * @return the ID of the order
+	 */
 	public int getOrderID() {
 		return orderID;
 	}
-	
+	/**
+	 * Returns the table ID of the order
+	 * @return the table ID of the order
+	 */
 	public int getTable() {
 		return tableID;
 	}
-	
+	/**
+	 * Returns the staff ID of the order's handling staff
+	 * @return the staff ID of the order's handling staff
+	 */
 	public int getHandlingStaff() {
 		return handlingStaff;
 	}
-	
+	/**
+	 * Returns whether the order should enjoy a discount
+	 * @return whether the order should enjoy a discount
+	 */
 	public boolean getDiscount() {
 		return discount;
 	}
-	
+	/**
+	 * Returns total price of the order
+	 * @return total price of the order
+	 */
 	public double getTotalPrice() {
 		return totalPrice;
 	}
+	/**
+	 * Returns how many pax 
+	 * @return how many pax 
+	 */
 	public int getPax() {
 		return pax;
 	}
-	
+	/**
+	 * Returns the arraylist of orderItems in this order
+	 * @return the arraylist of orderItems in this order
+	 */
 	public ArrayList<orderItem> getOrderItems(){
 		return this.orderList;
 	}
 
-	
+	/**
+	 * Returns the arraylist of promotionalPackages in this order
+	 * @return the arraylist of promotionalPackages in this order
+	 */
 	public ArrayList<PromotionalPackages>  getPromotionalPackages(){
 		return this.promotionalPackages;
 	}
-	
+	/**
+	 * prints out the details of the order without the index
+	 */
 	public void printOrder() {
 		System.out.println("qty:  \titem  \t\tprice:  \tAla/Promo");
 		for(orderItem i : this.orderList) {
@@ -202,7 +235,9 @@ public class Order {
 						i.getItem().getMenuName() + "   \t"+ i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte"+"\t");
 		}
 	}
-	
+	/**
+	 * prints out the details of the order with the index
+	 */
 	public void printOrder(int x) {
 		System.out.println("index:  qty:  \titem  \tprice:  \tAla/Promo");
 		for(orderItem i : this.orderList) {
