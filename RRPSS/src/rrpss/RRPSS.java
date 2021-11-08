@@ -147,7 +147,7 @@ public class RRPSS {
     		}
     		else {
     			tableID = table.getTableNo();
-    			System.out.println("Found available table: \n"+tableID);
+    			System.out.println("Found available table, assigning table: \n"+tableID);
     			table.setUnavailable();
     			while(true) {
             		System.out.println("Enter staff ID: ");
@@ -159,8 +159,12 @@ public class RRPSS {
     		}
     	}
     	else {
-    		System.out.println("Enter table number: ");
+    		System.out.println("Enter table number: \n");
         	tableID = sc.nextInt();
+        	if(TableController.getTableFromTableNo(tableID).getTableAvailability()) {
+        		System.out.println("This table is not assigned yet, returning \n");
+        		return;
+        	}
         	while(true) {
         		System.out.println("Enter staff ID: ");
             	staffID = sc.nextInt();
