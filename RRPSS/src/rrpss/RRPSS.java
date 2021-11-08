@@ -70,7 +70,9 @@ public class RRPSS {
 
 
     }
-
+    /**
+     * Initialize an arraylist of member objects with dummy data
+     */
     private void initMemberList() {
 		// TODO Auto-generated method stub
     	ArrayList<Member> members = new ArrayList<Member>();
@@ -110,12 +112,18 @@ public class RRPSS {
     }
 
     //Initialise Staffs
+    /**
+     * Initialize an arraylist of staff objects with dummy data
+     */
     public void createStaffs(){
     	StaffController SC = new StaffController();
     	RestaurantDB.staffs = SC.initStaffs();
     }
     
     //ui for staffs option
+    /**
+     * user interface with option to display the list of staff information
+     */
     public void staffsOption() {
     	 StaffController SC= new StaffController();
     	 SC.displayStaffs();
@@ -123,6 +131,9 @@ public class RRPSS {
     }
     
     //ui for table options
+    /**
+     * user interface for table options: 1. place order/add/edit order for table 2. print receipt for table 3. print order for table
+     */
     public void tableOption() {
     	int tableID, choice, staffID, walkIn, walkInPax;
     	Calendar now;
