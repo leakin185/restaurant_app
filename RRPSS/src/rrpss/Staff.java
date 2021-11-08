@@ -64,7 +64,7 @@ public class Staff {
 	 * function to remove a staff from the data base
 	 * @param staffs
 	 * @param staffID
-	 * @return
+	 * @return index of the staff's psotion in the array
 	 */
 	public int removeStaff(Staff[] staffs, int staffID) {
 		for(int i = 0; i<staffs.length; i++) {
@@ -75,28 +75,28 @@ public class Staff {
 	}
 	/**
 	 * return staffID of staff
-	 * @return
+	 * @return staffID of staff
 	 */
 	public int getID() {
 		return staffID;
 	}
 	/**
 	 * return gender of staff
-	 * @return
+	 * @return gender of staff
 	 */
 	public String getGender() {
 		return gender.toString();
 	}
 	/**
 	 * return name of staff
-	 * @return
+	 * @return name of staff
 	 */
 	public String getName() {
 		return name;
 	}
 	/**
 	 * return job title of staff
-	 * @return
+	 * @return job title of staff
 	 */
 	public String getJobTitle() {
 		return jobTitle.toString();
