@@ -43,35 +43,35 @@ public class Member {
 	}
 	/**
 	 * return the ID of a member
-	 * @return
+	 * @return the ID of a member
 	 */
 	public int getMemberID(){
 		return ID;
 	}
 	/**
 	 * return the name of a member
-	 * @return
+	 * @return the name of a member
 	 */
 	public String getMemberName(){
 		return name;
 	}
 	/**
 	 * return the phone number of a member
-	 * @return
+	 * @return the phone number of a member
 	 */
 	public int getMemberPhone(){
 		return phone;
 	}
 	/**
 	 * return the membership type of a member
-	 * @return
+	 * @return the membership type of a member
 	 */
 	public String getMemberType(){
 		return memberType;
 	}
 	/**
 	 * return the discount of a member
-	 * @return
+	 * @return the discount of a member
 	 */
 	public double getMemberDiscount(){
 		return discount;
