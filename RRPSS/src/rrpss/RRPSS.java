@@ -132,7 +132,7 @@ public class RRPSS {
     	//show available tables for walk in customer
     	//to-do validate entered table i
     	
-    	System.out.println("New walk-in customer?\n1: yes\nOther keys: no\n");
+    	System.out.println("New walk-in customer?\n1: yes\nOther numeric keys: no\n");
     	walkIn = sc.nextInt();
     	if(walkIn==1) {
     		now = Calendar.getInstance();
@@ -198,7 +198,7 @@ public class RRPSS {
     				System.out.println("No order yet!\n");
     				break;
     			}
-    			System.out.println("Is customer a member?\n1: yes\nOther keys: no\n");
+    			System.out.println("Is customer a member?\n1: yes\nOther numeric keys: no\n");
     			c = sc.nextInt();
     			if(c == 1) {
     				int ID = -1;
