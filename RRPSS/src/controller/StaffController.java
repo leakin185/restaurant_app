@@ -30,13 +30,17 @@ public class StaffController {
 	
 	public void displayStaffs() {
 		Scanner sc = new Scanner(System.in);
+		System.out.println();
     	System.out.println("Press 1 to display staff information: ");
-    	System.out.println("Press other keys to quit: ");
+    	System.out.println("Press other keys to quit: \n");
     	int so = sc.nextInt();
     	if(so == 1) {
+    		System.out.println("staff ID:\tname:\tgender\tjob title:");
     		for(Staff s : RestaurantDB.staffs) {
-    			 System.out.println("\t" + s.getID()+" "+s.getName()+" "+s.getGender()+" "+s.getJobTitle());
+    			
+    			 System.out.println(s.getID()+"\t\t"+s.getName()+"\t"+s.getGender()+"\t"+s.getJobTitle());
     		}
+    		System.out.println();
     	}
     	else return;
 	
