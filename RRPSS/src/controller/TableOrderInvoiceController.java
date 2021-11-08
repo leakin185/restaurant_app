@@ -39,9 +39,13 @@ public class TableOrderInvoiceController {
 			int pax = 0;
 			Order order = new Order(staffID, tableID, pax);
 			Scanner sc = new Scanner(System.in);
-			System.out.println("How many pax: ");
-			System.out.println(" ");
-			pax = sc.nextInt();
+			while(true) {
+				System.out.println("How many pax: ");
+				pax = sc.nextInt();
+				if(pax>0) break;
+				System.out.println("Pax must be more than 0.");
+			}
+			
 			System.out.println("menu items count: "+RestaurantDB.menu.size());
 			System.out.println(" ");
 			// loop to add order
@@ -76,8 +80,13 @@ public class TableOrderInvoiceController {
 					else {
 						// add item into order
 						int quantity = 0;
-						System.out.println("Enter quantity");
-						quantity = sc.nextInt();
+						while(true) {
+							System.out.println("Enter quantity");
+							quantity = sc.nextInt();
+							if(quantity>0) break;
+							System.out.println("Quantity must be more than 0.");
+						}
+						
 						if(selected_item instanceof Food) 
 							order = order.addOrderItem(order, selected_item, quantity);
 						if(selected_item instanceof PromotionalPackages)
@@ -137,8 +146,13 @@ public class TableOrderInvoiceController {
 						else {
 							// add item into order
 							int quantity = 0;
-							System.out.println("Enter quantity");
-							quantity = sc.nextInt();
+							while(true) {
+								System.out.println("Enter quantity");
+								quantity = sc.nextInt();
+								if(quantity>0) break;
+								System.out.println("Quantity must be more than 0");
+							}
+							
 							if(selected_item instanceof Food) 
 								order = order.addOrderItem(order, selected_item, quantity);
 							if(selected_item instanceof PromotionalPackages)
@@ -171,8 +185,13 @@ public class TableOrderInvoiceController {
 					if(found == 1) {
 						//2 branches, 1: edit quantity 2: delete
 						int newQ = selected_item.getQuantity();
-						System.out.println("Enter new quantity (>0) to change order item quantity\n0: Delete order item\n");
-						newQ = sc.nextInt();
+						while(true) {
+							System.out.println("Enter new quantity (>0) to change order item quantity\n0: Delete order item\n");
+							newQ = sc.nextInt();
+							if(newQ>=0) break;
+							System.out.println("Input cannot be negative");
+						}
+						
 						if(newQ >=1) {
 							selected_item.setQuantity(newQ);
 							System.out.println("new quantity set to "+newQ+"\n");
