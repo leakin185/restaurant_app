@@ -21,7 +21,10 @@ import rrpss.Transaction;
 import rrpss.Food;
 
 public class TableOrderInvoiceController {
-
+	/**
+	 * prints out the order details for a table 
+	 * @param tableID
+	 */
 	public void printCurrentOrderForTable(int tableID) {
 
 		Table table = TableController.getTableFromTableNo(tableID);
@@ -31,7 +34,12 @@ public class TableOrderInvoiceController {
 		order.printOrder();
 
 	}
-
+	/**
+	 * assign a order/ edit the order for a table 
+	 * @param staffID
+	 * @param tableID
+	 * @return whether the activity was done successfully
+	 */
 	public boolean setOrderToTable(int staffID, int tableID) {
 		Table table = TableController.getTableFromTableNo(tableID);
 		// if order for this table is empty
@@ -222,7 +230,12 @@ public class TableOrderInvoiceController {
 
 		return false;
 	}
-
+	/**
+	 * assign an invoice object to the table and return the invoice created
+	 * @param discount
+	 * @param tableID
+	 * @return invoice that was created for this table
+	 */
 	public Invoice setInvoiceToTable(double discount, int tableID) {
 		Table table = TableController.getTableFromTableNo(tableID);
 
@@ -237,7 +250,7 @@ public class TableOrderInvoiceController {
 		return invoice;
 	}
 
-
+	
 	public static void insertTransactionForTableOrder(Invoice invoice) {
 
 		Order order = invoice.getOrder();
