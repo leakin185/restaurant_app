@@ -6,19 +6,56 @@ import java.util.Date;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-
+/**
+ * Represent the entire order of a unique table, 1 order belongs to only 1 table
+ * @author Chew Poshi
+ *
+ */
 public class Order {
+	/**
+	 * ID of the order
+	 */
 	private static int orderID = 1;
+	/**
+	 * date and time for the creation of this order
+	 */
 	private String dateCreated;
+	/**
+	 * ID of the staff who handled this order
+	 */
 	private int handlingStaff;
+	/**
+	 * discount that should be applied based on the member type
+	 */
 	private boolean discount;
+	/**
+	 * An arraylist of orderItem objects that makes up the order
+	 */
 	private ArrayList<orderItem> orderList; 
+	/**
+	 * An arraylist of promorionalPakcages object that this order contains
+	 */
 	private ArrayList<PromotionalPackages> promotionalPackages;
+	/**
+	 * Total price of this order 
+	 */
 	private double totalPrice;
+	/*
+	 * tableID that this order is assigned to
+	 */
 	private int tableID;
+	/**
+	 * number of customer who dined in for this order
+	 */
 	private int pax;
 	
 	//constructor
+	/**
+	 * Constructor for the object
+	 * @param staffID
+	 * @param tableID
+	 * @param pax
+	 */
 	public Order(int staffID, int tableID, int pax) {
 		this.orderID = orderID++;
 		//get current time
@@ -37,6 +74,13 @@ public class Order {
 	}
 	
 	//add alacarte item
+	/**
+	 * Adding new orderItems objects to the arraylist of this order when the order item's type is MenuItem type
+	 * @param order
+	 * @param item
+	 * @param quantity
+	 * @return the updated Order
+	 */
 	public Order addOrderItem(Order order, MenuItem item, int quantity) {
 		Order temp = order; 
 		temp.orderList.add(new orderItem(item, quantity, false));
@@ -44,9 +88,13 @@ public class Order {
 		return temp;
 	}
 	
-
-	
-	//add promotional package item
+	/**
+	 * Adding new orderItems objects to the arraylist of this order when the order item's type is promotionalPackages type
+	 * @param order
+	 * @param item
+	 * @param quantity
+	 * @return the updated Order
+	 */
 	public Order addOrderItem(Order order, PromotionalPackages item, int quantity) {
 			for (int i=0; i<quantity; i++) {
 				promotionalPackages.add(item);
@@ -63,6 +111,12 @@ public class Order {
 			return temp;
 		}
 	//remove alacarte item
+	/**
+	 * Removes an orderItem from this order's arraylist of orderItems
+	 * @param order
+	 * @param ID
+	 * @return
+	 */
 	public Order removeOrderItem(Order order, int ID){
 		Order temp = order;
 		int index = 0;
