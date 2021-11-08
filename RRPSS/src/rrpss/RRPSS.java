@@ -137,8 +137,13 @@ public class RRPSS {
     	if(walkIn==1) {
     		now = Calendar.getInstance();
     		Table table;
-    		System.out.println("Enter pax");
-    		walkInPax = sc.nextInt();
+    		while(true) {
+    			System.out.println("Enter pax");
+        		walkInPax = sc.nextInt();
+        		if(walkInPax>0) break;
+        		System.out.println("pax must be more than 0.");
+    		}
+    		
     		System.out.println("Finding avaliable table...\n");
     		table = TableController.getAvailableTable(now, walkInPax);
     		if(table==null) {
@@ -193,7 +198,7 @@ public class RRPSS {
     				System.out.println("No order yet!\n");
     				break;
     			}
-    			System.out.println("Is customer a member?\n1: yes\n0: no\n");
+    			System.out.println("Is customer a member?\n1: yes\nOther keys: no\n");
     			c = sc.nextInt();
     			if(c == 1) {
     				int ID = -1;
@@ -224,11 +229,11 @@ public class RRPSS {
     			TableController.getTableFromTableNo(tableID).setAvailable();
     			TableController.getTableFromTableNo(tableID).setInvoiceToNull();
     			TableController.getTableFromTableNo(tableID).setOrderToNull();
+    			System.out.println("Clearing table...\nTable is available now.\n");
+    			return;
     			
     			
 
-    			
-    			break;
     		
     		case 3: 
     			if(TableController.getTableFromTableNo(tableID).getOrder()==null) {
