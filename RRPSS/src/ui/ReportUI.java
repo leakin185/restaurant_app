@@ -9,10 +9,26 @@ import database.RestaurantDB;
 import rrpss.Table;
 import rrpss.Transaction;
 
+/**
+ * Represents Report UI where user inputs a start and end date in order to retrieve and print all transactions within the date range.
+ *
+ * @author WangYi
+ * @version 1.0
+ * @since 2021-10-30
+ */
+
 public class ReportUI {
 
     private static ArrayList<Transaction> transactions = RestaurantDB.transactions;
 
+
+    /**
+     * Display two input prompts. User specifies
+     * start date and end date in the following format: DD/MM/YYYY
+     * e.g 11/11/2021
+     *
+     * Upon successful validation of date inputs, transactions within the specified date range are retrieved and printed to console.
+     */
     public static void showReportOptions() {
         String startDate = "";
         String endDate = "";
