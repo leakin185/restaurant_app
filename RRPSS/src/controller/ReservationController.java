@@ -97,20 +97,24 @@ public class ReservationController {
         Calendar expiredDateTime = Calendar.getInstance();
         expiredDateTime.add(Calendar.MINUTE, -1);
         if(reservation.getDateTime().before(expiredDateTime)){
-        	reservations.remove(reservation);
             return -1;
         }
         return 1; 
     }
     public static void removeExpiredReservations(ArrayList<Reservation> reservations){
-    	if(reservations.size() != 0 ){
+
+        List<Reservation> removed = new ArrayList<Reservation>();
+
+        if(reservations.size() != 0 ){
 	        for (Reservation reservation : reservations){
 	            if(checkReservationExpiry(reservation) == -1){
 	            	completedReservation.add(reservation); //add to completed reservation list
-	                reservations.remove(reservation);
+                    removed.add(reservation);
 	            	//completeReservation(reservation.getReservationID());
 	            }
 	        }
-    	}
+            reservations.removeAll(removed);
+
+        }
     }
 }
