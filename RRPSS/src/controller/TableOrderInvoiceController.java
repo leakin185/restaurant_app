@@ -306,13 +306,13 @@ public class TableOrderInvoiceController {
 
 
 		for (int i = 0; i < orderItems.size(); i++) {
-			RestaurantDB.transactions
+			if(orderItems.get(i).getItem() instanceof Food) {
+				for(int j=0; j<orderItems.get(i).getQuantity(); j++) {
+					RestaurantDB.transactions
 					.add(new Transaction(invoice.getDatetime(), "Alacarte", orderItems.get(i).getItem().getPrice(),
 							orderItems.get(i).getQuantity(), orderItems.get(i).getItem().getMenuName()));
-
-			// Transaction(LocalDateTime date, String type, double price, double quantity,
-			// String itemName) {
-
+				}
+			}
 		}
 
 		for (int i = 0; i < promotionalPackages.size(); i++) {
