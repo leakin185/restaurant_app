@@ -56,6 +56,8 @@ public class ReservationUI {
      * Method to create reservation UI
      */
     public static void createReservationUI() {
+    	ArrayList<Reservation> reservations = RestaurantDB.reservations;
+    	ReservationController.removeExpiredReservations(reservations);
         Scanner sc = new Scanner(System.in);
         Table table;
         int paxSize = 0;

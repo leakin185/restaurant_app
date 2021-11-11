@@ -2,7 +2,7 @@ package controller;
 import database.RestaurantDB;
 import rrpss.Reservation;
 import rrpss.Table;
-import java.util.Calendar;
+
 import java.util.*;
 
 /**
@@ -82,12 +82,14 @@ public class ReservationController {
      * @return reservationID of the completed reservation
      */
     public static int completeReservation(int reservationID){
-        for (Reservation reservation : reservations){
-            if (reservation.getReservationID() == reservationID){
-                completedReservation.add(reservation); //add to completed reservation list
-                reservations.remove(reservation);
-                return reservationID;
-            }
+    	if(reservations.size() != 0 ){
+	        for (Reservation reservation : reservations){
+	            if (reservation.getReservationID() == reservationID){
+	                completedReservation.add(reservation); //add to completed reservation list
+	                reservations.remove(reservation);
+	                return reservationID;
+	            }
+	        }
         }
         return -1; //fail to find reservation with input reservationID
     }
@@ -98,21 +100,22 @@ public class ReservationController {
      */
     public static int checkReservationExpiry(Reservation reservation){
         Calendar expiredDateTime = Calendar.getInstance();
-        expiredDateTime.add(Calendar.MINUTE, -15);
+        expiredDateTime.add(Calendar.MINUTE, -1);
         if(reservation.getDateTime().before(expiredDateTime)){
+        	reservations.remove(reservation);
             return -1;
         }
-        return 1;
+        return 1; 
     }
-    /**
-     * Method for removing expired reservation
-     * @param reservations
-     */
     public static void removeExpiredReservations(ArrayList<Reservation> reservations){
-        for (Reservation reservation : reservations){
-            if(checkReservationExpiry(reservation) == -1){
-                completeReservation(reservation.getReservationID());
-            }
-        }
+    	if(reservations.size() != 0 ){
+	        for (Reservation reservation : reservations){
+	            if(checkReservationExpiry(reservation) == -1){
+	            	completedReservation.add(reservation); //add to completed reservation list
+	                reservations.remove(reservation);
+	            	//completeReservation(reservation.getReservationID());
+	            }
+	        }
+    	}
     }
 }
