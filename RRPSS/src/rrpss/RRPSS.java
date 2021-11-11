@@ -14,14 +14,29 @@ import ui.FoodMenuUI;
 import ui.ReportUI;
 import ui.ReservationUI;
 
+/**
+ * Represents the main driver class.
+ * Populates restaurant related data.
+ * A restaurant can have many tables.
+ * A restaurant can have many staffs.
+ * A restaurant can have many menu items.
+ * A restaurant can have many members.
+ *
+ * @author Tjandy Putra
+ * @version 1.0
+ * @since 2021-10-30
+ */
 public class RRPSS {
 
     private static ArrayList<Table> tables = RestaurantDB.tables;
     private ArrayList<Staff> Staffs = RestaurantDB.staffs;
     private static ArrayList<MenuItem> menu = RestaurantDB.menu;
-    private ArrayList<Member> members = RestaurantDB.members; 
+    private ArrayList<Member> members = RestaurantDB.members;
 
-
+	/**
+	 * Creates a new RRPSS object.
+	 * Handles the initialization calls of Table, Staff, MenuItem and Member.
+	 * */
     RRPSS() {
     	createStaffs(); //initialize arraylist for satffs
         createTables();
@@ -71,7 +86,7 @@ public class RRPSS {
 
     }
     /**
-     * Initialize an arraylist of member objects with dummy data
+     * Initialize an arraylist of Member objects with dummy data
      */
     private void initMemberList() {
 		// TODO Auto-generated method stub
@@ -84,7 +99,9 @@ public class RRPSS {
     	RestaurantDB.members = members;
 		
 	}
-
+	/**
+	 * Initialize an arraylist of Table objects with dummy data
+	 */
 	public void createTables() {
 
   
@@ -100,6 +117,9 @@ public class RRPSS {
         }
     }
 
+	/**
+	 * Display all tables
+	 */
     public void displayTables() {
         System.out.println("List of Tables");
 
@@ -111,7 +131,6 @@ public class RRPSS {
 
     }
 
-    //Initialise Staffs
     /**
      * Initialize an arraylist of staff objects with dummy data
      */
@@ -130,7 +149,6 @@ public class RRPSS {
     	
     }
     
-    //ui for table options
     /**
      * user interface for table options: 1. place order/add/edit order for table 2. print receipt for table 3. print order for table
      */
@@ -274,6 +292,9 @@ public class RRPSS {
    	
    }
 
+	/**
+	 * Display a list of options for user to interact with different UIs.
+	 */
     public void displayOptions() {
         System.out.println("Select an option to begin: ");
         System.out.println("1. Show Menu/Promotion interface");
