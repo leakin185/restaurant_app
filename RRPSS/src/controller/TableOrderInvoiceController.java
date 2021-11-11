@@ -207,8 +207,48 @@ public class TableOrderInvoiceController {
 							System.out.println("new quantity set to "+newQ+"\n");
 							order.printOrder(1);
 							System.out.println("\n");
+							if(selected_item.getItem() instanceof PromotionalPackages) {
+								if(newQ > oldQ) {
+									for(int i=0; i<newQ-oldQ; i++) {
+										order.promotionalPackages.add((PromotionalPackages)selected_item.getItem());
+									}
+								}
+								if(oldQ > newQ) {
+									int index2 = oldQ - newQ;
+									while(index2!=0) {
+										int index3 = 0;
+										for(PromotionalPackages p : order.promotionalPackages) {
+											//System.out.println("p: "+p.getItemId()+" selected:"+selected_item.getItem().getItemId());
+											if(p.getItemId() == selected_item.getItem().getItemId()) {
+												order.promotionalPackages.remove(index3);
+												index2--;
+												//System.out.println("removing"+p.getMenuName());
+												break;
+											}
+											index3++;
+										}
+									}
+									
+								}
+							}
 						}
 						else {
+							if(selected_item.getItem() instanceof PromotionalPackages) {
+								int index4;
+								while(oldQ != 0) {
+									index4 = 0;
+									for(PromotionalPackages p : order.promotionalPackages) {
+										if(p.getItemId() == selected_item.getItem().getItemId()) {
+											order.promotionalPackages.remove(index4);
+											oldQ--;
+											break;
+										}
+										index4++;
+									}
+									
+								}
+							}
+							
 							table.getOrder().getOrderItems().remove(index);
 							System.out.println("Order item removed!\n\n");
 							order.printOrder(1);
