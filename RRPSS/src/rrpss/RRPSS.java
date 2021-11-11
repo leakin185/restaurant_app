@@ -135,8 +135,7 @@ public class RRPSS {
      * Initialize an arraylist of staff objects with dummy data
      */
     private void createStaffs(){
-    	StaffController SC = new StaffController();
-    	RestaurantDB.staffs = SC.initStaffs();
+    	RestaurantDB.staffs = StaffController.initStaffs();
     }
     
     //ui for staffs option
@@ -144,8 +143,7 @@ public class RRPSS {
      * user interface with option to display the list of staff information
      */
     private void staffsOption() {
-    	 StaffController SC= new StaffController();
-    	 SC.displayStaffs();
+    	 StaffController.displayStaffs();
     	
     }
     
@@ -157,9 +155,6 @@ public class RRPSS {
     	Calendar now;
     	Scanner sc = new Scanner(System.in);
     	StaffController SC = new StaffController();
-    	TableOrderInvoiceController TOIC = new TableOrderInvoiceController();
-    	//show available tables for walk in customer
-    	//to-do validate entered table i
     	
     	System.out.println("New walk-in customer?\n1: yes\nOther numeric keys: no\n");
     	walkIn = sc.nextInt();
@@ -217,7 +212,7 @@ public class RRPSS {
     	while(choice != 0) {
     		switch(choice) {
     		case 1: 
-    			TOIC.setOrderToTable(staffID,tableID);
+    			TableOrderInvoiceController.setOrderToTable(staffID,tableID);
     			break;
     			
     		case 2:
@@ -249,7 +244,7 @@ public class RRPSS {
     				if (found == 0) System.out.println("Cannot find this member, proceeding without discount.");
     				
     			}
-    			Invoice invoice = TOIC.setInvoiceToTable(discount, tableID);
+    			Invoice invoice = TableOrderInvoiceController.setInvoiceToTable(discount, tableID);
     			
     			if(invoice == null ) break;
     			TableController.getTableFromTableNo(tableID).getinvoice().print();
@@ -270,7 +265,7 @@ public class RRPSS {
     				break;
     			}
     			System.out.println(" ");
-    			TOIC.printCurrentOrderForTable(tableID);
+    			TableOrderInvoiceController.printCurrentOrderForTable(tableID);
     			System.out.println(" ");
     			
     		case 0: 
