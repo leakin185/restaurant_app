@@ -28,9 +28,9 @@ import ui.ReservationUI;
  */
 public class RRPSS {
 
-    private static ArrayList<Table> tables = RestaurantDB.tables;
+    private  ArrayList<Table> tables = RestaurantDB.tables;
     private ArrayList<Staff> Staffs = RestaurantDB.staffs;
-    private static ArrayList<MenuItem> menu = RestaurantDB.menu;
+    private  ArrayList<MenuItem> menu = RestaurantDB.menu;
     private ArrayList<Member> members = RestaurantDB.members;
 
 	/**
