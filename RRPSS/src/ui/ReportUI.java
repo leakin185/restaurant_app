@@ -12,7 +12,7 @@ import rrpss.Transaction;
 /**
  * Represents Report UI where user inputs a start and end date in order to retrieve and print all transactions within the date range.
  *
- * @author WangYi
+ * @author Tjandy Putra
  * @version 1.0
  * @since 2021-10-30
  */
