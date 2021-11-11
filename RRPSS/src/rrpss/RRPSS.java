@@ -102,7 +102,7 @@ public class RRPSS {
 	/**
 	 * Initialize an arraylist of Table objects with dummy data
 	 */
-	public void createTables() {
+	private void createTables() {
 
   
 
@@ -120,7 +120,7 @@ public class RRPSS {
 	/**
 	 * Display all tables
 	 */
-    public void displayTables() {
+    private void displayTables() {
         System.out.println("List of Tables");
 
         for (int i = 0; i < tables.size(); i++) {
@@ -134,7 +134,7 @@ public class RRPSS {
     /**
      * Initialize an arraylist of staff objects with dummy data
      */
-    public void createStaffs(){
+    private void createStaffs(){
     	StaffController SC = new StaffController();
     	RestaurantDB.staffs = SC.initStaffs();
     }
@@ -143,7 +143,7 @@ public class RRPSS {
     /**
      * user interface with option to display the list of staff information
      */
-    public void staffsOption() {
+    private void staffsOption() {
     	 StaffController SC= new StaffController();
     	 SC.displayStaffs();
     	
@@ -152,7 +152,7 @@ public class RRPSS {
     /**
      * user interface for table options: 1. place order/add/edit order for table 2. print receipt for table 3. print order for table
      */
-    public void tableOption() {
+	private void tableOption() {
     	int tableID, choice, staffID, walkIn, walkInPax;
     	Calendar now;
     	Scanner sc = new Scanner(System.in);
@@ -295,7 +295,7 @@ public class RRPSS {
 	/**
 	 * Display a list of options for user to interact with different UIs.
 	 */
-    public void displayOptions() {
+	private void displayOptions() {
         System.out.println("Select an option to begin: ");
         System.out.println("1. Show Menu/Promotion interface");
         System.out.println("2. Show Table options");
@@ -304,8 +304,8 @@ public class RRPSS {
         System.out.println("5. Show Revenue Report interface");
 
     }
-    
-    public static void initFoodMenu(){
+
+	private static void initFoodMenu(){
 		
 		ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
 		
