@@ -5,6 +5,12 @@ import rrpss.Table;
 import java.util.Calendar;
 import java.util.*;
 
+/**
+ *
+ * @author guangshin
+ *
+ */
+
 public class ReservationController {
 
     private static Scanner scanner = new Scanner(System.in);
