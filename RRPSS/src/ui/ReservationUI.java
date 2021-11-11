@@ -10,6 +10,11 @@ import controller.ReservationController;
 
 import controller.TableController;
 //need to import table controller
+/**
+ *
+ * @author guangshin
+ *
+ */
 
 public class ReservationUI {
     private static Scanner scanner = new Scanner(System.in);
