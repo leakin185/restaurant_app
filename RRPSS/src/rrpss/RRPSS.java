@@ -299,7 +299,9 @@ public class RRPSS {
         System.out.println("5. Show Revenue Report interface");
 
     }
-
+	/**
+	 * initialize the menu with dummy menu items
+	 */
 	private static void initFoodMenu(){
 		
 		ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
