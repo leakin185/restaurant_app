@@ -25,7 +25,7 @@ public class TableOrderInvoiceController {
 	 * prints out the order details for a table 
 	 * @param tableID
 	 */
-	public void printCurrentOrderForTable(int tableID) {
+	public static void printCurrentOrderForTable(int tableID) {
 
 		Table table = TableController.getTableFromTableNo(tableID);
 
@@ -40,7 +40,7 @@ public class TableOrderInvoiceController {
 	 * @param tableID
 	 * @return whether the activity was done successfully
 	 */
-	public boolean setOrderToTable(int staffID, int tableID) {
+	public static boolean setOrderToTable(int staffID, int tableID) {
 		Table table = TableController.getTableFromTableNo(tableID);
 		// if order for this table is empty
 		if (table.getOrder() == null) {
@@ -177,6 +177,7 @@ public class TableOrderInvoiceController {
 					int orderItemIndex=-1;
 					int found = 0;
 					int index = 0;
+					int oldQ =0;
 					orderItem selected_item = null;
 					System.out.println("Enter order item ID index that you wish to edit\n");
 					order.printOrder(1);
@@ -184,6 +185,7 @@ public class TableOrderInvoiceController {
 					for(orderItem item : table.getOrder().getOrderItems()) {
 						if(item.getItemID() == orderItemIndex) {
 							found =1;
+							oldQ = item.getQuantity();
 							selected_item = item;
 							System.out.println("Found order item: "+selected_item.getItem().getMenuName()+" qauntity: "+selected_item.getQuantity());
 							break;
@@ -205,8 +207,48 @@ public class TableOrderInvoiceController {
 							System.out.println("new quantity set to "+newQ+"\n");
 							order.printOrder(1);
 							System.out.println("\n");
+							if(selected_item.getItem() instanceof PromotionalPackages) {
+								if(newQ > oldQ) {
+									for(int i=0; i<newQ-oldQ; i++) {
+										order.promotionalPackages.add((PromotionalPackages)selected_item.getItem());
+									}
+								}
+								if(oldQ > newQ) {
+									int index2 = oldQ - newQ;
+									while(index2!=0) {
+										int index3 = 0;
+										for(PromotionalPackages p : order.promotionalPackages) {
+											//System.out.println("p: "+p.getItemId()+" selected:"+selected_item.getItem().getItemId());
+											if(p.getItemId() == selected_item.getItem().getItemId()) {
+												order.promotionalPackages.remove(index3);
+												index2--;
+												//System.out.println("removing"+p.getMenuName());
+												break;
+											}
+											index3++;
+										}
+									}
+									
+								}
+							}
 						}
 						else {
+							if(selected_item.getItem() instanceof PromotionalPackages) {
+								int index4;
+								while(oldQ != 0) {
+									index4 = 0;
+									for(PromotionalPackages p : order.promotionalPackages) {
+										if(p.getItemId() == selected_item.getItem().getItemId()) {
+											order.promotionalPackages.remove(index4);
+											oldQ--;
+											break;
+										}
+										index4++;
+									}
+									
+								}
+							}
+							
 							table.getOrder().getOrderItems().remove(index);
 							System.out.println("Order item removed!\n\n");
 							order.printOrder(1);
@@ -236,7 +278,7 @@ public class TableOrderInvoiceController {
 	 * @param tableID
 	 * @return invoice that was created for this table
 	 */
-	public Invoice setInvoiceToTable(double discount, int tableID) {
+	public static Invoice setInvoiceToTable(double discount, int tableID) {
 		Table table = TableController.getTableFromTableNo(tableID);
 
 		if (table.getOrder() == null) {
@@ -250,7 +292,10 @@ public class TableOrderInvoiceController {
 		return invoice;
 	}
 
-	
+	/**
+	 * inserts the invoice object into the transaction list for sales tracking
+	 * @param invoice
+	 */
 	public static void insertTransactionForTableOrder(Invoice invoice) {
 
 		Order order = invoice.getOrder();

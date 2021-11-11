@@ -11,7 +11,7 @@ public class StaffController {
 		
 	}
 	
-	public ArrayList<Staff> initStaffs() {
+	public static ArrayList<Staff> initStaffs() {
 		ArrayList<Staff> temp = new ArrayList<Staff>();
 		Staff J = new Staff(Staff.Gender.male, "Ben", Staff.JobTitle.manager);
 		temp.add(J);
@@ -28,7 +28,7 @@ public class StaffController {
 	
 	}
 	
-	public void displayStaffs() {
+	public static void displayStaffs() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
     	System.out.println("Press 1 to display staff information: ");
@@ -46,7 +46,7 @@ public class StaffController {
 	
 	}
 	
-	public boolean checkStaff(int ID) {
+	public static boolean checkStaff(int ID) {
 		for(Staff staff : RestaurantDB.staffs) {
 			if(staff.getID() == ID) return true;
 		}

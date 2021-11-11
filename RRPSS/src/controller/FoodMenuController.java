@@ -6,10 +6,23 @@ import java.util.*;
 import rrpss.Food.CourseType;
 import rrpss.Food.Temp;
 
+/**
+ * 
+ * @author tyf
+ *
+ */
 public class FoodMenuController {
 	private static ArrayList<MenuItem> menu = RestaurantDB.menu;
 	private static Scanner sc = new Scanner(System.in);
-
+	/**
+	 * Method for creating a Food Object
+	 * @param foodName
+	 * @param foodDesc
+	 * @param foodPrice
+	 * @param foodId
+	 * @param foodCourseType
+	 * @param foodTemp
+	 */
 	public static void createFood(String foodName, String foodDesc, double foodPrice, int foodId,
 			CourseType foodCourseType, Temp foodTemp) {
 		Food newFood;
@@ -17,7 +30,14 @@ public class FoodMenuController {
 		menu.add((MenuItem) newFood);
 		System.out.println(foodName + " has been added to the menu.");
 	}
-
+	
+	/**
+	 * Method for creating a Promotional Package object
+	 * @param menuName
+	 * @param desc
+	 * @param price
+	 * @param itemId
+	 */
 	public static void createNewPromotionPackage(String menuName, String desc, double price, int itemId) {
 
 		PromotionalPackages newPromo;
@@ -39,7 +59,11 @@ public class FoodMenuController {
 		menu.add((PromotionalPackages) newPromo);
 
 	}
-
+	
+	/**
+	 * Method for removing a Menu Item from the menu
+	 * @param selection
+	 */
 	public static void removeMenuItem(int selection) {
 		try {
 			String removeSelection = menu.get(selection).getMenuName();
@@ -50,6 +74,11 @@ public class FoodMenuController {
 		}
 	}
 
+	/**
+	 * Method for updating the MenuItem name
+	 * @param MenuItem
+	 * @param name
+	 */
 	public static void updateMenuItemName(MenuItem MenuItem, String name) {
 		try {
 			String oldName = MenuItem.getMenuName();
@@ -60,6 +89,11 @@ public class FoodMenuController {
 		}
 	}
 
+	/**
+	 * Method for updating the Menu Item Description
+	 * @param MenuItem
+	 * @param desc
+	 */
 	public static void updateMenuItemDesc(MenuItem MenuItem, String desc) {
 		try {
 			String oldDesc = MenuItem.getMenuName();
@@ -70,6 +104,11 @@ public class FoodMenuController {
 		}
 	}
 
+	/**
+	 * Method for updating the Menu Item Price
+	 * @param menuItem
+	 * @param price
+	 */
 	public static void updateMenuItemPrice(MenuItem menuItem, double price) {
 		double oldPrice;
 		String name;
@@ -84,6 +123,10 @@ public class FoodMenuController {
 		}
 	}
 
+	/**
+	 * Method for printing out Promotional Package details
+	 * @param promotionalPackages
+	 */
 	public static void printPromotionPackage(PromotionalPackages promotionalPackages) {
 		System.out.println();
 		System.out.println("Promotion Package Name: " + promotionalPackages.getMenuName());
@@ -98,6 +141,10 @@ public class FoodMenuController {
 		i++;
 	}
 
+	/**
+	 * Return Menu that contains all Menu Items
+	 * @return
+	 */
 	public static ArrayList<MenuItem> getRestaurantFoodMenu() {
 		return menu;
 	}
@@ -116,6 +163,11 @@ public class FoodMenuController {
 		System.out.println("Food Temp: " + food.getTemp());
 	}
 
+	/**
+	 * Method for updating Food COurse Type
+	 * @param menuItem
+	 * @param foodCourseType
+	 */
 	public static void updateFoodCourseType(MenuItem menuItem, CourseType foodCourseType) {
 
 		Food food = (Food) menuItem;
@@ -127,6 +179,11 @@ public class FoodMenuController {
 				"\nCourse Type of " + menuName + " has been updated from " + prevCourseType + " to " + foodCourseType);
 	}
 
+	/**
+	 * Method for updating Food Temperature
+	 * @param menuItem
+	 * @param foodTemp
+	 */
 	public static void updateFoodTemp(MenuItem menuItem, Temp foodTemp) {
 
 		Food food = (Food) menuItem;

@@ -35,7 +35,7 @@ public class Order {
 	/**
 	 * An arraylist of promorionalPakcages object that this order contains
 	 */
-	private ArrayList<PromotionalPackages> promotionalPackages;
+	public ArrayList<PromotionalPackages> promotionalPackages;
 	/**
 	 * Total price of this order 
 	 */
