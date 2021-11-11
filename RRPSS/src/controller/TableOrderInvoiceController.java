@@ -292,7 +292,10 @@ public class TableOrderInvoiceController {
 		return invoice;
 	}
 
-	
+	/**
+	 * inserts the invoice object into the transaction list for sales tracking
+	 * @param invoice
+	 */
 	public static void insertTransactionForTableOrder(Invoice invoice) {
 
 		Order order = invoice.getOrder();
