@@ -177,6 +177,7 @@ public class TableOrderInvoiceController {
 					int orderItemIndex=-1;
 					int found = 0;
 					int index = 0;
+					int oldQ =0;
 					orderItem selected_item = null;
 					System.out.println("Enter order item ID index that you wish to edit\n");
 					order.printOrder(1);
@@ -184,6 +185,7 @@ public class TableOrderInvoiceController {
 					for(orderItem item : table.getOrder().getOrderItems()) {
 						if(item.getItemID() == orderItemIndex) {
 							found =1;
+							oldQ = item.getQuantity();
 							selected_item = item;
 							System.out.println("Found order item: "+selected_item.getItem().getMenuName()+" qauntity: "+selected_item.getQuantity());
 							break;
