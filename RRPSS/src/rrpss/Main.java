@@ -1,7 +1,7 @@
 package rrpss;
 /**
  * Main entry point for the program
- * @author Chew Poshi
+ * @author Team
  *
  */
 public class Main {
