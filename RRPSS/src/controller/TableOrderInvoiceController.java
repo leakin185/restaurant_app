@@ -25,7 +25,7 @@ public class TableOrderInvoiceController {
 	 * prints out the order details for a table 
 	 * @param tableID
 	 */
-	public void printCurrentOrderForTable(int tableID) {
+	public static void printCurrentOrderForTable(int tableID) {
 
 		Table table = TableController.getTableFromTableNo(tableID);
 
@@ -40,7 +40,7 @@ public class TableOrderInvoiceController {
 	 * @param tableID
 	 * @return whether the activity was done successfully
 	 */
-	public boolean setOrderToTable(int staffID, int tableID) {
+	public static boolean setOrderToTable(int staffID, int tableID) {
 		Table table = TableController.getTableFromTableNo(tableID);
 		// if order for this table is empty
 		if (table.getOrder() == null) {
@@ -278,7 +278,7 @@ public class TableOrderInvoiceController {
 	 * @param tableID
 	 * @return invoice that was created for this table
 	 */
-	public Invoice setInvoiceToTable(double discount, int tableID) {
+	public static Invoice setInvoiceToTable(double discount, int tableID) {
 		Table table = TableController.getTableFromTableNo(tableID);
 
 		if (table.getOrder() == null) {
