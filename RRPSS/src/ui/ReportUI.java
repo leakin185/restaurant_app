@@ -79,9 +79,9 @@ public class ReportUI {
         }
 
 
-        System.out.println("\nRevenue earned for Alarcarte: " + alacartProfit);
-        System.out.println("Revenue earned for Promotional Items: " + promotionalPackageProfit);
-        System.out.println("Total Revenue earned during this period: " + alacartProfit+promotionalPackageProfit);
+        System.out.println("\nRevenue earned for Alarcarte: " + String.format("%.2f", alacartProfit));
+        System.out.println("Revenue earned for Promotional Items: " + String.format("%.2f",promotionalPackageProfit));
+        System.out.println("Total Revenue earned during this period: " + String.format("%.2f", (alacartProfit+promotionalPackageProfit)));
 
     }
 }
