@@ -51,6 +51,7 @@ public class Reservation {
     }
     /**
      * Method to get reservation ID
+     * @return return reservationID
      */
     public int getReservationID() {
         return reservationID;
@@ -64,6 +65,7 @@ public class Reservation {
     }
     /**
      * Method to get table
+     * @return return Table
      */
     public Table getTable() {
         return table;
@@ -77,6 +79,7 @@ public class Reservation {
     }
     /**
      * Method to get dateTime
+     * @return return dateTime
      */
     public Calendar getDateTime() {
         return dateTime;
@@ -90,6 +93,7 @@ public class Reservation {
     }
     /**
      * Method to get paxSize
+     * @return return paxSize
      */
     public int getPaxSize() {
         return paxSize;
@@ -110,6 +114,7 @@ public class Reservation {
     }
     /**
      * Method to get customerContact
+     * @return return customerContact
      */
     public int getCustomerContact() {
         return customerContact;
@@ -123,6 +128,7 @@ public class Reservation {
     }
     /**
      * Method to get customerName
+     * @return return customerName
      */
     public String getCustomerName() {
         return customerName;
