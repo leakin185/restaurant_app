@@ -13,7 +13,9 @@ import controller.TableController;
 
 public class ReservationUI {
     private static Scanner scanner = new Scanner(System.in);
-
+    /**
+     * Method to showMainMenu UI
+     */
     public static void showMainMenu() {
         int selection;
 
@@ -45,7 +47,9 @@ public class ReservationUI {
         while (selection < 4);
 
     }
-
+    /**
+     * Method to create reservation UI
+     */
     public static void createReservationUI() {
         Scanner sc = new Scanner(System.in);
         Table table;
@@ -111,7 +115,9 @@ public class ReservationUI {
             System.out.println("Table "+table.getTableNo());
         }
     }
-
+    /**
+     * Method to show reservation UI
+     */
     public static void showReservation() {
         ArrayList<Reservation> reservations = RestaurantDB.reservations;
         ReservationController.removeExpiredReservations(reservations);
@@ -130,7 +136,9 @@ public class ReservationUI {
             System.out.println("\n");
         }
     }
-
+    /**
+     * Method to remove reservation UI
+     */
     public static void removeReservation() {
         ArrayList<Reservation> reservations = RestaurantDB.reservations;
         ReservationController.removeExpiredReservations(reservations);
@@ -162,6 +170,10 @@ public class ReservationUI {
         }
         while(!validIndexCheck);
     }
+
+    /**
+     * Method to valid datetime input
+     */
 
     public static Calendar inputValidDateTime(){
         Scanner scanner = new Scanner(System.in);
