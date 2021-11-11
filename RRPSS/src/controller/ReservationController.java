@@ -37,6 +37,7 @@ public class ReservationController {
      * @param paxSize
      * @param customerContact
      * @param customerName
+     * @return status of the reservation if it is completed sucessfully
      */
     public static int createReservation(Table table, Calendar dateTime, int paxSize, int customerContact, String customerName){
         int reservationID = idCounter++;
@@ -51,6 +52,7 @@ public class ReservationController {
     /**
      * Method for view a reservation
      * @param reservationID
+     * @return reservation that is queried
      */
     public Reservation viewReservation(int reservationID){
         for (Reservation reservation : reservations){
@@ -63,6 +65,7 @@ public class ReservationController {
     /**
      * Method for remove a reservation
      * @param reservationID
+     * @return status of the reservation if removed successfully
      */
     public static int removeReservation(int reservationID){
         for (Reservation reservation : reservations){
@@ -76,6 +79,7 @@ public class ReservationController {
     /**
      * Method for completing reservation
      * @param reservationID
+     * @return reservationID of the completed reservation
      */
     public static int completeReservation(int reservationID){
     	if(reservations.size() != 0 ){
@@ -92,6 +96,7 @@ public class ReservationController {
     /**
      * Method for checking reservation expiry
      * @param reservation
+     * @return status of the reservation if expired
      */
     public static int checkReservationExpiry(Reservation reservation){
         Calendar expiredDateTime = Calendar.getInstance();
