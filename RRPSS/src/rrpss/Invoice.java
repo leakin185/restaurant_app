@@ -123,7 +123,7 @@ public class Invoice {
 		System.out.println("-------------------------------------------------");
 		System.out.println("Sub-Total: " + String.format("%.2f", this.price)                      );
 		System.out.println("Gst: " + String.format("%.2f", this.price*0.07)                          );
-		System.out.println("Service Charger: " + String.format("%.2f", this.price*0.1)               );
+		System.out.println("Service Charge: " + String.format("%.2f", this.price*0.1)               );
 		if(discount != 1)
 			System.out.println("Total after discount: " + String.format("%.2f", this.finalPrice) );
 		System.out.println("-------------------------------------------------");

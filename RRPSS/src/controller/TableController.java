@@ -94,7 +94,6 @@ public class TableController {
                             tempCal.getTime().before(reservations.get(j).getDateTime().getTime())
                     ) {
 
-
                         isValid = false;
                         break;
                     }
