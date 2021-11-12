@@ -147,6 +147,8 @@ public class ReservationUI {
      * Method to remove reservation UI
      */
     public static void removeReservation() {
+
+        Scanner sc2 = new Scanner(System.in);
         ArrayList<Reservation> reservations = RestaurantDB.reservations;
         ReservationController.removeExpiredReservations(reservations);
         int i = 1;
@@ -164,8 +166,12 @@ public class ReservationUI {
         }
 
         do{
-            System.out.println("Enter the reservationID of the reservation to be removed");
-            int selection = scanner.nextInt();
+            System.out.println("Enter the reservationID of the reservation to be removed, or q to cancel:");
+            if(!sc2.hasNextInt()){
+                sc2.nextLine();
+                break;
+            }
+            int selection = sc2.nextInt();
 
             if(selection < i){
                 ReservationController.removeReservation(reservations.get(selection).getReservationID());
