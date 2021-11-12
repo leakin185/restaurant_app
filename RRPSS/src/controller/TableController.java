@@ -82,7 +82,7 @@ public class TableController {
 
             boolean isValid = true;
 
-            if (tables.get(i).getTableCapacity() == numToSearch) {
+            if (tables.get(i).getTableCapacity() == numToSearch && tables.get(i).getTableAvailability() == true) {
 
                 for (int j = 0; j < reservations.size(); j++) {
 
