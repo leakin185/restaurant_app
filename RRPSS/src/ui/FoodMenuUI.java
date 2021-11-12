@@ -93,7 +93,7 @@ public class FoodMenuUI {
 			}
 		
 		System.out.println("(-1) Go Back");
-		choice = ScannerExt.nextInt("\n    Enter the number of your choice: ", 0, index - 1);
+		choice = ScannerExt.nextInt("\n    Enter the number of your choice: ", -1, index - 1);
 
 		if (choice == -1) {
 			return;

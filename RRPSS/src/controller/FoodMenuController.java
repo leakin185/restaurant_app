@@ -27,7 +27,7 @@ public class FoodMenuController {
 			CourseType foodCourseType, Temp foodTemp) {
 		Food newFood;
 		newFood = new Food(foodName, foodDesc, foodPrice, foodId, foodCourseType, foodTemp);
-		menu.add((MenuItem) newFood);
+		menu.add(newFood);
 		System.out.println(foodName + " has been added to the menu.");
 	}
 	

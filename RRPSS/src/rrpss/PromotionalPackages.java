@@ -60,15 +60,37 @@ public class PromotionalPackages extends MenuItem {
                 i++;
             }
         }
+
+
+
         /**
          * Get user input on what food to add, and add food to Promotion Set
          */
         int selection = sc.nextInt();
-        try { 
-            if (menu.get(selection-1) instanceof Food) {
-                Food foodSelection = (Food) menu.get(selection-1);
-                this.promotionSet.add(foodSelection);
-                System.out.println(foodSelection.getMenuName() + "added to Promotional Package.");
+
+        MenuItem foundMenuItem = null;
+        try {
+            if (true) {
+
+                int k = 0 ;
+                for (MenuItem menuItem : menu) {
+                    System.out.println(k);
+
+                    if (menuItem instanceof Food) {
+
+                        if(k == selection-1){
+                foundMenuItem = menuItem;
+                            break;
+                        }
+                        k++;
+
+                    }
+                }
+
+
+                System.out.println(foundMenuItem.getMenuName());
+                this.promotionSet.add((Food)foundMenuItem);
+                System.out.println(foundMenuItem.getMenuName() + " added to Promotional Package.");
             }
             else {
                 System.out.println("Selection is invalid.");
