@@ -152,11 +152,12 @@ public class RRPSS {
      */
 	private void tableOption() {
     	int tableID, choice, staffID, walkIn, walkInPax;
+		tableID = 0;
     	Calendar now;
     	Scanner sc = new Scanner(System.in);
     	StaffController SC = new StaffController();
     	
-    	System.out.println("New walk-in customer?\n1: yes\nOther numeric keys: no\n");
+    	System.out.println("1. New walk-in customer\n2. Customer with reservation\n3. Occupied Table Options\n");
     	walkIn = sc.nextInt();
     	if(walkIn==1) {
     		now = Calendar.getInstance();
@@ -178,32 +179,60 @@ public class RRPSS {
     			tableID = table.getTableNo();
     			System.out.println("Found available table, assigning table: \n"+tableID);
     			table.setUnavailable();
-    			while(true) {
-            		System.out.println("Enter staff ID: ");
-                	staffID = sc.nextInt();
-                	if(SC.checkStaff(staffID)) break;
-                	System.out.println("invalid staff ID!\n");
-                	return;
-            	};
+
     		}
     	}
-    	else {
+
+		else if(walkIn == 2){
+			// check against list of reervations
+
+			System.out.println("Please enter the reservation id:");
+			if(!sc.hasNextInt()){
+				System.out.println("Please enter a valid reservation id!");
+				return;
+			}
+
+			int rid = sc.nextInt();
+
+			boolean found = false;
+			for(int i =0;  i< RestaurantDB.reservations.size();i++){
+
+				if(RestaurantDB.reservations.get(i).getReservationID() == rid){
+					System.out.println("Reservation found!");
+					found = !found;
+					tableID= RestaurantDB.reservations.get(i).getTable().getTableNo();
+					RestaurantDB.reservations.get(i).getTable().setUnavailable();
+				}
+			}
+			if(!found){
+				System.out.println("No reservation found!");
+return;
+			}
+
+		}
+    	else if(walkIn==3){
     		System.out.println("Enter table number: \n");
         	tableID = sc.nextInt();
         	if(TableController.getTableFromTableNo(tableID).getTableAvailability()) {
         		System.out.println("This table is not assigned yet, returning \n");
         		return;
         	}
-        	while(true) {
-        		System.out.println("Enter staff ID: ");
-            	staffID = sc.nextInt();
-            	if(SC.checkStaff(staffID)) break;
-            	System.out.println("invalid staff ID!\n");
-            	return;
-        	};
+
     	}
-    	
-    	
+
+		else{
+			System.out.println("Invalid option entered!");
+			return;
+		}
+
+
+		while(true) {
+			System.out.println("Enter staff ID: ");
+			staffID = sc.nextInt();
+			if(SC.checkStaff(staffID)) break;
+			System.out.println("invalid staff ID!\n");
+			return;
+		}
     	System.out.println("1. place order/add/edit order for table " + tableID + ": ");
     	System.out.println("2. print receipt for table " + tableID + ": ");
     	System.out.println("3. print order for table " + tableID + ": ");
