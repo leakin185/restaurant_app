@@ -213,6 +213,10 @@ public class Order {
 	public ArrayList<orderItem> getOrderItems(){
 		return this.orderList;
 	}
+	
+	public void setOrderTotal(double price){
+		this.totalPrice = price;
+	}
 
 	/**
 	 * Returns the arraylist of promotionalPackages in this order
