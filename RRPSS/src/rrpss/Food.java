@@ -69,7 +69,7 @@ public class Food extends MenuItem {
 	
 	/**
 	 * Changes the temperature type of the food
-	 * @param type temperature type of the food.
+	 * @param temp temperature type of the food.
 	 */
 	public void setTemp(Temp temp) { 
 		if (type != CourseType.DRINK) {
