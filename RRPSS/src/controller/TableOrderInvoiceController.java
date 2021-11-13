@@ -45,7 +45,6 @@ public class TableOrderInvoiceController {
 		// if order for this table is empty
 		if (table.getOrder() == null) {
 			int pax = 0;
-			Order order = new Order(staffID, tableID, pax);
 			Scanner sc = new Scanner(System.in);
 			while(true) {
 				System.out.println("How many pax: ");
@@ -53,6 +52,9 @@ public class TableOrderInvoiceController {
 				if(pax>0) break;
 				System.out.println("Pax must be more than 0.");
 			}
+			Order order = new Order(staffID, tableID, pax);
+			
+			
 			
 			System.out.println("menu items count: "+RestaurantDB.menu.size());
 			System.out.println(" ");
