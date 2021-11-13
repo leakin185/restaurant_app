@@ -100,7 +100,7 @@ public class ReservationController {
      */
     public static int checkReservationExpiry(Reservation reservation){
         Calendar expiredDateTime = Calendar.getInstance();
-        expiredDateTime.add(Calendar.MINUTE, -1);
+        expiredDateTime.add(Calendar.MINUTE, -15);
         if(reservation.getDateTime().before(expiredDateTime)){
             return -1;
         }
