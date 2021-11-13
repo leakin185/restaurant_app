@@ -7,11 +7,23 @@ import rrpss.Table;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * Represents Table Controller which will be used to operate Table related actions
+ *
+ * @author Tjandy Putra
+ * @version 1.0
+ * @since 2021-10-30
+ */
+
 public class TableController {
 
     private static ArrayList<Reservation> reservations = RestaurantDB.reservations;
     private static ArrayList<Table> tables = RestaurantDB.tables;
 
+    /**
+     * Retrieve all and print reservations for table.
+     * @param table The table to retrieve reservations for.
+     */
     public static void showReservationsForTableNo(Table table) {
 
         System.out.println("Reservations for table #" + table);
@@ -27,6 +39,10 @@ public class TableController {
     }
 
     // returns null if no table with tableNo found
+    /**
+     * Retrieve table object reference given the table number.
+     * @param tableNo The number to retrieve table object reference from.
+     */
     public static Table getTableFromTableNo(int tableNo) {
 
         for (int i = 0; i < tables.size(); i++) {
@@ -40,6 +56,9 @@ public class TableController {
 
     }
 
+    /**
+     * Retrieve and print all currently occupied table.
+     */
     public static void showOccupiedTable() {
         boolean anyOccupied = false;
         for (int i = 0; i < tables.size(); i++) {
@@ -61,6 +80,11 @@ if(tables.get(i).getTableAvailability() == false){
 
     }
 
+    /**
+     * Print all tables available for booking based on the specified date time and no. of pax.
+     * @param dateTime The date time to search for.
+     * @param noOfPax The number of people looking to get a table.
+     */
         public static void showAvailableTable(Calendar dateTime, int noOfPax) {
 
         System.out.println("Available tables of size " + noOfPax + " on " + dateTime);
@@ -95,6 +119,13 @@ if(tables.get(i).getTableAvailability() == false){
         }
 
     }
+
+
+    /**
+     * Retrieve the first available for booking based on the specified date time and no. of pax.
+     * @param dateTime The date time to search by.
+     * @param noOfPax The number of people looking to get a table.
+     */
 
     public static Table getAvailableTable(Calendar dateTime, int noOfPax) {
         int numToSearch = (noOfPax % 2 == 0) ? noOfPax : (noOfPax + 1);
