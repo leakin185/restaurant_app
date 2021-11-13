@@ -74,8 +74,6 @@ public class PromotionalPackages extends MenuItem {
 
                 int k = 0 ;
                 for (MenuItem menuItem : menu) {
-                    System.out.println(k);
-
                     if (menuItem instanceof Food) {
 
                         if(k == selection-1){
