@@ -95,6 +95,7 @@ public class RRPSS {
     	members.add(new Member(2, "Bob", 22222222, "gold", 0.8));
     	members.add(new Member(3, "Chad", 33333333, "Platinum", 0.7));
     	members.add(new Member(4, "Dick", 44444444, "Platinum", 0.7));
+    	members.add(new Member(5, "Li Fang", 97777777, "Platinum", 0.7));
     	
     	RestaurantDB.members = members;
 		
