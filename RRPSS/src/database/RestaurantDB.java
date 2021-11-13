@@ -11,7 +11,7 @@ import rrpss.PromotionalPackages;
 import rrpss.Member;
 /**
  * this class contains acts as a database for the restaurant, contains lists of objects, like Reservation, Staff, Members, etc.
- * @author user
+ * @author everyone
  *
  */
 public class RestaurantDB {
