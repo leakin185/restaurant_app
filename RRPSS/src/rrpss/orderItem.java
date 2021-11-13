@@ -1,6 +1,6 @@
 package rrpss;
 /**
- * 
+ * orderItem represents an entry in Order class's ArrayList of orderItems.
  * @author Chew Poshi
  *
  */
