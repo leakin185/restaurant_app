@@ -1,5 +1,7 @@
 package rrpss;
 
+import rrpss.Food.Temp;
+
 /**
  * Represents a menu item as appear on the food menu.
  * Any menu item on a food menu has a menu name, 
@@ -100,5 +102,8 @@ public abstract class MenuItem{
 	public int getItemId(){
 		return this.itemId;
 	}
-
+	
+	public Temp getTemp() { 
+		return Temp.HOT;
+	}
 }
