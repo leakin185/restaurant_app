@@ -23,7 +23,7 @@ import rrpss.Food;
 public class TableOrderInvoiceController {
 	/**
 	 * prints out the order details for a table 
-	 * @param tableID
+	 * @param tableID identifies a table
 	 */
 	public static void printCurrentOrderForTable(int tableID) {
 
