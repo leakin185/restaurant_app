@@ -106,6 +106,10 @@ public class ReservationController {
         }
         return 1; 
     }
+    /**
+     * Method for removing expired reservations
+     * @param reservations
+     */
     public static void removeExpiredReservations(ArrayList<Reservation> reservations){
 
         List<Reservation> removed = new ArrayList<Reservation>();
