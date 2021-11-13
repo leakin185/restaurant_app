@@ -241,6 +241,7 @@ public class Order {
 	}
 	/**
 	 * prints out the details of the order with the index
+	 * @param x
 	 */
 	public void printOrder(int x) {
 		System.out.println("index:  qty:  \titem  \tprice:  \tAla/Promo");
