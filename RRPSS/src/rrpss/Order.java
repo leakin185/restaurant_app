@@ -52,9 +52,9 @@ public class Order {
 	//constructor
 	/**
 	 * Constructor for the object
-	 * @param staffID
-	 * @param tableID
-	 * @param pax
+	 * @param staffID unique ID of a staff
+	 * @param tableID unique ID of the table that this Order object belongs to
+	 * @param pax pax of customers
 	 */
 	public Order(int staffID, int tableID, int pax) {
 		this.orderID = orderID++;
@@ -76,9 +76,9 @@ public class Order {
 	//add alacarte item
 	/**
 	 * Adding new orderItems objects to the arraylist of this order when the order item's type is MenuItem type
-	 * @param order
-	 * @param item
-	 * @param quantity
+	 * @param order the Order object that is being edited
+	 * @param item the MenuItem to be added in
+	 * @param quantity quantity of the MenuItem to add
 	 * @return the updated Order
 	 */
 	public Order addOrderItem(Order order, MenuItem item, int quantity) {
@@ -90,9 +90,9 @@ public class Order {
 	
 	/**
 	 * Adding new orderItems objects to the arraylist of this order when the order item's type is promotionalPackages type
-	 * @param order
-	 * @param item
-	 * @param quantity
+	 * @param order The order object to be edited
+	 * @param item the PromotionalPackage to be added in
+	 * @param quantity quantity of the PromotionalPackages to add
 	 * @return the updated Order
 	 */
 	public Order addOrderItem(Order order, PromotionalPackages item, int quantity) {
@@ -113,8 +113,8 @@ public class Order {
 	//remove alacarte item
 	/**
 	 * Removes an orderItem from this order's arraylist of orderItems
-	 * @param order
-	 * @param ID
+	 * @param order The Order object that is being edited
+	 * @param ID of the oderItemID that is to be removed 
 	 * @return the updated order
 	 */
 	public Order removeOrderItem(Order order, int ID){
@@ -136,8 +136,8 @@ public class Order {
 	//remove promotion package
 	/**
 	 * Removes an promotionalPackage from this order's arraylist of promotionalPackage
-	 * @param order
-	 * @param pack
+	 * @param order the Order object that is being edited
+	 * @param pack the PromotionalPackages object that is selected to be deleted
 	 * @return
 	 */
 	public Order removeOrderItem(Order order, PromotionalPackages pack){
@@ -241,7 +241,7 @@ public class Order {
 	}
 	/**
 	 * prints out the details of the order with the index
-	 * @param x
+	 * @param x indicator to for method overloading
 	 */
 	public void printOrder(int x) {
 		System.out.println("index:  qty:  \titem  \tprice:  \tAla/Promo");
