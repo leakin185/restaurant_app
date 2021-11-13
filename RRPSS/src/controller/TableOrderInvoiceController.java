@@ -19,7 +19,11 @@ import rrpss.Order;
 import rrpss.Transaction;
 
 import rrpss.Food;
-
+/**
+ * A controller class that handles anything related to a table's order or invoice
+ * @author Chew Poshi
+ *
+ */
 public class TableOrderInvoiceController {
 	/**
 	 * prints out the order details for a table 
