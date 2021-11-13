@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import database.RestaurantDB;
 
-
+/**
+ * controller class to handle instruction on the Staff class
+ * @author Chew Poshi
+ *
+ */
 public class StaffController {
-	//method to add staff
+
 	public StaffController() {
 		
 	}
-	
+	/**
+	 * function to initialize the list of Staffs with dummy data
+	 * @return list of Staff items
+	 */
 	public static ArrayList<Staff> initStaffs() {
 		ArrayList<Staff> temp = new ArrayList<Staff>();
 		Staff J = new Staff(Staff.Gender.male, "Ben", Staff.JobTitle.manager);
@@ -27,7 +34,9 @@ public class StaffController {
 		return temp;
 	
 	}
-	
+	/**
+	 * function to display all staff information
+	 */
 	public static void displayStaffs() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println();
@@ -45,7 +54,11 @@ public class StaffController {
     	else return;
 	
 	}
-	
+	/**
+	 * function with check whether a staff ID is valid
+	 * @param ID
+	 * @return whether a staff ID is valid
+	 */
 	public static boolean checkStaff(int ID) {
 		for(Staff staff : RestaurantDB.staffs) {
 			if(staff.getID() == ID) return true;
