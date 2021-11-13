@@ -157,7 +157,7 @@ public class RRPSS {
     	Scanner sc = new Scanner(System.in);
     	StaffController SC = new StaffController();
     	
-    	System.out.println("1. New walk-in customer\n2. Customer with reservation\n3. Occupied Table Options\n");
+    	System.out.println("1. New walk-in customer\n2. Customer with reservation\n3. Occupied Table Options\n4. Show Occupied Tables\n");
     	walkIn = sc.nextInt();
     	if(walkIn==1) {
     		now = Calendar.getInstance();
@@ -219,7 +219,10 @@ return;
         	}
 
     	}
-
+else if(walkIn==4){
+	TableController.showOccupiedTable();
+	return;
+		}
 		else{
 			System.out.println("Invalid option entered!");
 			return;

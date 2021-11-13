@@ -40,7 +40,28 @@ public class TableController {
 
     }
 
-    public static void showAvailableTable(Calendar dateTime, int noOfPax) {
+    public static void showOccupiedTable() {
+        boolean anyOccupied = false;
+        for (int i = 0; i < tables.size(); i++) {
+
+if(tables.get(i).getTableAvailability() == false){
+    System.out.println("Table #"+tables.get(i).getTableNo() + " is currently occupied");
+  anyOccupied = true;
+}
+
+
+
+        }
+
+        if(!anyOccupied){
+            System.out.println("No tables are occupied at the moment");
+
+        }
+
+
+    }
+
+        public static void showAvailableTable(Calendar dateTime, int noOfPax) {
 
         System.out.println("Available tables of size " + noOfPax + " on " + dateTime);
 
