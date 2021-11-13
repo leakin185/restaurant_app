@@ -204,6 +204,12 @@ public class TableOrderInvoiceController {
 						
 						if(newQ >=1) {
 							selected_item.setQuantity(newQ);
+							if(newQ>oldQ) {
+								order.setOrderTotal(order.getTotalPrice() + selected_item.getItem().getPrice()*(newQ-oldQ));
+							}
+							else {
+								order.setOrderTotal(order.getTotalPrice() - selected_item.getItem().getPrice()*(oldQ-newQ));
+							}
 							System.out.println("new quantity set to "+newQ+"\n");
 							order.printOrder(1);
 							System.out.println("\n");
@@ -248,7 +254,7 @@ public class TableOrderInvoiceController {
 									
 								}
 							}
-							
+							order.setOrderTotal(order.getTotalPrice()-selected_item.getItem().getPrice()*selected_item.getQuantity());
 							table.getOrder().getOrderItems().remove(index);
 							System.out.println("Order item removed!\n\n");
 							order.printOrder(1);
