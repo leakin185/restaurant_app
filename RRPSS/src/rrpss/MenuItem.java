@@ -34,7 +34,7 @@ public abstract class MenuItem{
 	 * @param menuName Menu name of the menu item
 	 * @param desc Description of the menu item
 	 * @param price Price of the menu item
-	 * @param itemID itemID of the menu item
+	 * @param itemId itemID of the menu item
 	 */
 	public MenuItem(String menuName, String desc, double price, int itemId){
 		this.menuName = menuName;
