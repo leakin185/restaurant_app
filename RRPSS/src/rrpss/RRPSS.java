@@ -95,6 +95,7 @@ public class RRPSS {
     	members.add(new Member(2, "Bob", 22222222, "gold", 0.8));
     	members.add(new Member(3, "Chad", 33333333, "Platinum", 0.7));
     	members.add(new Member(4, "Dick", 44444444, "Platinum", 0.7));
+    	members.add(new Member(5, "Li Fang", 97777777, "Platinum", 0.7));
     	
     	RestaurantDB.members = members;
 		
@@ -157,7 +158,7 @@ public class RRPSS {
     	Scanner sc = new Scanner(System.in);
     	StaffController SC = new StaffController();
     	
-    	System.out.println("1. New walk-in customer\n2. Customer with reservation\n3. Occupied Table Options\n");
+    	System.out.println("1. New walk-in customer\n2. Customer with reservation\n3. Occupied Table Options\n4. Show Occupied Tables\n");
     	walkIn = sc.nextInt();
     	if(walkIn==1) {
     		now = Calendar.getInstance();
@@ -219,7 +220,10 @@ return;
         	}
 
     	}
-
+else if(walkIn==4){
+	TableController.showOccupiedTable();
+	return;
+		}
 		else{
 			System.out.println("Invalid option entered!");
 			return;
