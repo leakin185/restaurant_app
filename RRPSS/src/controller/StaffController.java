@@ -10,7 +10,9 @@ import database.RestaurantDB;
  *
  */
 public class StaffController {
-
+	/**
+	 * Constructor for the class
+	 */
 	public StaffController() {
 		
 	}
@@ -56,7 +58,7 @@ public class StaffController {
 	}
 	/**
 	 * function with check whether a staff ID is valid
-	 * @param ID
+	 * @param ID represents staffID
 	 * @return whether a staff ID is valid
 	 */
 	public static boolean checkStaff(int ID) {
