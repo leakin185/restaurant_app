@@ -232,20 +232,15 @@ public class Order {
 		String s1 = String.format("%5s %20s %10s %20s", "Qty", "Item", "Price", "Alacarte/Promotion");
 		String s2;
 		System.out.println(s1);
-		//System.out.println("qty:  \titem  \t\tprice:  \tAla/Promo");
 		for(orderItem i : this.orderList) {
 			if(i.getIsPromotion()) {
 				s2 = String.format("%5s %20s %10.2f %20s", i.getQuantity() + "x", i.getItem().getMenuName(), i.getItem().getPrice()*i.getQuantity(), "Promotion");
 				System.out.println(s2);
 			}
-				//System.out.println(i.getQuantity()+ " x\t" +
-					//i.getItem().getMenuName() + "   \t" + i.getItem().getPrice() * i.getQuantity() + '\t' + "Promotion"+"\t");
 			else {
 				s2 = String.format("%5s %20s %10.2f %20s", i.getQuantity() + "x", i.getItem().getMenuName(), i.getItem().getPrice()*i.getQuantity(), "Alacarte");
 				System.out.println(s2);
 			}
-				//System.out.println(i.getQuantity()+ " x\t" +
-						//i.getItem().getMenuName() + "   \t"+ i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte"+"\t");
 		}
 	}
 	/**
@@ -253,14 +248,23 @@ public class Order {
 	 * @param x indicator to for method overloading
 	 */
 	public void printOrder(int x) {
-		System.out.println("index:  qty:  \titem  \tprice:  \tAla/Promo");
+		String s1 = String.format("%5s %5s %20s %10s %20s", "Index", "Qty", "Item", "Price", "Alacarte/Promotion");
+		String s2;
+		System.out.println(s1);
+		//System.out.println("index:  qty:  \titem  \tprice:  \tAla/Promo");
 		for(orderItem i : this.orderList) {
-			if(i.getIsPromotion())
-				System.out.println(i.getItemID()+":     "+i.getQuantity()+ " x\t" +
-					i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Promotion"+"\t");
-			else
-				System.out.println(i.getItemID()+":     "+i.getQuantity()+ " x\t" +
-						i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte"+"\t");
+			if(i.getIsPromotion()) {
+				s2 = String.format("%5s %5s %20s %10.2f %20s", i.getItemID(), i.getQuantity() + "x", i.getItem().getMenuName(), i.getItem().getPrice()*i.getQuantity(), "Promotion");
+				System.out.println(s2);
+			}
+				//System.out.println(i.getItemID()+":     "+i.getQuantity()+ " x\t" +
+					//i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Promotion"+"\t");
+			else {
+				s2 = String.format("%5s %5s %20s %10.2f %20s", i.getItemID(), i.getQuantity() + "x", i.getItem().getMenuName(), i.getItem().getPrice()*i.getQuantity(), "Alacarte");
+				System.out.println(s2);
+			}
+				//System.out.println(i.getItemID()+":     "+i.getQuantity()+ " x\t" +
+						//i.getItem().getMenuName() + '\t' + i.getItem().getPrice() * i.getQuantity() + '\t' + "Alacarte"+"\t");
 		}
 	}
 }
