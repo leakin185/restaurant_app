@@ -158,10 +158,20 @@ public class FoodMenuUI {
 	private static void createNewFoodUI() {
 
 		Scanner sc = new Scanner(System.in);
-
+		
 		CourseType foodCourseType = null;
 		Temp foodTemp = null;
-
+		/**
+		 * Print out all food items
+		 */
+		ArrayList<MenuItem> foodMenu = FoodMenuController.getRestaurantFoodMenu();
+		String s1 = String.format("%30s %10s %10s", "Name", "Price", "Menu ID");
+		System.out.println(s1);
+		for (MenuItem item : foodMenu) {
+			String s2 = String.format("%30s %10.2f %10d", item.getMenuName(), item.getPrice(), item.getItemId());
+			System.out.println(s2);
+		}
+		
 		System.out.println("Enter menu name of food: ");
 
 		String foodName = sc.nextLine();
