@@ -50,7 +50,16 @@ public class ReportUI {
 
         try {
             startDateObj = new SimpleDateFormat("dd/MM/yyyy").parse(startDate);
+
+
+
             endDateObj = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").parse(endDate + " 23:59:59");
+
+            Date curDate = new Date();
+            if(startDateObj.after(curDate) || endDateObj.after(curDate)) {
+                System.out.println("Date cannot be in the future!");
+                return;
+            }
 
         } catch (Exception e) {
             System.out.println("Unable to retrieve transactions. Please enter a valid date format e.g 31/12/2021");
