@@ -56,8 +56,12 @@ public class ReportUI {
             endDateObj = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").parse(endDate + " 23:59:59");
 
             Date curDate = new Date();
-            if(startDateObj.after(curDate) || endDateObj.after(curDate)) {
-                System.out.println("Date cannot be in the future!");
+
+            if(startDateObj.after(curDate) || endDateObj.before(startDateObj)) {
+                if(startDateObj.after(curDate))
+                System.out.println("Start Date cannot be in the future!");
+                else if(endDateObj.before(startDateObj))
+                    System.out.println("End Date cannot be before Start Date!");
                 return;
             }
 
