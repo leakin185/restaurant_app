@@ -145,7 +145,13 @@ public class FoodMenuController {
 	public static void updateMenuItemPrice(MenuItem menuItem, double price) {
 		double oldPrice;
 		String name;
-
+		/**
+		 * Validate price
+		 */
+		if (price <= 0) {
+			System.out.println("Invalid Price. Please input positive price.");
+			return;
+		}
 		try {
 			oldPrice = menuItem.getPrice();
 			name = menuItem.getMenuName();
