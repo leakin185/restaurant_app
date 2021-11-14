@@ -4,6 +4,7 @@ import database.RestaurantDB;
 import rrpss.Food.CourseType;
 import rrpss.Food.Temp;
 
+import java.io.*;
 import java.util.*;
 import java.time.LocalDateTime;
 import java.util.Calendar;
@@ -13,6 +14,8 @@ import controller.TableOrderInvoiceController;
 import ui.FoodMenuUI;
 import ui.ReportUI;
 import ui.ReservationUI;
+
+import javax.sound.sampled.*;
 
 /**
  * Represents the main driver class.
@@ -33,6 +36,27 @@ public class RRPSS {
     private  ArrayList<MenuItem> menu = RestaurantDB.menu;
     private ArrayList<Member> members = RestaurantDB.members;
 
+
+	public static void pM(){
+		InputStream m;
+		try{
+			AudioInputStream a = AudioSystem.getAudioInputStream(new File("RRPSS/w.wav"));
+			Clip c = AudioSystem.getClip();
+			c.open(a);
+			c.start();
+
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedAudioFileException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * Creates a new RRPSS object.
 	 * Handles the initialization calls of Table, Staff, MenuItem and Member.
@@ -44,7 +68,7 @@ public class RRPSS {
         initMemberList();
 //		displayTables();
         System.out.println("Restaurant Reservation and Point of Sale System");
-
+		pM();
         int input = 0;
         while (true) {
         	
