@@ -37,43 +37,7 @@ public class RRPSS {
     private ArrayList<Member> members = RestaurantDB.members;
 
 
-	public static void pM(){
-		InputStream m;
-		try{
-			AudioInputStream a = AudioSystem.getAudioInputStream(new File("w.wav"));
-			Clip c = AudioSystem.getClip();
-			c.open(a);
-			c.start();
 
-
-		} catch (FileNotFoundException e) {
-			try{
-				AudioInputStream a = AudioSystem.getAudioInputStream(new File("RRPSS/w.wav"));
-				Clip c = AudioSystem.getClip();
-				c.open(a);
-				c.start();
-
-
-			} catch (FileNotFoundException es) {
-				e.printStackTrace();
-			} catch (UnsupportedAudioFileException es) {
-				e.printStackTrace();
-			} catch (IOException es) {
-				e.printStackTrace();
-			} catch (LineUnavailableException es) {
-				e.printStackTrace();
-			}
-//			e.printStackTrace();
-		} catch (UnsupportedAudioFileException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-
-
-			e.printStackTrace();
-		} catch (LineUnavailableException es) {
-			es.printStackTrace();
-		}
-	}
 
 	/**
 	 * Creates a new RRPSS object.
@@ -86,7 +50,7 @@ public class RRPSS {
         initMemberList();
 //		displayTables();
         System.out.println("Restaurant Reservation and Point of Sale System");
-		pM();
+
         int input = 0;
         while (true) {
         	
@@ -158,7 +122,9 @@ public class RRPSS {
 
             this.tables.add(new Table(random));
         }
-    }
+
+
+	}
 
 	/**
 	 * Display all tables
