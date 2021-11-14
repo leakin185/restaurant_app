@@ -25,6 +25,22 @@ public class FoodMenuController {
 	 */
 	public static void createFood(String foodName, String foodDesc, double foodPrice, int foodId,
 			CourseType foodCourseType, Temp foodTemp) {
+		/**
+		 * Validate price
+		 */
+		if (foodPrice <= 0) {
+			System.out.println("Invalid Price. Please input positive price.");
+			return;
+		}
+		/**
+		 * Validate MenuID availability
+		 */
+		for (MenuItem item : menu) {
+			if (item.getItemId() == foodId) {
+				System.out.println("Error!! Menu ID in use.");
+				return;
+			}
+		}
 		Food newFood;
 		newFood = new Food(foodName, foodDesc, foodPrice, foodId, foodCourseType, foodTemp);
 		menu.add(newFood);
@@ -41,6 +57,23 @@ public class FoodMenuController {
 	public static void createNewPromotionPackage(String menuName, String desc, double price, int itemId) {
 
 		PromotionalPackages newPromo;
+		/**
+		 * Validate price
+		 */
+		if (price <= 0) {
+			System.out.println("Invalid Price. Please input positive price.");
+			return;
+		}
+		/**
+		 * Validate MenuID availability
+		 */
+		for (MenuItem item : menu) {
+			if (item.getItemId() == itemId) {
+				System.out.println("Error!! Menu ID in use.");
+				return;
+			}
+		}
+		
 		newPromo = new PromotionalPackages(menuName, desc, price, itemId);
 		String input = "";
 
