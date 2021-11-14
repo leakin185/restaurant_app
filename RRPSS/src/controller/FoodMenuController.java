@@ -41,6 +41,7 @@ public class FoodMenuController {
 				return;
 			}
 		}
+		
 		Food newFood;
 		newFood = new Food(foodName, foodDesc, foodPrice, foodId, foodCourseType, foodTemp);
 		menu.add(newFood);
