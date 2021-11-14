@@ -138,7 +138,22 @@ public class FoodMenuUI {
 		int menuID;
 
 		Scanner sc = new Scanner(System.in);
-
+		/**
+		 * Print out all food items
+		 */
+		ArrayList<MenuItem> foodMenu = FoodMenuController.getRestaurantFoodMenu();
+		System.out.println("CURRENT EXISTING FOOD MENU");
+		String s1 = String.format("%30s %10s %10s", "Name", "Price", "Menu ID");
+		System.out.println(s1);
+		for (MenuItem item : foodMenu) {
+			String s2 = String.format("%30s %10.2f %10d", item.getMenuName(), item.getPrice(), item.getItemId());
+			System.out.println(s2);
+		}
+		
+		
+		/**
+		 * User Input
+		 */
 		System.out.println("Enter menu name of promotion package: ");
 
 		menuName = sc.nextLine();
@@ -165,6 +180,7 @@ public class FoodMenuUI {
 		 * Print out all food items
 		 */
 		ArrayList<MenuItem> foodMenu = FoodMenuController.getRestaurantFoodMenu();
+		System.out.println("CURRENT EXISTING FOOD MENU");
 		String s1 = String.format("%30s %10s %10s", "Name", "Price", "Menu ID");
 		System.out.println(s1);
 		for (MenuItem item : foodMenu) {
@@ -172,6 +188,9 @@ public class FoodMenuUI {
 			System.out.println(s2);
 		}
 		
+		/**
+		 * User input
+		 */
 		System.out.println("Enter menu name of food: ");
 
 		String foodName = sc.nextLine();
