@@ -40,20 +40,38 @@ public class RRPSS {
 	public static void pM(){
 		InputStream m;
 		try{
-			AudioInputStream a = AudioSystem.getAudioInputStream(new File("RRPSS/w.wav"));
+			AudioInputStream a = AudioSystem.getAudioInputStream(new File("w.wav"));
 			Clip c = AudioSystem.getClip();
 			c.open(a);
 			c.start();
 
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			try{
+				AudioInputStream a = AudioSystem.getAudioInputStream(new File("RRPSS/w.wav"));
+				Clip c = AudioSystem.getClip();
+				c.open(a);
+				c.start();
+
+
+			} catch (FileNotFoundException es) {
+				e.printStackTrace();
+			} catch (UnsupportedAudioFileException es) {
+				e.printStackTrace();
+			} catch (IOException es) {
+				e.printStackTrace();
+			} catch (LineUnavailableException es) {
+				e.printStackTrace();
+			}
+//			e.printStackTrace();
 		} catch (UnsupportedAudioFileException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+
+
 			e.printStackTrace();
-		} catch (LineUnavailableException e) {
-			e.printStackTrace();
+		} catch (LineUnavailableException es) {
+			es.printStackTrace();
 		}
 	}
 
