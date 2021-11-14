@@ -173,7 +173,7 @@ public class ReservationUI {
             }
             int selection = sc2.nextInt();
 
-            if(selection < i){
+            if(selection < i && selection > 0){
                 ReservationController.removeReservation(reservations.get(selection).getReservationID());
                 validIndexCheck = true;
             } else {
