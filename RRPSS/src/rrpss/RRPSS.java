@@ -40,7 +40,7 @@ public class RRPSS {
 	public static void pM(){
 		InputStream m;
 		try{
-			AudioInputStream a = AudioSystem.getAudioInputStream(new File("RRPSS/w.wav"));
+			AudioInputStream a = AudioSystem.getAudioInputStream(new File("w.wav"));
 			Clip c = AudioSystem.getClip();
 			c.open(a);
 			c.start();
