@@ -48,6 +48,7 @@ public class TableOrderInvoiceController {
 		Table table = TableController.getTableFromTableNo(tableID);
 		// if order for this table is empty
 		if (table.getOrder() == null) {
+			
 			int pax = 0;
 			Scanner sc = new Scanner(System.in);
 			while(true) {
@@ -58,6 +59,17 @@ public class TableOrderInvoiceController {
 			}
 			Order order = new Order(staffID, tableID, pax);
 			
+			/**
+			 * Print out all food items
+			 */
+			ArrayList<MenuItem> foodMenu = FoodMenuController.getRestaurantFoodMenu();
+			System.out.println("=============CURRENT EXISTING FOOD MENU=============");
+			String s1 = String.format("%30s %10s %10s", "Name", "Price", "Menu ID");
+			System.out.println(s1);
+			for (MenuItem item : foodMenu) {
+				String s2 = String.format("%30s %10.2f %10d", item.getMenuName(), item.getPrice(), item.getItemId());
+				System.out.println(s2);
+			}
 			
 			
 			System.out.println("menu items count: "+RestaurantDB.menu.size());
