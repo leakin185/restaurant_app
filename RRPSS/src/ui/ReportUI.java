@@ -69,15 +69,19 @@ public class ReportUI {
         double alacartProfit = 0.0;
         double promotionalPackageProfit  = 0.0;
 
-
+        String s1 = String.format("%30s %20s %20s %10s", "Date of Transaction", "Alacarte/Promotion", "Menu Item Name", "Price");
+		System.out.println(s1);
+		
         for (int i = 0; i < transactions.size(); i++) {
 
 
             if (transactions.get(i).getDate().equals(startDateObj) || transactions.get(i).getDate().equals(endDateObj)
                     || (transactions.get(i).getDate().before(endDateObj)
                     && transactions.get(i).getDate().after(startDateObj))) {
+            	String s2 = String.format("%30s %20s %20s %10s", transactions.get(i).getDate(), transactions.get(i).getType(), transactions.get(i).getName(), transactions.get(i).getAmount());
+    			System.out.println(s2);
 
-                System.out.println(transactions.get(i).getDate() + "\t" + transactions.get(i).getType() + "\t" + transactions.get(i).getName() + "\t$" + transactions.get(i).getAmount());
+                //System.out.println(transactions.get(i).getDate() + "\t" + transactions.get(i).getType() + "\t" + transactions.get(i).getName() + "\t$" + transactions.get(i).getAmount());
                 if(transactions.get(i).getType() == "Alacarte")
                     alacartProfit+=transactions.get(i).getAmount();
                 else
