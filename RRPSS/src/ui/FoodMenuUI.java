@@ -142,7 +142,7 @@ public class FoodMenuUI {
 		 * Print out all food items
 		 */
 		ArrayList<MenuItem> foodMenu = FoodMenuController.getRestaurantFoodMenu();
-		System.out.println("CURRENT EXISTING FOOD MENU");
+		System.out.println("=============CURRENT EXISTING FOOD MENU=============");
 		String s1 = String.format("%30s %10s %10s", "Name", "Price", "Menu ID");
 		System.out.println(s1);
 		for (MenuItem item : foodMenu) {
@@ -180,7 +180,7 @@ public class FoodMenuUI {
 		 * Print out all food items
 		 */
 		ArrayList<MenuItem> foodMenu = FoodMenuController.getRestaurantFoodMenu();
-		System.out.println("CURRENT EXISTING FOOD MENU");
+		System.out.println("=============CURRENT EXISTING FOOD MENU=============");
 		String s1 = String.format("%30s %10s %10s", "Name", "Price", "Menu ID");
 		System.out.println(s1);
 		for (MenuItem item : foodMenu) {
