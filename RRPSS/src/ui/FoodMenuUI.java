@@ -223,8 +223,9 @@ public class FoodMenuUI {
 				System.out.println("(2) Food Description");
 				System.out.println("(3) Food Price");
 				System.out.println("(4) Food Course Type");
-				System.out.println("(5) Back");
-				choice = ScannerExt.nextInt("\n    Enter the number of your choice: ", 1, 5);
+				System.out.println("(5) Food Temperature Type");
+				System.out.println("(6) Back");
+				choice = ScannerExt.nextInt("\n    Enter the number of your choice: ", 1, 6);
 
 				switch (choice) {
 				case 1:
@@ -241,9 +242,13 @@ public class FoodMenuUI {
 							selectFoodCourseTypeUI("Select food course type."));
 					break;
 				case 5:
+					FoodMenuController.updateFoodTemp(menuItem,
+							selectFoodTempUI("Select food temp type."));
+					break;
+				case 6:
 				}
 
-			} while (choice != 5);
+			} while (choice != 6);
 
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Update menu item in food menu failed! (Invalid index provided");
