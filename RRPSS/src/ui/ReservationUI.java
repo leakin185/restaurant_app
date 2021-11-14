@@ -66,6 +66,7 @@ public class ReservationUI {
         String customerName;
         String data = "";
         boolean paxSizeIntCheck = false;
+        boolean paxSizeGreaterthanZeroCheck = false;
         boolean contactIntCheck = false;
         boolean eightDigitCheck = false;
 
@@ -82,8 +83,15 @@ public class ReservationUI {
                 System.out.println("Invalid Integer Number");
                 continue;
             }
+
+            if (paxSize < 1){
+                System.out.println("Invalid Pax Size. Pax size should be at least 1 pax.");
+            }
+            else{
+                paxSizeGreaterthanZeroCheck = true;
+            }
         }
-        while(!paxSizeIntCheck);
+        while(!paxSizeIntCheck || !paxSizeGreaterthanZeroCheck);
 
         dateTime = inputValidDateTime();
 
